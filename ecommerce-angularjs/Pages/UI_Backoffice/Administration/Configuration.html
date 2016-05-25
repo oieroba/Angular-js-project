@@ -1,0 +1,52 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<script src="/Styles/JS/editor.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#txtEditor").Editor();
+    });
+</script>
+<link href="/Styles/CSS/editor.css" rel="stylesheet" />
+<div class="container" ng-controller="ConfigurationController">
+    <h4>Configuration</h4>
+    <div class="inner-round peel-shadows">
+        <div class="p10">
+            <div class="tabination">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><!--<button class="btn btn-sm btn-success mr5 add-btn" data-target="#codes" aria-controls="home" role="tab" data-toggle="tab">&nbsp;Codes</button>--> <a href="#codes" aria-controls="home" role="tab" data-toggle="tab">Codes</a></li>
+                    <li role="presentation"><!--<button class="btn btn-sm btn-success mr5 add-btn" data-target="#uploaddoclist" aria-controls="profile" role="tab" data-toggle="tab">&nbsp;Upload Document List</button>--><a href="#uploaddoclist" aria-controls="profile" role="tab" data-toggle="tab">Upload Document List</a></li>
+                    <li role="presentation"><a href="#appstatuscolor" aria-controls="messages" role="tab" data-toggle="tab">Application Status Color</a></li>
+                    <li role="presentation"><a href="#deficiencyreason" aria-controls="settings" role="tab" data-toggle="tab">Deficiency Reason</a></li>
+                    <li role="presentation"><a href="#appconfiguration" aria-controls="settings" role="tab" data-toggle="tab" ng-click="getAllConfigurationList()">Application Configuration</a></li>
+                    <li role="presentation"><a href="#applicationfee" aria-controls="settings" role="tab" data-toggle="tab">Application Fee</a></li>
+                    <li role="presentation"><a href="#usertask" aria-controls="settings" role="tab" data-toggle="tab">User Task</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content inner-body">
+                    <div role="tabpanel" class="tab-pane active" id="codes">
+                        <div ng-include="'/Modules/UI_Backoffice/Administration/ucCodes.html'"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="uploaddoclist">
+                        <div ng-include="'/Modules/UI_Backoffice/Administration/ucDocumentList.html'"></div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="appstatuscolor">
+                        <div ng-include="'/Modules/UI_Backoffice/Administration/ucStatusColor.html'"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="deficiencyreason">
+                        <div ng-include="'/Modules/UI_Backoffice/Administration/ucDeficiencyReason.html'"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="appconfiguration">
+                        <div ng-include="'/Modules/UI_Backoffice/Administration/ucApplicationConfiguration.html'"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="applicationfee">
+                        <div ng-include="'/Modules/UI_Backoffice/Administration/ucApplicationFee.html'"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="usertask">
+                        <div ng-include="'/Modules/UI_Backoffice/Administration/ucUserTask.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

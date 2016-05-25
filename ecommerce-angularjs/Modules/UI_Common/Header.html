@@ -1,0 +1,154 @@
+﻿<div class="header" ng-controller="HeaderController">
+    <div class="container mb30">
+        <ul class="nav-toplinks">
+            <li class="first">
+                <a>My Account</a>
+                <ul>
+                    <li>
+                        <a>Change Password</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a>Settings</a>
+            </li>
+            <li class="">
+                <a>Help</a>
+            </li>
+            <li class="last">
+                <a ng-click="logout('Staff')">Log out</a>
+            </li>
+        </ul>
+        <div class="logo-container fltlft">
+            <div class="box-logo">
+                <div class="header-fst-logo">
+                    <img src="/Styles/UI_BackOffice/Images/logo.png" />
+                </div>
+                <div class="header-middle-logo">
+                    <span>Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board</span>
+                </div>
+                <div class="header-sec-logo">
+
+                    <img src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                </div>
+            </div>
+            <!--<h2> inLumon</h2>-->
+        </div>
+        <div class="nav-mainlinks-container ">
+            <ul class="nav-mainlinks custom-background">
+                <li id="liHome" class="custom-background-dark-hover active">
+                    <a href="#" class="">Home</a>
+                </li>
+                <li id="liIndividual" class="custom-background-dark-hover">
+                    <a class="">Individual</a>
+                    <ul>
+                        <li>
+                            <a href="/#/Backoffice/Individual" class="">Individual Info</a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="liApplication" class="custom-background-dark-hover">
+                    <a class="">Application</a>
+                    <ul>
+                        <li>
+                            <a href="#" class="">License Application</a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="liRenewal" class="custom-background-dark-hover">
+                    <a class="">Renewal</a>
+                    <ul>
+                        <li>
+                            <a href="/#/Backoffice/LicenseRenewalHASnA_BO" class="">Licensee</a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="liReports" class="custom-background-dark-hover">
+                    <a class="">Reports</a>
+                    <ul class="maxWidth">
+                        <li>
+                            <a href="#" class="">Queries</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Daily Deposit Report</a>
+                                </li>
+                                <li>
+                                    <a href="#">Mailing List</a>
+                                </li>
+                                <li>
+                                    <a href="#">Probation List</a>
+                                </li>
+                                <li>
+                                    <a href="#">Renewal Summary Query</a>
+                                </li>
+                                <li>
+                                    <a href="#">SB 21 Certificate Report</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="">Query &amp; Reporting</a>
+                        </li>
+                    </ul>
+                </li>
+                <li id="liAdministration" class="custom-background-dark-hover">
+                    <a href="#" class="">Administration</a>
+                    <ul class="maxWidth">
+                        <li>
+                            <a href="/#/Admin/CouncilInfo" class="">Board Info</a>
+                        </li>
+                        <li>
+                            <a href="#" class="">User Management</a>
+                            <ul>
+                                <li>
+                                    <a href="/#/Admin/Role">Roles</a>
+                                </li>
+                                <li>
+                                    <a href="/#/Admin/UserAccount">User Accounts</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/#/Admin/Configuration">Configuration</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <style>
+                #liPSD li
+                {
+                    width: 172px;
+                }
+
+                li#liLegal ul ul
+                {
+                    left: 125px;
+                }
+
+                #liLegal li
+                {
+                    width: 240px;
+                }
+            </style>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="rounded-container p10 status-message">
+        <span><!--Record is saved successfully--></span>
+        <a><i class="fa fa-times"></i></a>
+    </div>
+    <!--<div class="rounded-container p10 status-message warning">
+        <span>Record is saved with warning.</span>
+        <a><i class="fa fa-times"></i></a>
+    </div>
+    <div class="rounded-container p10 status-message error">
+        <span>Error saving record.</span>
+        <a><i class="fa fa-times"></i></a>
+    </div>-->
+    <div class="rounded-container p10 validation-summary">
+        <a><i class="fa fa-times"></i></a>
+    </div>
+</div>

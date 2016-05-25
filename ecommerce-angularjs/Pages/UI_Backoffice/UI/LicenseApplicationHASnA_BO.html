@@ -1,0 +1,118 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<div class="container" ng-controller="LicenseApplicationHASnA_BOController">
+    <div class="rounded-container">
+        <div class="text-right mt10 mr10">
+            <h4 class="pull-left ml10">Licensee Renewal</h4>
+            <button type="button" class="btn btn-success">New User</button>
+        </div>
+        <div class="mt10 plr10">
+            <div class="search-info collapse" id="searchdata">
+                <a id="Close" class="close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblSearchName" class="control-label sm-label" for="inputSuccess2">Search By Name:</label>
+                            <input id="txtSearchName" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblUserName" class="control-label sm-label" for="inputSuccess2">License #:</label>
+                            <input id="txtUserName" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblLastName" class="control-label sm-label" for="inputSuccess2">Last Name:</label>
+                            <input id="txtLastName" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblFirstName" class="control-label sm-label" for="inputSuccess2">First Name:</label>
+                            <input id="txtFirstName" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblSS" class="control-label" for="inputSuccess2">SS #:</label>
+                            <input id="txtSS" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblPhone" class="control-label" for="inputSuccess2">Phone #:</label>
+                            <input id="txtPhone" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblStatus" class="control-label">Status:</label>
+                            <select id="ddlStatus" class="form-control input-sm">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right mr10">
+                    <span class="fltrt pull-right">
+                        <input class="btn btn-success medium" type="submit" value="Search">
+                        <input class="btn head-btn" type="submit" value="Cancel">
+                    </span>
+                </div>
+            </div>
+            <div class="gridUpperDiv">
+                <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                <a class="show-all">Show All</a>
+                <span id="Search" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <table class="table user-table table-bordered">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="text-center"><input type="checkbox" /></th>
+                        <th></th>
+                        <th class="sm-width"><a>License #</a></th>
+                        <th class="text-center"><a>FirstName</a></th>
+                        <th class="text-center"><a>LastName</a></th>
+                        <th class="text-center"><a>Submitted Date</a></th>
+                        <th class="text-center sm-width">Status</th>
+                        <th class="text-center lg-width">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><input type="checkbox" /></td>
+                        <td class="text-center"><i class="fa fa-dollar"></i></td>
+                        <td class="text-center">3124</td>
+                        <td class="md-width text-center">Nancy</td>
+                        <td class="md-width text-center">Blachly</td>
+                        <td class="text-center">03/17/2015</td>
+                        <td class="text-center">Submitted</td>
+                        <td class="lg-width">
+                            <ul class="text-center">
+                                <li>
+                                    <button type="button" class="btn btn-success btn-sm">Verify</button>
+                                </li>
+                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-check"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-center"><input type="checkbox" /></td>
+                        <td class="text-center"><i class="fa fa-dollar"></i></td>
+                        <td class="text-center">2346</td>
+                        <td class="md-width text-center">David</td>
+                        <td class="md-width text-center">Hook</td>
+                        <td class="text-center">03/18/2015</td>
+                        <td class="text-center">Complete</td>
+                        <td class="lg-width">
+                            <ul class="text-center">
+                                <li>
+                                    <button type="button" class="btn btn-success btn-sm">Pre-Approved</button>
+                                </li>
+                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-check"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

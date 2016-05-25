@@ -1,0 +1,60 @@
+﻿<link href="/Styles/UI_Login/CSS/login.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+</script>
+<div ng-controller="RegisterController">
+    <div class="container">
+        <div class="text-center mt30">
+            <div class="site-logo">
+                <img src="/Styles/Images/logo.png" />
+            </div>
+        </div>
+        <div class="login-form-section">
+
+            <div class="login-content">
+                <div class="section-title">
+                    <h3>Registration</h3>
+                </div>
+            </div>
+            <div class="box-wrap box-register">
+                <div class="input-group col-sm-12 mb20 form-div log-input">
+                    <input type="text" class="form-control nat-alphabet nat-required" requirederrormessage="Firstname is Required" aria-label="..." placeholder="First Name">
+                </div>
+                <div class="input-group col-sm-12 mb20 form-div log-input">
+                    <input type="text" class="form-control nat-alphabet nat-required" aria-label="..." placeholder="Middle Name">
+                </div>
+                <div class="input-group col-sm-12 mb20 form-div log-input">
+                    <input type="text" class="form-control nat-alphabet nat-required" requirederrormessage="Lastname is Required" aria-label="..." placeholder="Last Name">
+                </div>
+                <div class="input-group col-sm-12 mb20 form-div log-input">
+                    <input type="text" class="form-control datepicker date_us" aria-label="..." placeholder="Date Of Birth">
+                </div>
+                <div class="input-group col-sm-12 mb20 form-div log-input">
+                    <input type="text" class="form-control nat-email" valueerrormessage="Invalid email" aria-label="..." placeholder="Email Address">
+                </div>
+            </div>
+            <div class="log-btn">
+                <div>
+                    <button type="button" class="button btn btn-primary btn-block">Submit</button>
+                </div>
+                <div>
+                    <button type="button" class="button button-login btn btn-block btn-default" ng-click="login()">Log In</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="text-center txtfooter">
+                <span>Copyright © 2016 |
+                    <a target="_blank">inLumon</a>
+                    | All Rights Reserved
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

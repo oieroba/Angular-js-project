@@ -1,0 +1,167 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<script>
+    $(document).ready(function () {
+        $("#txtEditor").Editor();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+</script>
+<div class="container" ng-controller="MessageAndBulletinsController">
+    <div class="rounded-container msg-bulletin peel-shadows">
+        <div class="plr10">
+            <div>
+                <h4>Message</h4>
+            </div>
+            <div class="gridUpperDiv apptext-header">
+                <span><i class="fa fa-level-up down-arrow"></i></span>
+                <span class="msg-show-all">
+                    <input type="checkbox" />
+                    <a class="show-all">Show All</a>
+                </span>
+            </div>
+            <table class="table user-table table-bordered">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="sm-width text-center"><u>Start Date</u></th>
+                        <th class="sm-width text-center"><u>Expiration Date</u></th>
+                        <th class="sm-width text-center">Sort Order</th>
+                        <th class="text-center">Content</th>
+                        <th class="sm-width text-center">Status</th>
+                        <th class="sm-width text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sm-width text-center">05-04-2016</td>
+                        <td class="sm-width text-center">05-04-2016</td>
+                        <td class="sm-width text-center">1</td>
+                        <td class="lg-width">
+                            <h3>Welcome To Admin</h3>
+                            <p>Animating most properties is a performance concern, so we should proceed with caution before animating any property.</p>
+                        </td>
+                        <td class="text-center sm-width">False</td>
+                        <td class="sm-width text-center">
+                            <ul>
+                                <li class="text-left"><a><i class="fa fa-ban"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <h4>Bulletins</h4>
+            </div>
+            <div class="inner-round">
+                <div class="p10">
+                    <h5>Add New</h5>
+                    <div class="all-form mt30 row">
+                        <div class="col-md-offset-1 col-sm-5 col-md-5">
+                            <div class="form-div">
+                                <label id="lblEffectiveDate" class="control-label required-label sm-label" for="inputSuccess2">Effective Date :</label>
+                                <input id="txtEffectiveDate" type="text" class="form-control input-sm nat-required UI_BackofficeAdministrationMessageAndBulletinsValidation datepicker date_us" requiredErrorMessage="EffectiveDate is required" ng-model="EffectiveDate"/>
+                            </div>
+                            <div class="form-div">
+                                <label id="lblEndDate" class="control-label required-label sm-label" for="inputSuccess2">End Date :</label>
+                                <input id="txtEndDate" type="text" class="form-control input-sm nat-required UI_BackofficeAdministrationMessageAndBulletinsValidation datepicker date_us" requiredErrorMessage="EndDate is required" ng-model="EndDate"/>
+                            </div>
+                            <div class="form-div">
+                                <label id="lblSortOrder" class="control-label required-label sm-label" for="inputSuccess2">Sort Order :</label>
+                                <input id="txtSortOrder" type="text" class="form-control input-sm nat-required UI_BackofficeAdministrationMessageAndBulletinsValidation" requiredErrorMessage="SortOrder is required" ng-model="SortOrder"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-md-5">
+                            <div class="form-div">
+                                <label id="lblMessageType" class="control-label required-label sm-label">Message Type :</label>
+                                <select id="ddlMessageType" class="form-control input-sm nat-required UI_BackofficeAdministrationMessageAndBulletinsValidation" requiredErrorMessage="MessageType is required" ng-model="MessageType">
+                                    <option value="">-Select-</option>
+                                </select>
+                            </div>
+                            <div class="form-div">
+                                <label id="lblStatus" class="control-label required-label sm-label">Status :</label>
+                                <select id="ddlStatus" class="form-control input-sm nat-required UI_BackofficeAdministrationMessageAndBulletinsValidation" requiredErrorMessage="Status is required" ng-model="Status">
+                                    <option value="">-Select-</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Message :</h5>
+                        <textarea id="txtEditor" ng-model="Message"></textarea>
+                    </div>
+                    <div>
+                        <h5>Sample Display :</h5>
+                    </div>
+                </div>
+                <div class="holder">
+                    <span>
+                      <a class="btn btn-success medium btn-sm">Refresh Sample Display</a>
+                    </span>
+                    <span class="fltrt pull-right">
+                      <a class="btn btn-success medium">Save</a>
+                      <a class="btn head-btn">Cancel</a>
+                    </span>
+                </div>
+            </div>
+            <table class="table user-table table-bordered mt10">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="sm-width text-center"><u>Start Date</u></th>
+                        <th class="sm-width text-center"><u>Expiration Date</u></th>
+                        <th class="sm-width text-center">Sort Order</th>
+                        <th class="text-center">Content</th>
+                        <th class="sm-width text-center">Status</th>
+                        <th class="sm-width text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sm-width text-center">05-04-2016</td>
+                        <td class="sm-width text-center">05-04-2016</td>
+                        <td class="text-center sm-width">1</td>
+                        <td class="lg-width">
+                            <ul>
+                                <li>
+                                    closed on the following dates.
+                                    <ul>
+                                        <li>monday June 17,</li>
+                                        <li>Friday June 30,</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="text-center sm-width">False</td>
+                        <td class="sm-width text-center">
+                            <ul>
+                                <li class="text-left"><a><i class="fa fa-ban"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="sm-width text-center">05-04-2016</td>
+                        <td class="sm-width text-center">05-04-2016</td>
+                        <td class="text-center sm-width">1</td>
+                        <td class="lg-widht">content</td>
+                        <td class="text-center sm-width">False</td>
+                        <td class="sm-width text-center">
+                            <ul>
+                                <li class="text-left"><a><i class="fa fa-ban"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

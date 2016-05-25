@@ -1,0 +1,266 @@
+﻿/*!
+ * validation.css for Native Software 
+ *
+ * Copyright 2014 v2.0.0
+ * Created By Amit Parekh
+ * Created Date 10/07/2014
+ * Modify By Amit Parekh
+ * Modify Date 18/09/2014
+ */
+
+/*------------------[ Label Classes ]------------------*/
+.required-label:after
+{
+    content: "*";
+    color: #ff0000;
+    margin-left: 2px;
+    font-size: 15px;
+    position:absolute;
+}
+
+/*------------------[ Input Textbox Border Format Classes ]------------------*/
+.required-text
+{
+    /*border: 1px solid #ff0000 !important;*/
+    background-color: #FFEBEB !important;
+}
+
+.required-text:hover ~ .nat-err-msg
+{
+    display: block !important;
+}
+
+/*------------------[ Span Tag Format Classes ]------------------*/
+.nat-err-msg
+{
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: 2px center;
+    border: 1px solid #8c8c8c;
+    right: 0;
+    padding: 0px 5px;
+    position: absolute;
+    top: 41px;
+    z-index: 1000;
+    font-size: 12px;
+    color: #FF0000;
+    display: none;
+    line-height: 24px;
+}
+
+.nat-err-msg:before
+{
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #ff0000;
+    border-width: 8px;
+    margin-left: -36px;
+}
+
+/*------------------[ Input Tag Classes ]------------------*/
+.nat-required
+{
+    /* Apply your css */
+}
+
+.nat-alphabet
+{
+    /* Apply your css */
+}
+
+.nat-number
+{
+    /* Apply your css */
+}
+
+.nat-alphanumeric
+{
+    /* Apply your css */
+}
+
+.nat-regex
+{
+    /* Apply your css */
+}
+
+.nat-string
+{
+    /* Apply your css */
+}
+
+.nat-email
+{
+    /* Apply your css */
+}
+
+.nat-url
+{
+    /* Apply your css */
+}
+
+.nat-compare
+{
+    /* Apply your css */
+}
+
+.nat-unique
+{
+    /* Apply your css */
+}
+
+.nat-custom
+{
+    /* Apply your css */
+}
+
+/*------------------[ Error Span Classes ]------------------*/
+.requirederrormessage
+{
+    /* Apply your css */
+}
+
+.valueerrormessage
+{
+    /* Apply your css */
+}
+
+.valuelengtherrormessage
+{
+    /* Apply your css */
+}
+
+.valuelimiterrormessage
+{
+    /* Apply your css */
+}
+
+.compareerrormessage
+{
+    /* Apply your css */
+}
+
+.uniqueerrormessage
+{
+    /* Apply your css */
+}
+
+.customerrormessage
+{
+    /* Apply your css */
+}
+
+.validation-summary
+{
+    background-color: #F2DEDE;
+    color: #A94442;
+    border: 1px solid #A94442 !important;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: small;
+    display: none;
+}
+
+.validation-summary a
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3px 5px;
+    text-decoration: none;
+    color: #737272;
+    cursor: pointer;
+}
+
+.validation-summary li
+{
+    list-style: disc;
+    margin-left: 20px;
+}
+
+/*.validation-summary:after {
+        content: "\f00d ";
+        font-family: 'FontAwesome';
+        margin: 3px 6px;
+        vertical-align: top;
+        color: #737272;
+        right: 0;
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+    }*/
+
+.status-message
+{
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: small;
+    display: none;
+}
+
+.status-message a
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3px 5px;
+    text-decoration: none;
+    color: #737272;
+    cursor: pointer;
+}
+
+.status-message.error
+{
+    border: 1px solid #A94442 !important;
+    background-color: #F2DEDE;
+    color: #A94442;
+}
+
+.status-message.error:before
+{
+    content: "\f00d ";
+    font-family: 'FontAwesome';
+    margin: 6px;
+    color: #A94442;
+    font-size: large;
+}
+
+.status-message.success
+{
+    border: 1px solid #47802C !important;
+    background-color: #CCEBC9;
+    color: #47802C;
+}
+
+.status-message.success:before
+{
+    content: "\f00c ";
+    font-family: 'FontAwesome';
+    margin: 6px;
+    color: #47802C;
+    font-size: large;
+}
+
+.status-message.warning
+{
+    border: 1px solid #A94442 !important;
+    background-color: #F2DEDE;
+    color: #A94442;
+}
+
+.status-message.warning:before
+{
+    content: "\f071 ";
+    font-family: 'FontAwesome';
+    margin: 6px;
+    color: #A94442;
+    font-size: large;
+}

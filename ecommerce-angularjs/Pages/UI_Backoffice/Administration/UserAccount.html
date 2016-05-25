@@ -1,0 +1,237 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $(function () {
+        $('#txtDateOfBirth').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+</script>
+
+<div class="container" ng-controller="UserAccountController" ng-init="init()">
+    <div class="rounded-container peel-shadows">
+        <div class="text-right mt10 mr10">
+            <a id="btnNewUser" class="btn btn-success" ng-click="clearData()">Add New User</a>
+        </div>
+
+        <div class="plr10">
+            <div class="user-form mt10 mb20">
+                <span>User Accounts</span>
+            </div>
+            <!--Search User-->
+
+            <div class="search-info collapse mb20" id="searchdata">
+                <a id="Close" class="close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="all-form row">
+                    <div class="col-sm-4 col-md-4">
+                        <div class="form-div">
+                            <label id="lblType" class="control-label">Type :</label>
+                            <select id="ddlUserType" ng-options="ut.UserTypeId as ut.Code for ut in UserType" ng-change="roleGetbyUserTypeId(SearchUserTypeID)" class="form-control input-sm" ng-model="SearchUserTypeID">
+                                <option value="">-Select-</option>
+                            </select>
+                        </div>
+                        <div class="form-div">
+                            <label id="lblRole" class="control-label">Role :</label>
+                            <select id="ddlUserType" ng-options="r.RoleId as r.Name for r in Role" class="form-control input-sm" ng-model="SearchRoleID">
+                                <option value="">-Select-</option>
+                            </select>
+                        </div>
+                        <div class="form-div">
+                            <label id="lblStatus" class="control-label">Status :</label>
+                            <select id="ddlStatus" ng-options="us.UserStatusId as us.Name for us in UserStatus" class="form-control input-sm" ng-model="SearchStatusID">
+                                <option value="">-Select-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="form-div">
+                            <label id="lblLastName" class="control-label" for="inputSuccess2">Last Name :</label>
+                            <input id="txtLastName" type="text" class="form-control input-sm " ng-model="SearchLastName" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblUserName" class="control-label" for="inputSuccess2">User Name :</label>
+                            <input id="txtUserName" type="text" class="form-control input-sm" ng-model="SearchUserName" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblEmail" class="control-label" for="inputSuccess2">Email :</label>
+                            <input id="txtEmail" type="text" class="form-control input-sm nat-email" valueerrormessage="Invalid email" ng-model="SearchEmail" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <div class="form-div">
+                            <label id="lblIsPending" class="control-label">IsPending :</label>
+                            <select id="ddlIsPending" class="form-control input-sm" ng-model="SearchIsPending">
+                                <option value="">-Select-</option>
+                                <option value="true">true</option>
+                                <option value="false">false</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right mr10">
+                    <span class="fltrt pull-right">
+                        <a class="btn btn-success medium" ng-click="searchUser()">Search</a>
+                        <a class="btn head-btn" ng-click="canclePage()">Cancel</a>
+                    </span>
+                </div>
+            </div>
+            <!--New User-->
+            <div id="newuser" class="inner-round" >
+                <div>
+                    <div class="all-form row mt30">
+                        <div class="col-sm-4 col-md-4">
+                            <div class="form-div">
+                                <label id="lblLastName" class="control-label required-label" for="inputSuccess2">Last Name :</label>
+
+                                <input id="txtLastName" type="text" title="Only alphabet (A-z) value allowed" class="form-control input-sm nat-required nat-alphabet UI_BackofficeAdministrationUserAccountvalidation" maxlength="30" requiredErrorMessage="LastName is required" ng-model="LastName" />
+                            </div>
+                            <div class="form-div">
+                                <label id="lblFirstName" class="control-label required-label" for="inputSuccess2">First Name :</label>
+
+                                <input id="txtFirstName" type="text" title="Only alphabet (A-z) value allowed" class="form-control input-sm nat-required nat-alphabet UI_BackofficeAdministrationUserAccountvalidation" maxlength="30" requiredErrorMessage="FirstName is required" ng-model="FirstName" />
+
+                            </div>
+                            <div class="form-div">
+                                <label id="lblGender" class="control-label required-label">Gender :</label>
+                                <select id="ddlGender" class="form-control input-sm nat-required UI_BackofficeAdministrationUserAccountvalidation" requirederrormessage="Gender is required" ng-options="g.LookupCode as g.LookupDesc for g in Gender" ng-model="GenderID">
+                                    <option value="">-Select-</option>
+                                </select>
+                            </div>
+                            <div class="form-div">
+                                <label id="lblDateOfBirth" class="control-label required-label" for="inputSuccess2">Date of Birth :</label>
+
+                                <input id="txtDateOfBirth" type='text' title="Select Date Of Birth" class="form-control input-sm nat-required date_us UI_BackofficeAdministrationUserAccountvalidation" requiredErrorMessage="DOB is required" ng-model="DOB" />
+                            </div>
+                            <div class="form-div">
+                                <label id="lbl`" class="control-label" for="inputSuccess2">Position Ttile :</label>
+                                <input id="txtPositionTitle" type="text" class="form-control input-sm" ng-model="PositionTitle" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                            <div class="form-div">
+                                <label id="lblEmail" class="control-label required-label" for="inputSuccess2">Email :</label>
+                                <input id="txtEmail" type="text" title="Email must be in (john@example.com) format" class="form-control input-sm nat-required nat-email UI_BackofficeAdministrationUserAccountvalidation" valueErrorMessage="Invalid email" requiredErrorMessage="Email is required" ng-model="Email" />
+                            </div>
+                            <div class="form-div">
+                                <label id="lblUserName" class="control-label required-label" for="inputSuccess2">User Name :</label>
+                                <input id="txtUserName" type="text" title="Only alphanumeric (A-z 0-9) value allowed" class="form-control input-sm nat-required nat-alphanumeric UI_BackofficeAdministrationUserAccountvalidation" maxlength="30" valueErrorMessage="Invalid username" requiredErrorMessage="UserName is required" ng-model="UserName" />
+                            </div>
+                            <div class="form-div">
+                                <label id="lblPhone" class="control-label" for="inputSuccess2">Phone :</label>
+                                <input id="txtPhone" type="text" class="form-control input-sm nat-regex phone_us" title="Only number (0-9) allowed" valueexpression="^\([0-9]{3}\) ?[0-9]{3}-[0-9]{4}$" ng-model="Phone" valueerrormessage="Invalid contact phone. Format eg:(XXX) XXX-XXXX Or (XXX)XXX-XXXX" format-phone />
+                            </div>
+                            <div class="form-div">
+                                <label id="lblStatus" class="control-label required-label ">Status :</label>
+                                <select id="ddlStatus" ng-options="us.UserStatusId as us.Name for us in UserStatus" class="form-control input-sm UI_BackofficeAdministrationUserAccountvalidation nat-required" ng-model="UserStatusID" requirederrormessage="Status is required">
+                                    <option value="">-Select-</option>
+                                </select>
+                            </div>
+                            <div class="form-div">
+                                <label id="lblIsPending" class="control-label required-label">IsPending :</label>
+                                <select id="ddlIsPending" class="form-control input-sm UI_BackofficeAdministrationUserAccountvalidation nat-required" requirederrormessage="IsPending is required" ng-options="ip.status as ip.status for ip in IsPending" ng-model="IsPendingID">
+                                    <option value="">-Select-</option>
+                                    <!--<option value="true">true</option>
+                                    <option value="false">false</option>-->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                            <div class="form-div">
+                                <label id="lblUserType" class="control-label required-label">User Type :</label>
+                                <select id="ddlUserType" ng-options="ut.UserTypeId as ut.Code for ut in UserType" ng-change="roleGetbyUserTypeId(UserTypeID)" class="form-control input-sm UI_BackofficeAdministrationUserAccountvalidation nat-required" requirederrormessage="UserType is required" ng-model="UserTypeID">
+                                    <option value="">-Select-</option>
+
+                                </select>
+                            </div>
+                            <div class="form-div">
+                                <label id="lblUserType" class="control-label required-label pull-left">Role(s) :</label>
+                                <table class="table user-table uaccount-table table-bordered">
+                                    <thead>
+                                        <tr class="header-blue">
+                                            <th class="sm-width">Role</th>
+                                            <th class="sm-width">Selected</th>
+                                            <th class="sm-width">Grantable</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr ng-repeat="r in Role">
+                                            <td class="sm-width">{{r.Name}}</td>
+                                            <td class="sm-width text-center">
+                                                <input type="checkbox" ng-click="isSelected(r.RoleId,1)" id="S{{r.RoleId}}" ng-model="r.Selected" /></td>
+                                            <td class="sm-width text-center">
+                                                <input type="checkbox" ng-click="isSelected(r.RoleId,2)" id="G{{r.RoleId}}" ng-model="r.Grantable" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="Userac_footer" class="holder">
+                    <span class="fltrt pull-right">
+                        <a class="btn btn-success medium" id="ca" ng-click="saveUser(0)">Create Account</a>
+                        <a class="btn btn-success medium" id="ua" ng-click="saveUser(1)">Update Account</a>
+                        <a class="btn head-btn" id="cancel" ng-click="canclePage()">Cancel</a>
+                    </span>
+                </div>
+            </div>
+
+            <div class="gridUpperDiv">
+                <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                <span class="fltlt ml10">
+                    <a class="btn small gray btn-xs pill-left">Archive</a>
+                    <a class="btn small gray btn-xs pill-right">Delete</a>
+                </span>
+                <span id="Search" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <table class="table user-table table-bordered">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="lg-width text-center">UserName</th>
+                        <th class="md-width text-center">Name</th>
+                        <th class="lg-width text-center">Email</th>
+                        <th class="text-center">Type</th>
+                        <th class="text-center">Status</th>
+                        <th class="sm-label text-center">Is Pending</th>
+                        <th class="text-center md-width">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="UserList==null">
+
+                        <td colspan="7" align="center">
+                            <h3>No Record Found</h3>
+                        </td>
+
+                    </tr>
+                    <tr ng-repeat="ul in UserList">
+                        <td class="lg-width">{{ul.UserName}}</td>
+                        <td class="md-width">{{ul.FirstName}} {{ul.LastName}}</td>
+                        <td class="lg-width">{{ul.Email}}</td>
+                        <td class="text-center">{{ul.UserTypeName}}</td>
+                        <td class="text-center txt-disabled">{{ul.UserStatusName}}</td>
+                        <td class="text-center">{{ul.IsPending}}</td>
+                        <td class="md-width">
+                            <ul class="text-center">
+                                <li class="text-left"><a id="edit" ng-click="getUser(ul.UserId)" title="Edit {{ul.FirstName}} {{ul.LastName}}"><i class="fa fa-pencil"></i></a></li>
+                                <li class="text-left"><a><i class="fa fa-check"></i></a></li>
+                                <li class="text-left"><a id="delete" ng-click="deleteUser(ul.UserId,ul.UserName)" title="Delete {{ul.FirstName}} {{ul.LastName}}"><i class="fa fa-trash"></i></a></li>
+                                <li class="text-left"><a title="Notes"><i class="fa fa-file-text-o"></i><span>(0)</span></a></li>
+                                <!--data-toggle="tooltip" data-placement="left"-->
+                                <li class="text-left"><a title="Documents"><i class="fa fa-file"></i><span>(0)</span></a></li>
+                                <!--data-toggle="tooltip" data-placement="left"-->
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

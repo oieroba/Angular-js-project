@@ -1,0 +1,292 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<div class="container" ng-controller="RolesController">
+    <div class="rounded-container peel-shadows">
+        <div class="action-bar">
+            <div class="actions button-set">
+                <span class="pull-left">
+                    <i class="fa fa-level-up arrow-wout-color"></i>
+                </span>
+                <div class="pull-right">
+                    <a class="btn btn-head btn-success medium">Add New Role</a>
+                </div>
+                <span class="fltrt"></span>
+            </div>
+        </div>
+        <div class="all-form mt30 row">
+            <div class="plr10">
+                <div class="col-sm-3 col-md-3">
+                    <div class="inner-round">
+                        <div class="user-form mt10 mb10">
+                            <span>System Role</span>
+                        </div>
+                        <table class="table user-table table-bordered">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th class="lg-width">Role Name</th>
+                                    <th class="sm-width text-center"># Users</th>
+                                    <th class="sm-width text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="lg-width">Service User</td>
+                                    <td class="sm-width text-center">11</td>
+                                    <td class="sm-width text-center"><i class="fa fa-edit"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <span class="pull-right mb10">
+                                    <a class="btn btn-success btn-sm mr10">Add New System Role</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="inner-round">
+                        <div class="user-form mt10 mb10">
+                            <span>Provider Role</span>
+                        </div>
+                        <table class="table user-table table-bordered">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th class="lg-width">Role Name</th>
+                                    <th class="sm-width text-center"># Users</th>
+                                    <th class="sm-width text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="lg-width">Service User</td>
+                                    <td class="sm-width text-center">11</td>
+                                    <td class="sm-width text-center"><i class="fa fa-edit"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <span class="pull-right mb10">
+                                    <a class="btn btn-success btn-sm mr10">Add New Provider Role</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="inner-round">
+                        <div class="user-form mt10 mb10">
+                            <span>Service Role</span>
+                        </div>
+                        <table class="table user-table table-bordered">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th class="lg-width">Role Name</th>
+                                    <th class="sm-width text-center"># Users</th>
+                                    <th class="sm-width text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="lg-width">Service User</td>
+                                    <td class="sm-width text-center">11</td>
+                                    <td class="sm-width text-center"><i class="fa fa-edit"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <span class="pull-right mb10">
+                                    <a class="btn btn-success btn-sm mr10">Add New Service Role</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="inner-round">
+                        <div class="user-form mt10 mb10">
+                            <span>S Roles</span>
+                        </div>
+                        <table class="table user-table table-bordered">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th class="lg-width">Role Name</th>
+                                    <th class="sm-width text-center"># Users</th>
+                                    <th class="sm-width text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="lg-width">Service User</td>
+                                    <td class="sm-width text-center">11</td>
+                                    <td class="sm-width text-center"><i class="fa fa-eye"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div style="margin: 20px auto; padding: 6px;">
+            <h4 class="f16">Role </h4>
+            <div class="role-signup">
+                <div class="form-div">
+                    <label class="control-label required-label" for="inputSuccess2">Name:</label>
+                    <input type="text" class="form-control input-sm">
+                </div>
+                <div class="form-div">
+                    <label class="control-label required-label">Group Type:</label>
+                    <select class="form-control input-sm">
+                        <option value="">Select</option>
+                        <option value="">Administrator</option>
+                        <option value="">Staff</option>
+                    </select>
+                </div>
+                <div class="form-div">
+                    <label class="control-label">Description:</label>
+                    <textarea class="input-sm" cols="20" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="role-tree">
+                <h4>Permissions</h4>
+                <div class="inner-round">
+                    <div class="popup-title ">
+                        <div class="pull-right">
+                            <ul class="pertxt">
+                                <li>Full</li>
+                                <li>Create</li>
+                                <li>Read</li>
+                                <li>Update</li>
+                                <li>Delete</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="per-data">
+                        <div class="Role-popup pull-left">
+                            <span class="lblpagename ml10">Home</span>
+                        </div>
+                        <div class="pull-right mr20">
+                            <div class="chk-block ">
+                                <span class="chkread">
+                                    <input id="CHKRead" type="checkbox">
+                                </span>
+                            </div>
+                            <div class="chk-block ">
+                                <span class="chkadd">
+                                    <input id="CHKAdd" type="checkbox">
+                                </span>
+                            </div>
+                            <div class="chk-block ">
+                                <span class="chkedit">
+                                    <input id="CHKEdit" type="checkbox">
+                                </span>
+                            </div>
+                            <div class="chk-block ">
+                                <span class="chkdelete">
+                                    <input id="CHKDelete" type="checkbox">
+                                </span>
+                            </div>
+                            <div class="chk-block ">
+                                <span class="chkdelete">
+                                    <input id="CHKDelete" type="checkbox">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="per-data">
+                        <div class="Role-popup">
+                            <span class="lblpagename ml10">Individual</span>
+                        </div>
+                        <div class="sub-part1">
+                            <div class="Role-popup pull-left">
+                                <span class="lblpagename ml10">Individual Info</span>
+                            </div>
+                            <div class="pull-right mr20">
+                                <div class="chk-block ">
+                                    <span class="chkread">
+                                        <input id="CHKRead" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkadd">
+                                        <input id="CHKAdd" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkedit">
+                                        <input id="CHKEdit" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkdelete">
+                                        <input id="CHKDelete" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkdelete">
+                                        <input id="CHKDelete" type="checkbox">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="per-data">
+                        <div class="Role-popup">
+                            <span class="lblpagename ml10">Reports</span>
+                        </div>
+                        <div class="sub-part1">
+                            <div class="Role-popup">
+                                <span class="lblpagename ml10">Queries</span>
+                            </div>
+                        </div>
+                        <div class="sub-part1">
+                            <div class="Role-popup pull-left">
+                                <span class="lblpagename-sub ml10">Daily Deposit Report</span>
+                            </div>
+                            <div class="pull-right mr20">
+                                <div class="chk-block ">
+                                    <span class="chkread">
+                                        <input id="CHKRead" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkadd">
+                                        <input id="CHKAdd" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkedit">
+                                        <input id="CHKEdit" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkdelete">
+                                        <input id="CHKDelete" type="checkbox">
+                                    </span>
+                                </div>
+                                <div class="chk-block ">
+                                    <span class="chkdelete">
+                                        <input id="CHKDelete" type="checkbox">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="toolBar" style="padding: 4px;">
+                <span class="fltrt pull-right">
+                    <a class="btn btn-success medium">Save</a>
+                    <a class="btn head-btn">Cancel</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

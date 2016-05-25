@@ -1,0 +1,125 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<style>
+    .table-bordered .bt-width td
+    {
+        border-bottom-width: 0px;
+    }
+
+    .inner-border-lr
+    {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+</style>
+<div class="container" ng-controller="BackofficeDashboardStaffController" ng-init="init()">
+    <div class="row">
+        <div class="col-sm-4 col-md-4">
+            <div class="rounded-container peel-shadows p10">
+                <h4>Recent Avtivity</h4>
+                <span>You Have no recent activity.</span>
+            </div>
+            <div class="rounded-container peel-shadows p10">
+                <h4>Important Message</h4>
+            </div>
+        </div>
+        <div class="col-sm-8 col-md-8">
+            <div class="rounded-container peel-shadows">
+                <div class="mt10 mr10 ml10">
+                    <h4 class="f16">My Task
+                        <button type="button" class="btn btn-success pull-right">New Task</button>
+                    </h4>
+                    <div class="gridUpperDiv">
+                        <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                        <span class="fltlt ml10">
+                            <a class="btn small gray btn-xs pill-left">Archive</a>
+                            <a class="btn small gray btn-xs pill-right">Delete</a>
+                        </span>
+                    </div>
+                    <table class="table user-table">
+                        <thead>
+                            <tr class="light-blue">
+                                <th class="text-center sm-width">
+                                    <input type="checkbox" />
+                                </th>
+                                <th class="text-center lg-width">Task Name</th>
+                                <th class="text-center md-width">Due Date</th>
+                                <th class="text-center lg-width">Severity</th>
+                                <th class="text-center md-width">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="text-center sm-width">
+                                    <input type="checkbox" />
+                                </th>
+                                <td class="text-center lg-width">Board Meeting</td>
+                                <td class="text-center md-width">24-10-2013</td>
+                                <td class="text-center lg-width">Low</td>
+                                <td class="md-width">
+                                    <ul class="text-center">
+                                        <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                        <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="user-form">
+                        <span class="f16">At a Glance</span>
+                    </div>
+                    <div class="inner-round inner-border-lr">
+                        <div style="background-color: #eee; padding: 15px;">
+                        </div>
+                        <div class="header-blue" style="padding: 5px 0px;">
+                            <div>Applications</div>
+                        </div>
+                        <div>
+                            <ul class="ml10">
+                                <li>Number of License Renewals Submited this period</li>
+                                <li>Number of Renewals by Credit/Debit Card</li>
+                                <li>Number of Renewals by ACH</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-blue" style="padding: 5px 0px;">
+                        <div>Number of Applications Submited this period</div>
+                    </div>
+                    <table class="table user-table dash-table table-bordered">
+                        <thead>
+                            <tr class="bt-width">
+                                <td class="text-center lg-width"></td>
+                                <td class="text-center lg-width"><b>Applications/Renewals</br>Submitted</b></td>
+                                <td class="text-center md-width"><b>Approved</b></td>
+                                <td class="text-center lg-width"><b>Under Review</b></td>
+                                <td class="text-center md-width"><b>Denied</b> </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center lg-width"><b>Licensee</b></td>
+                                <td class="text-center lg-width">62</td>
+                                <td class="text-center md-width">39</td>
+                                <td class="text-center lg-width">17</td>
+                                <td class="text-center md-width">6</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center lg-width"><b>Applications</b></td>
+                                <td class="text-center lg-width">276</td>
+                                <td class="text-center md-width">47</td>
+                                <td class="text-center lg-width">112</td>
+                                <td class="text-center md-width">117</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center md-width"><b>Total</b></td>
+                                <td class="text-center lg-width">338</td>
+                                <td class="text-center md-width">86</td>
+                                <td class="text-center lg-width">129</td>
+                                <td class="text-center md-width">123</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

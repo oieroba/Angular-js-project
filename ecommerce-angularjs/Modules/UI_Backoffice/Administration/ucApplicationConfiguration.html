@@ -1,0 +1,68 @@
+<div class="search-info mb10" id="searchdata">
+    <a id="Close" class="close">
+        <i class="fa fa-close"></i>
+    </a>
+    <div class="all-form row">
+        <div class="col-md-offset-4 col-sm-4 col-md-4">
+            <div class="form-div">
+                <label id="lblSettingName" class="control-label" for="inputSuccess2">Setting Name :</label>
+                <input id="txtSettingName" type="text" class="form-control input-sm" ng-model="SearchLastName" />
+            </div>
+        </div>
+    </div>
+    <div class="text-right mr10">
+        <span class="fltrt pull-right">
+            <a class="btn btn-success medium" ng-click="searchUser()">Search</a>
+            <a class="btn head-btn" ng-click="canclePage()">Cancel</a>
+        </span>
+    </div>
+</div>
+<div class="gridUpperDiv">
+    <span class="ml10"><i class="fa fa-level-up down-arrow"></i></span>
+    <a class="show-all">Show All</a>
+    <span id="Span1" class="pull-right mt10 mr10"><i class="fa fa-search"></i></span>
+</div>
+<table class="table user-table table-bordered">
+    <thead>
+        <tr class="light-blue">
+            <th class="lg-width text-center">Setting Name</th>
+            <th class="lg-width text-center">Value</th>
+            <th class="sm-width text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="appConfig in recordlist">
+            <td class="lg-width">{{appConfig.Configuration[0].Value}}</td>
+            <td class="lg-width">{{appConfig.Status}}</td>
+            <td class="sm-width text-center"><a><i class="fa fa-pencil"></i></a></td>
+
+        </tr>
+
+        <tr>
+            <td class="lg-width">BackupsmtpPort</td>
+            <td class="lg-width">False</td>
+            <td class="sm-width text-center"><a><i class="fa fa-pencil"></i></a></td>
+        </tr>
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        <li class="page-item">
+            <a aria-label="Previous" href="#" class="page-link">
+                <span aria-hidden="true">«</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        <li class="page-item"><a href="#" class="page-link">1</a></li>
+        <li class="page-item"><a href="#" class="page-link">2</a></li>
+        <li class="page-item"><a href="#" class="page-link">3</a></li>
+        <li class="page-item"><a href="#" class="page-link">4</a></li>
+        <li class="page-item"><a href="#" class="page-link">5</a></li>
+        <li class="page-item">
+            <a aria-label="Next" href="#" class="page-link">
+                <span aria-hidden="true">»</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

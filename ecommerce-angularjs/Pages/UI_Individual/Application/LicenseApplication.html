@@ -1,0 +1,1734 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<style>
+    .lapplication-tab
+    {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .lapplication-tab li
+    {
+        width: 229px;
+        margin-bottom: 8px;
+    }
+
+    .lapplication-tab li a
+    {
+        padding: 4px 8px;
+        background-color: #ddefb4;
+        color: #000;
+    }
+
+    .lapplication-tab li a i
+    {
+        background-color: #e75050;
+        color: #fff;
+        border-radius: 50px;
+        height: 20px;
+        line-height: 19px;
+        text-align: center;
+        vertical-align: top;
+        width: 20px;
+        float: right;
+        padding: 0 5px;
+    }
+
+    .license-input .input-width
+    {
+        width: 166px !important;
+    }
+
+    .license-certification
+    {
+        width: 140px !important;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+</script>
+<div class="container" ng-controller="LicenseApplicationController">
+    <div class="rounded-container peel-shadows">
+        <div class="text-right mr10">
+            <h4 class="pull-left" style="font-size: 18px">Licensee Application</h4>
+            <input type="button" value="Add" class="btn btn-success" />
+        </div>
+        <div class="plr10">
+            <div class="search-info collapse" id="searchdata">
+                <a id="Close" class="close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblSearchName" class="control-label required-label sm-label" for="inputSuccess2">Search By Name :</label>
+                            <input type="Text" id="txtSearchName" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblLicense" class="control-label required-label sm-label" for="inputSuccess2">License # :</label>
+                            <input type="Text" id="txtLicense" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblLastName" class="control-label required-label sm-label" for="inputSuccess2">Last Name :</label>
+                            <input type="Text" id="txtLastName" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblPhone" class="control-label required-label sm-label" for="inputSuccess2">Phone # :</label>
+                            <input type="Text" id="txtPhone" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblSS" class="control-label required-label sm-label" for="inputSuccess2">SS # :</label>
+                            <input type="Text" id="txtSS" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblFirstName" class="control-label required-label sm-label" for="inputSuccess2">First Name:</label>
+                            <input type="Text" id="txtFirstName" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblStatus" class="control-label sm-label">Status:</label>
+                            <select id="ddlStatus" class="form-control input-sm">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right mr10">
+                    <span class="fltrt pull-right">
+                        <input class="btn btn-success medium" type="submit" value="Search">
+                        <input class="btn head-btn" type="submit" value="Cancel">
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div class="mt10">
+                    <a style="font-size: 18px;"><i class="fa fa-long-arrow-left mr5"></i>Back To Home</a>
+                </div>
+                <div class="text-center">
+                    <ul>
+                        <li style="font-size: 18px;"><b>inLumon</b></li>
+                        <li style="font-size: 16px;">Application for certification</li>
+                        <li style="font-size: 15px;"><i>Ver. 2015</i></li>
+                    </ul>
+                </div>
+                <div class="inner-round">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3" style="margin-top:50px">
+                            <ul class="nav nav-tabs nav-stacked lapplication-tab">
+                                <li class="active"><a data-toggle="pill" href="#Ltype">License Type <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#Instruct">Instructions <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#Pdata">Personal Data <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#CurCertification">Current Certification <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#Education">Education / Training <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#PLHistory">Professional License History <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#EICurrent">Employment Information Current <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#PReferences">Professional Refrences <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#OInformation">Other Informtion <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#Legal">Legal <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#AckDeclaration">Acknowledgment and Declaration <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#UDocument">Upload Document <i class="fa fa-close"></i></a></li>
+                                <li><a data-toggle="pill" href="#FeePayment">Fee and Payment <i class="fa fa-close"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                            <div class="inner-round mr10">
+                                <div class="tab-content">
+                                    <div id="Ltype" class="tab-pane fade in active">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">License Type</h4>
+                                        </div>
+                                        <div class="all-form">
+                                            <div class="form-div mt10 mb20">
+                                                <label id="lblSelectLicenseType" class="control-label required-label sm-label">Select License Type:</label>
+                                                <select id="ddlSelectLicenseType" class="form-control input-sm">
+                                                    <option value="">Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="Instruct" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Application Instructions</h4>
+                                        </div>
+                                        <div class="plr10">
+                                            <ul>
+                                                <li>
+                                                    <div class="row ml10 mb10">
+                                                        <div class="col-sm-8 col-md-8"><b><span>1. </span>Have you read All of the <a><u>Appliction Instructions ?</u></a></b></div>
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                                            <span><b>Yes</b></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row ml10">
+                                                        <div class="col-sm-11 col-md-11 ml10">(The yes button is enabled only after you have clicked on the Application instructions link above and read the instructions.)</div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row ml10 mt10 mb10">
+                                                        <div class="col-sm-8 col-md-8"><b><span>2. </span>Have you read All of the Appliction Instructions ?</b></div>
+                                                        <div class="col-sm-4 col-md-4">
+                                                            <input type="radio" name="optionsRadios" id="Radio1" value="option1" checked>
+                                                            <span><b>Yes</b></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="row ml10 mb10">
+                                                <div class="col-sm-11 col-md-11 ml10">Please remember that providing incomplete or misleading information to the C3 Info System ("C3") may result in processing delays, denial of your application. revocation of your certificate, or additional processing fees.</div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="Pdata" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Personal Data</h4>
+                                        </div>
+                                        <div class="plr10">
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblLegalName" class="control-label sm-label" for="inputSuccess2"><b>Legal Name :</b></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label1" class="control-label required-label sm-label" for="inputSuccess2">First Name :</label>
+                                                        <input type="text" id="Text1" class="form-control input-sm input-width nat-required nat-alphabet" requirederrormessage="Firstname is required" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div pull-right">
+                                                        <label id="Label2" class="control-label required-label sm-label" for="inputSuccess2">Last Name :</label>
+                                                        <input type="text" id="Text2" class="form-control input-sm input-width nat-required nat-alphabet" requirederrormessage="Firstname is required"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblMiddleName" class="control-label sm-label" for="inputSuccess2">Middle Name :</label>
+                                                        <input type="text" id="txtMiddleName" class="form-control input-sm input-width nat-alphabet">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div pull-right">
+                                                        <label id="lblDateOfBirth" class="control-label required-label sm-label" for="inputSuccess2">Date of Birth :</label>
+                                                        <input type="text" id="txtDateOfBirth" class="form-control input-sm input-width nat-required datepicker date_us" requirederrormessage="Date of Birth is required"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblSSN" class="control-label sm-label" for="inputSuccess2">SSN :</label>
+                                                        <input type="text" id="txtSSN" class="form-control input-sm input-width" placeholder="XXX-XX-XXXX">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-offset-2 col-sm-8 col-md-8">
+                                                    <div class="form-div ml10">
+                                                        <div class="radio-inline">
+                                                            <input type="radio" name="optionsRadios" id="Radio2" value="option1" checked="">
+                                                            US Citizen
+                                                        </div>
+                                                        <div class="radio-inline">
+                                                            <input type="radio" name="optionsRadios" id="Radio18" value="option1" checked="">
+                                                            Authorized to Work in the US
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row license-input mt10">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="" class="control-label sm-label" for="inputSuccess2">
+                                                            <h6><b>Place of Birth :</b></h6>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblStreet" class="control-label sm-label" for="inputSuccess2">Street :</label>
+                                                        <input type="text" id="txtStreet" class="form-control input-sm input-width">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblCity" class="control-label sm-label" for="inputSuccess2">City :</label>
+                                                        <input type="text" id="txtCity" class="form-control input-sm input-width">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label5" class="control-label sm-label" for="inputSuccess2"></label>
+                                                        <input type="text" id="Text4" class="form-control input-sm input-width">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblState" class="control-label sm-label" for="inputSuccess2">State :</label>
+                                                        <select id="ddlState" class="form-control input-sm input-width submit">
+                                                            <option value="1">NEVADA</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblZip" class="control-label sm-label" for="inputSuccess2">Zip :</label>
+                                                        <input type="text" id="txtZip" class="form-control input-sm input-width zip_us">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblGender" class="control-label sm-label" for="inputSuccess2">Gender :</label>
+                                                        <select id="ddlGender" class="form-control input-sm input-width submit">
+                                                            <option value="1">Male</option>
+                                                            <option value="1">Female</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row license-input mt10">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label3" class="control-label sm-label" for="inputSuccess2">
+                                                            <h6><b>Other Name(s) Used :</b></h6>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-offset-1 col-sm-11 col-md-11">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label4" class="control-label sm-label" for="inputSuccess2">Other First Name :</label>
+                                                        <input type="text" id="Text3" class="form-control input-sm input-width nat-alphabet">
+                                                    </div>
+                                                    <div class="form-div ml10">
+                                                        <label id="Label6" class="control-label sm-label" for="inputSuccess2">Other Middle Name :</label>
+                                                        <input type="text" id="Text5" class="form-control input-sm input-width nat-alphabet">
+                                                    </div>
+                                                    <div class="form-div ml10">
+                                                        <label id="Label7" class="control-label sm-label" for="inputSuccess2">Other Last Name :</label>
+                                                        <input type="text" id="Text6" class="form-control input-sm input-width nat-alphabet">
+                                                    </div>
+                                                    <div class="form-div ml10">
+                                                        <span class="fltrt pull-right mb10">
+                                                            <a class="btn btn-success medium">Add</a>
+                                                        </span>
+                                                    </div>
+                                                    <div class="form-div ml10">
+                                                        <table class="table user-table table-bordered">
+                                                            <thead>
+                                                                <tr class="light-blue">
+                                                                    <th class="lg-width text-center">Other First Name</th>
+                                                                    <th class="lg-width text-center">Other Middle Name</th>
+                                                                    <th class="lg-width text-center">Other Last Name</th>
+                                                                    <th class="sm-width text-center">Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="lg-width text-center">Micheal</td>
+                                                                    <td class="lg-width text-center"></td>
+                                                                    <td class="lg-width text-center">Clarcke</td>
+                                                                    <td class="sm-width text-center">
+                                                                        <ul class="text-center">
+                                                                            <li><a><i class="fa fa-pencil"></i></a></li>
+                                                                            <li><a><i class="fa fa-trash"></i></a></li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6 mb10">
+                                                    <h4 class="text-center">Residencial Address</h4>
+                                                    <div class="form-div">
+                                                        <label id="Label8" class="control-label sm-label">Street :</label>
+                                                        <input id="Text7" type="text" class="form-control input-sm input-width">
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="lblStreet2" class="control-label sm-label"></label>
+                                                        <input id="txtStreet2" type="text" class="form-control input-sm input-width">
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="Label9" class="control-label sm-label" for="inputSuccess2">City :</label>
+                                                        <input id="Text8" type="text" class="form-control input-sm input-width">
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="Label10" class="control-label sm-label">State :</label>
+                                                        <select id="Select1" class="form-control input-sm input-width">
+                                                            <option value="1">NEVADA</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="Label11" class="control-label sm-label" for="inputSuccess2">Zip :</label>
+                                                        <input id="Text9" type="text" class="form-control input-sm input-width zip_us">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <h4 class="text-center council-address f12">
+                                                        Mailing Address : <span>
+                                                            (<input type="checkbox" />
+                                                            Same as Physical Address )
+                                                        </span>
+                                                    </h4>
+                                                    <div class="form-div pull-right">
+                                                        <label id="Label12" class="control-label sm-label">Street :</label>
+                                                        <input id="Text10" type="text" class="form-control input-sm input-width">
+                                                    </div>
+                                                    <div class="form-div pull-right">
+                                                        <label id="Label13" class="control-label sm-label"></label>
+                                                        <input id="Text11" type="text" class="form-control input-sm input-width">
+                                                    </div>
+                                                    <div class="form-div pull-right">
+                                                        <label id="Label14" class="control-label sm-label" for="inputSuccess2">City :</label>
+                                                        <input id="Text12" type="text" class="form-control input-sm input-width">
+                                                    </div>
+                                                    <div class="form-div pull-right">
+                                                        <label id="Label15" class="control-label sm-label">State :</label>
+                                                        <select id="Select2" class="form-control input-sm input-width">
+                                                            <option value="1">NEVADA</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-div pull-right">
+                                                        <label id="Label16" class="control-label sm-label" for="inputSuccess2">Zip :</label>
+                                                        <input id="Text13" type="text" class="form-control input-sm input-width zip_us">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row mt10">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblEmailAddress" class="control-label sm-label" for="inputSuccess2">Email Address :</label>
+                                                        <input type="text" id="txtEmailAddress" class="form-control input-sm input-width nat-email" valueerrormessage="Invalid email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblHomePhone" class="control-label sm-label" for="inputSuccess2">Home phone :</label>
+                                                        <input type="Text" id="txtHomePhone" class="form-control input-sm input-width phone_us">
+                                                    </div>
+                                                    <div class="form-div ml10">
+                                                        <label id="lblWorkPhone" class="control-label sm-label" for="inputSuccess2">Work Phone :</label>
+                                                        <input type="text" id="txtWorkPhone" class="form-control input-sm input-width phone_us" placeholder="(XXX) XXX-XXXX">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div pull-right">
+                                                        <label id="lblCellPhone" class="control-label sm-label" for="inputSuccess2">Cell Phone :</label>
+                                                        <input type="Text" id="txtCellPhone" class="form-control input-sm input-width phone_us" placeholder="(XXX) XXX-XXXX">
+                                                    </div>
+                                                    <div class="form-div pull-right">
+                                                        <label id="lblFax" class="control-label sm-label" for="inputSuccess2">Fax :</label>
+                                                        <input type="text" id="txtFax" class="form-control input-sm input-width phone_us">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="CurCertification" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">License Type</h4>
+                                        </div>
+                                        <div class="all-form p10">
+                                            <div class="form-div mb20">
+                                                <span class="fltrt pull-right">
+                                                    <a class="btn btn-success medium">Add Current Certification</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <table class="table user-table table-bordered mt10">
+                                            <thead>
+                                                <tr class="light-blue">
+                                                    <th class="lg-width text-center">Certification Type</th>
+                                                    <th class="lg-width text-center">Certificate No.</th>
+                                                    <th class="lg-width text-center">Date Issues</th>
+                                                    <th class="lg-width text-center">Expiration Date</th>
+                                                    <th class="md-width text-center">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="lg-width">
+                                                        <select id="Select3" class="form-control input-sm" style="width: 160px !important;">
+                                                            <option value="1">Select</option>
+                                                        </select>
+                                                    <td class="lg-width">
+                                                        <input type="text" class="form-control input-sm license-certification" />
+                                                    </td>
+                                                    <td class="lg-width">
+                                                        <input type="text" class="form-control input-sm license-certification datepicker date_us" placeholder="MM/DD/YYYY" />
+                                                    </td>
+                                                    <td class="lg-width">
+                                                        <input type="text" class="form-control input-sm license-certification datepicker date_us" placeholder="MM/DD/YYYY" />
+                                                    </td>
+                                                    <td class="md-width">
+                                                        <ul>
+                                                            <li><a><i class="fa fa-pencil"></i></a></li>
+                                                            <li><a><i class="fa fa-trash"></i></a></li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="Education" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Education/Training</h4>
+                                        </div>
+                                        <div class="all-form license-input row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="lblSchool/EducationInstitution" class="control-label required-label sm-label" for="inputSuccess2">School/Education Institution :</label>
+                                                    <input type="text" id="txtSchool/EducationInstitution" class="form-control input-sm input-width nat-alphabet nat-required" requirederrormessage="Institution is required" allowspace="true" style="margin-top: 20px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form license-input row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="Label17" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                                                    <input type="text" id="Text14" class="form-control input-sm input-width nat-required" requirederrormessage="City is required">
+                                                </div>
+                                                <div class="form-div ml10">
+                                                    <label id="Label18" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                                                    <input type="text" id="Text15" class="form-control input-sm input-width nat-required zip_us" requirederrormessage="Zip is required" placeholder="XXXX-XXXXX or XXXX">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="Label19" class="control-label required-label sm-label" for="inputSuccess2">State :</label>
+                                                    <select id="Select4" class="form-control input-sm input-width submit nat-required" requirederrormessage="State is required">
+                                                        <option value="1">CALIFORNIA</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form license-input row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="lblDateAttended" class="control-label required-label sm-label" for="inputSuccess2">Date Attended :</label>
+                                                    <input type="text" id="txtDateAttended" class="form-control input-sm input-width nat-required datepicker date_us" requirederrormessage="Date Attended is required"  placeholder="MM/DD/YYYY">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form license-input row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="lblMejor" class="control-label required-label sm-label" for="inputSuccess2">Mejor :</label>
+                                                    <input type="text" id="txtMejor" class="form-control input-sm input-width nat-required" requirederrormessage="Mejor is required">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="lblDegree" class="control-label required-label sm-label" for="inputSuccess2">Degree :</label>
+                                                    <input type="text" id="txtDegree" class="form-control input-sm input-width nat-required" requirederrormessage="Degree is required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p10">
+                                            <table class="table user-table table-bordered">
+                                                <thead>
+                                                    <tr class="light-blue">
+                                                        <th class="lg-width">School/Educational Institution</th>
+                                                        <th class="sm-width text-center">City</th>
+                                                        <th class="sm-width text-center">State</th>
+                                                        <th class="md-width text-center">Date Attended</th>
+                                                        <th class="text-center sm-width">Mejor</th>
+                                                        <th class="text-center sm-width">Degree</th>
+                                                        <th class="text-center sm-width">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="lg-width text-center">Test Institution</td>
+                                                        <td class="sm-width text-center">Reno</td>
+                                                        <td class="sm-width text-center">Nevada</td>
+                                                        <td class="md-width text-center">12/12/2014</td>
+                                                        <td class="sm-width text-center">Test</td>
+                                                        <td class="sm-width text-cetner">Test</td>
+                                                        <td class="sm-width text-center">
+                                                            <ul>
+                                                                <li><a><i class="fa fa-pencil"></i></a></li>
+                                                                <li><a><i class="fa fa-trash"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="PLHistory" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Professional License History</h4>
+                                        </div>
+                                        <div class="all-form p10 row">
+                                            <div class="col-sm-8 col-md-8">
+                                                <div class="form-div ml10">
+                                                    <span>Test content coming from Database.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 col-md-4">
+                                                <div class="form-div">
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="optionsRadios" id="Radio3" value="option1" checked="" style="margin-top: 5px !important;">
+                                                        <span class="remove-margin">Yes</span>
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input type="radio" name="optionsRadios" id="Radio4" value="option1" checked="" style="margin-top: 5px !important;">
+                                                        <span class="remove-margin">No</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p10 mb20">
+                                            <span class="fltrt pull-right mb10">
+                                                <a class="btn btn-success medium">Add</a>
+                                            </span>
+                                        </div>
+                                        <div class="p10">
+                                            <div class="table-bordered">
+                                                <div class="header-gray">
+                                                    <h4 class="text-center">Add Professional License History</h4>
+                                                </div>
+                                                <div class="all-form p10 row license-input">
+                                                    <div class="col-sm-6 col-md-6">
+                                                        <div class="form-div">
+                                                            <div class="form-div">
+                                                                <label id="lblState/Jurisdiction" class="control-label" for="inputSuccess2">State/Jurisdiction :</label>
+                                                                <input id="txtState/Jurisdiction" type="text" class="form-control input-sm input-width">
+                                                            </div>
+                                                            <div class="form-div">
+                                                                <label id="lblIssueDate" class="control-label" for="inputSuccess2">Issue Date :</label>
+                                                                <input id="txtIssueDate" type="text" class="form-control input-sm input-width datepicker date_us">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6">
+                                                        <div class="form-div">
+                                                            <label id="lblLicense#" class="control-label" for="inputSuccess2">License # :</label>
+                                                            <input id="txtLicense#" type="text" class="form-control input-sm input-width">
+                                                        </div>
+                                                        <div class="form-div">
+                                                            <label id="lblExpirationDate" class="control-label" for="inputSuccess2">Expiration Date :</label>
+                                                            <input id="txtExpirationDate" type="text" class="form-control input-sm input-width datepicker date_us">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="holder">
+                                                    <span class="fltrt pull-right">
+                                                        <a class="btn medium btn-success">Save</a>
+                                                        <a class="btn head-btn">Cancel</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p10">
+                                            <span class="fltrt pull-right mb10">
+                                                <a class="btn btn-success medium">Add</a>
+                                            </span>
+                                            <table class="table user-table table-bordered mt20">
+                                                <thead>
+                                                    <tr class="light-blue">
+                                                        <th class="lg-width text-center">State/Jurisdiction</th>
+                                                        <th class="md-width text-center">License#</th>
+                                                        <th class="md-width text-center">Issue Date</th>
+                                                        <th class="md-width text-center">Expiration Date</th>
+                                                        <th class="sm-width text-center">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="lg-width text-center">Nevada</td>
+                                                        <td class="md-width text-center">00001</td>
+                                                        <td class="md-width text-center">23/4/2016</td>
+                                                        <td class="md-width text-center">5/5/2016</td>
+                                                        <td class="sm-width text-center">
+                                                            <ul class="text-center">
+                                                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="EICurrent" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Current Nevada Employment Information (if applicable)</h4>
+                                        </div>
+                                        <div class="plr10">
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblEmployerName" class="control-label required-label sm-label" for="inputSuccess2">Employer Name :</label>
+                                                        <input type="text" id="txtEmployreName" class="form-control input-sm input-width nat-alphabet nat-required" requirederrormessage="Employername is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblPhysicalAddress" class="control-label sm-label" for="inputSuccess2">
+                                                            <h6><b>Physical Address :</b></h6>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label20" class="control-label required-label sm-label" for="inputSuccess2">Street :</label>
+                                                        <input type="text" id="Text16" class="form-control input-sm input-width nat-required" requirederrormessage="Street is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label21" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                                                        <input type="text" id="Text17" class="form-control input-sm input-width nat-required" requirederrormessage="City is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label22" class="control-label sm-label" for="inputSuccess2"></label>
+                                                        <input type="text" id="Text18" class="form-control input-sm input-width">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label23" class="control-label required-label sm-label" for="inputSuccess2">State :</label>
+                                                        <select id="Select5" class="form-control input-sm input-width nat-required" requirederrormessage="State is required">
+                                                            <option value="1">NEVADA</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content header-sky" style="width: 900px">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <div class="all-form row plr10">
+                                                                <div class="col-sm-offset-1 col-sm-5 col-md-5">
+                                                                    <h4 class="modal-title">User Address</h4>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <h4 class="modal-title">Verified Address</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class=" all-form row plr10">
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label24" class="control-label" for="inputSuccess2">Street :</label>
+                                                                        <span>123 Main Street</span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label25" class="control-label" for="inputSuccess2">City :</label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label26" class="control-label" for="inputSuccess2">State :</label>
+                                                                        <span>CALIFORNIA</span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label27" class="control-label" for="inputSuccess2">Zip :</label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label28" class="control-label" for="inputSuccess2"></label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <span style="color: red">This is not a verified address.</span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label30" class="control-label" for="inputSuccess2"></label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label31" class="control-label" for="inputSuccess2"></label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="all-form row plr10">
+                                                                <div class="col-sm-4 col-md-4">
+                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Use User Address </button>
+                                                                </div>
+                                                                <div class="col-sm-5 col-md-5">
+                                                                    <button type="button" class="btn" data-dismiss="modal" disabled style="background-color: #9D9999!important; color: white">Use Verified Address</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <!-- End Modal -->
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label29" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                                                        <input type="text" id="Text19" class="form-control input-sm input-width zip_us nat-required" requirederrormessage="zip is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <div class="text-right mr10 mb10">
+                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Verify Address</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row mt30">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label32" class="control-label required-label sm-label" for="inputSuccess2">Work Phone :</label>
+                                                        <input type="text" id="Text20" class="form-control input-sm input-width phone_us nat-required" requirederrormessage="Work Phone is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblAlternatePhone" class="control-label required-label sm-label" for="inputSuccess2">Alternate Phone :</label>
+                                                        <input type="text" id="txtAlternatePhone" class="form-control input-sm input-width phone_us nat-required" requirederrormessage="Alternate phone is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblStartDate" class="control-label required-label sm-label" for="inputSuccess2">Start Date :</label>
+                                                        <input type="text" id="txtStartDate" class="form-control input-sm input-width datepicker date_us nat-required" requirederrormessage="Startdate is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label33" class="control-label required-label sm-label" for="inputSuccess2">Fax :</label>
+                                                        <input type="text" id="Text21" class="form-control input-sm input-width phone_us nat-required" requirederrormessage="Fax is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="table user-table table-bordered">
+                                                <thead>
+                                                    <tr class="light-blue">
+                                                        <th class="lg-width">Employer Name</th>
+                                                        <th class="lg-width text-center">Work Phone</th>
+                                                        <th class="sm-width">City</th>
+                                                        <th class="text-center sm-width">State</th>
+                                                        <th class="text-center sm-width">Zip</th>
+                                                        <th class="text-center sm-width">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="lg-width">Test Company</td>
+                                                        <td class="sm-width">(775)0020220</td>
+                                                        <td class="lg-width">Reno</td>
+                                                        <td class="text-center sm-width">Nevada</td>
+                                                        <td class="text-center sm-width">89511</td>
+                                                        <td class="sm-width">
+                                                            <ul class="text-center">
+                                                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="lg-width">Test Company</td>
+                                                        <td class="sm-width">(775)0020220</td>
+                                                        <td class="lg-width">Reno</td>
+                                                        <td class="text-center sm-width">Nevada</td>
+                                                        <td class="text-center sm-width">89511</td>
+                                                        <td class="sm-width">
+                                                            <ul class="text-center">
+                                                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Professional Employment History (3 years) - Starting with the most recent</h4>
+                                        </div>
+                                        <div class="plr10">
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label34" class="control-label required-label sm-label" for="inputSuccess2">Employer Name :</label>
+                                                        <input type="text" id="Text22" class="form-control input-sm input-width nat-alphabet nat-required" requirederrormessage="Employername is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label35" class="control-label sm-label" for="inputSuccess2">
+                                                            <h6><b>Physical Address :</b></h6>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label36" class="control-label required-label sm-label" for="inputSuccess2">Street :</label>
+                                                        <input type="text" id="Text23" class="form-control input-sm input-width nat-required" requirederrormessage="Street is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label37" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                                                        <input type="text" id="Text24" class="form-control input-sm input-width nat-required" requirederrormessage="City is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label38" class="control-label sm-label" for="inputSuccess2"></label>
+                                                        <input type="text" id="Text25" class="form-control input-sm input-width">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label39" class="control-label required-label sm-label" for="inputSuccess2">State :</label>
+                                                        <select id="Select6" class="form-control input-sm input-width nat-required" requirederrormessage="State is required">
+                                                            <option value="1">NEVADA</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="Div1" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content header-sky" style="width: 900px">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <div class="all-form row plr10">
+                                                                <div class="col-sm-offset-1 col-sm-5 col-md-5">
+                                                                    <h4 class="modal-title">User Address</h4>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <h4 class="modal-title">Verified Address</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class=" all-form row plr10">
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label40" class="control-label" for="inputSuccess2">Street :</label>
+                                                                        <span>123 Main Street</span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label41" class="control-label" for="inputSuccess2">City :</label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label42" class="control-label" for="inputSuccess2">State :</label>
+                                                                        <span>CALIFORNIA</span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label43" class="control-label" for="inputSuccess2">Zip :</label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-6">
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label44" class="control-label" for="inputSuccess2"></label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <span style="color: red">This is not a verified address.</span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label45" class="control-label" for="inputSuccess2"></label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                    <div class="form-div ml10">
+                                                                        <label id="Label46" class="control-label" for="inputSuccess2"></label>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="all-form row plr10">
+                                                                <div class="col-sm-4 col-md-4">
+                                                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Use User Address </button>
+                                                                </div>
+                                                                <div class="col-sm-5 col-md-5">
+                                                                    <button type="button" class="btn" data-dismiss="modal" disabled style="background-color: #9D9999!important; color: white">Use Verified Address</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Modal -->
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label47" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                                                        <input type="text" id="Text26" class="form-control input-sm input-width zip_us nat-required" requirederrormessage="Zip is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <div class="text-right mr10 mb10">
+                                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Verify Address</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row mt30">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label48" class="control-label required-label sm-label" for="inputSuccess2">Work Phone :</label>
+                                                        <input type="text" id="Text27" class="form-control input-sm input-width phone_us nat-required" requirederrormessage="Work phone is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label49" class="control-label required-label sm-label" for="inputSuccess2">Alternate Phone :</label>
+                                                        <input type="text" id="Text28" class="form-control input-sm input-width phone_us nat-required" requirederrormessage="Alternate phone is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label50" class="control-label required-label sm-label" for="inputSuccess2">Start Date :</label>
+                                                        <input type="text" id="Text29" class="form-control input-sm input-width datepicker date_us nat-required" requirederrormessage="Startdate is required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="Label51" class="control-label required-label sm-label" for="inputSuccess2">Fax :</label>
+                                                        <input type="text" id="Text30" class="form-control input-sm input-width phone_us nat-required" requirederrormessage="Fax is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="table user-table table-bordered">
+                                                <thead>
+                                                    <tr class="light-blue">
+                                                        <th class="lg-width">Employer Name</th>
+                                                        <th class="lg-width text-center">Work Phone</th>
+                                                        <th class="sm-width">City</th>
+                                                        <th class="text-center sm-width">State</th>
+                                                        <th class="text-center sm-width">Zip</th>
+                                                        <th class="text-center sm-width">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="lg-width">Test Company</td>
+                                                        <td class="sm-width">(775)0020220</td>
+                                                        <td class="lg-width">Reno</td>
+                                                        <td class="text-center sm-width">Nevada</td>
+                                                        <td class="text-center sm-width">89511</td>
+                                                        <td class="sm-width">
+                                                            <ul class="text-center">
+                                                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="lg-width">Test Company</td>
+                                                        <td class="sm-width">(775)0020220</td>
+                                                        <td class="lg-width">Reno</td>
+                                                        <td class="text-center sm-width">Nevada</td>
+                                                        <td class="text-center sm-width">89511</td>
+                                                        <td class="sm-width">
+                                                            <ul class="text-center">
+                                                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="PReferences" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Professional References</h4>
+                                        </div>
+                                        <div class="all-form license-input row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="Label52" class="control-label required-label sm-label" for="inputSuccess2">First Name :</label>
+                                                    <input type="text" id="Text31" class="form-control input-sm input-width nat-alphabet nat-required" requirederrormessage="Firstname is required">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div">
+                                                    <label id="Label53" class="control-label required-label sm-label" for="inputSuccess2">Last Name :</label>
+                                                    <input type="text" id="Text32" class="form-control input-sm input-width nat-alphabet nat-required" requirederrormessage="Lastname is required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form license-input row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="Label54" class="control-label sm-label" for="inputSuccess2">Middle Name :</label>
+                                                    <input type="text" id="Text33" class="form-control input-sm input-width nat-alphabet">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form license-input row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div ml10">
+                                                    <label id="Label55" class="control-label required-label sm-label" for="inputSuccess2">Email :</label>
+                                                    <input type="text" id="Text34" class="form-control input-sm input-width nat-email nat-required" requirederrormessage="Email is required" valueerrormessage="Invalid email">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div">
+                                                    <label id="Label56" class="control-label required-label sm-label" for="inputSuccess2">Phone Number :</label>
+                                                    <input type="text" id="Text35" class="form-control input-sm input-width phone_us nat-required" requirederrormessage="Phone number is required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p10 mb10">
+                                            <span class="fltrt pull-right mb10">
+                                                <a class="btn btn-success medium">Add</a>
+                                            </span>
+                                            <table class="table user-table table-bordered mt30">
+                                                <thead>
+                                                    <tr class="light-blue">
+                                                        <th class="md-width text-center">First Name</th>
+                                                        <th class="md-width text-center">Middle Name</th>
+                                                        <th class="md-width text-center">Last Name</th>
+                                                        <th class="md-width text-center">Email</th>
+                                                        <th class="md-width text-center">Phone Number</th>
+                                                        <th class="sm-width">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="md-width text-center">Test First Name</td>
+                                                        <td class="md-width text-center">Test Middle Name</td>
+                                                        <td class="md-width text-center">Test Last Name</td>
+                                                        <td class="md-width text-center">Test Email</td>
+                                                        <td class="md-width text-center">Test Phone Number</td>
+                                                        <td class="sm-width text-center">
+                                                            <ul class="text-center">
+                                                                <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="OInformation" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Nevada Business License Information – Check appropriate answer</h4>
+                                        </div>
+                                        <div class="plr10 ml10">
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input class="remove-margin" type="radio" id="radio5" />
+                                                    I have a Nevada Business License number assigned by the Secretary of State in compliance with the provisions of NRS Chapter 76.
+                                                </label>
+                                            </div>
+                                            <div class="all-form row nev-business">
+                                                <div class="col-md-offset-1 col-sm-10 col-md-10">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblNameOfBusinessLicense" class="control-label sm-label" for="inputSuccess2">Name of business license :</label>
+                                                        <input type="text" id="txtNameOfBusinessLicense" class="form-control input-sm">
+                                                    </div>
+
+                                                    <div class="form-div ml10">
+                                                        <label id="lblBusinessLicense" class="control-label sm-label" for="inputSuccess2">Business License # :</label>
+                                                        <input type="text" id="txtBusinessLicense" class="form-control input-sm">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input class="remove-margin" type="radio" id="radio6" />
+                                                    <b>I HAVE APPLIED</b> for a Nevada Business License with the Nevada Secretary of State in Compliance with provision of NRS Chapter 76 and my application is pending.
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input class="remove-margin" type="radio" id="radio7" />
+                                                    <b>I DO NOT</b> have a Nevada Business license number.
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <p>
+                                                    The C3 INFO SYSTEM is not the arbiter of determining whether the applicant needs a business license. Information about the Nevada business license can be found on the Secretary of State’s website at : <a>http://nvsos.gov/</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Child Support Information – AN ANSWER IS MANDATORY – Check ONE appropriate answer</h4>
+                                        </div>
+                                        <div class="plr10 ml10">
+                                            <center><span class="text-center"><b>Mark the appropriate response (failure to mark one of the three will result in denial of your application) :</b></span></center>
+                                            <div class="radio mt10">
+                                                <label class="radio">
+                                                    <input class="remove-margin" type="radio" id="radio8" />
+                                                    I am<b> NOT SUBJECT</b> to a court order for the support of a child.
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input class="remove-margin" type="radio" id="radio9" />
+                                                    I am <b>SUBJECT</b> to a court order for the support of one or more children and <b>am in compliance</b> with the order or am in compliance with a plan approved by the district attorney or other public agency enforcing the order for the repayment of the amount owed pursuant to the order.
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio">
+                                                    <input class="remove-margin" type="radio" id="radio10" />
+                                                    I am <b>SUBJECT</b> to a court order for the support of one or more children and am <b>NOT in compliance</b> with the order or <b>am NOT in compliance</b> with a plan approved by the district attorney or other public agency enforcing the order for the repayment of the amount pursuant to the order.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Veteran Information</h4>
+                                        </div>
+                                        <div class="plr10 ml10">
+                                            <div class="text-center"><b>AS REQUIRED BY EXECUTIVE ORDER 2014 - 20</b></div>
+                                            <div class="radio mt10">
+                                                <div id="Div2" class="required-label mr10 pull-left" for="inputSuccess2"><b>Have you ever served in the military :</b></div>
+                                                <div class="ml10 radio-inline">
+                                                    <input class="remove-margin" type="radio" id="radio11" name="optradio" />Yes
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <input class="remove-margin" type="radio" id="radio19" name="optradio" />No
+                                                </div>
+                                            </div>
+                                            <div class="mb10">
+                                                <span><b>Branch(es) of Services</b> : (Check all that apply)</span>
+                                            </div>
+                                            <div>
+                                                <ul>
+                                                    <li>
+                                                        <input class="remove-margin" type="checkbox" /><span class="ml5"> Army/Army Reserve</span>
+                                                    </li>
+                                                    <li>
+                                                        <input class="remove-margin" type="checkbox" /><span class="ml5"> Marine Corps/Marine Corps Reserve</span>
+                                                    </li>
+                                                    <li>
+                                                        <input class="remove-margin" type="checkbox" /><span class="ml5"> Navy/Navy Reserve</span>
+                                                    </li>
+                                                    <li>
+                                                        <input class="remove-margin" type="checkbox" /><span class="ml5"> Air Force/Air Force Reserve</span>
+                                                    </li>
+                                                    <li>
+                                                        <input class="remove-margin" type="checkbox" /><span class="ml5"> Coast Guard/Coast Guard Reserve</span>
+                                                    </li>
+                                                    <li>
+                                                        <input class="remove-margin" type="checkbox" /><span class="ml5"> National Guard</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="all-form row license-input">
+                                                <div class="col-sm-12 col-md-12 branch-service">
+                                                    <div class="form-div">
+                                                        <label id="lblMilitaryOccupationSpeciality/Specialitie" class="required-label sm-label" for="inputSuccess2"><b>Military Occupation Speciality/Specialities :</b></label>
+                                                        <input type="text" id="txtMilitaryOccupationSpeciality/Specialitie" class="form-control input-sm input-width nat-required" requirederrormessage="Field is required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row license-input">
+                                                <div class="col-sm-7 col-md-7 date-services">
+                                                    <div class="form-div ml10">
+                                                        <b>Date(s) of Service :</b>
+                                                        <label id="lblFrom" class="required-label" for="inputSuccess2">From :</label>
+                                                        <input type="text" id="txtFrom" class="form-control input-sm input-width datepicker date_us nat-required" requirederrormessage="From date is required" placeholder="MM/DD/YYYY">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5 col-md-5">
+                                                    <div class="form-div">
+                                                        <label id="lblTo" class="control-label required-label" for="inputSuccess2">To :</label>
+                                                        <input type="text" id="txtTo" class="form-control input-sm input-width datepicker date_us nat-required" requirederrormessage="To date is required" placeholder="MM/DD/YYYY">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="Legal" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Legal</h4>
+                                        </div>
+                                        <div class="plr10">
+                                            <div class="all-form row legal-info">
+                                                <div class="col-sm-10 col-md-10 mb10">
+                                                    <span>1.</span>	Has there ever been a disciplinary action or legal action taken against your professional license for any reason?
+                                                </div>
+                                                <div class="col-sm-2 col-md-2 mt10 mb10">
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio12" name="optradio" />Yes
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio13" name="optradio" />No
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row legal-info">
+                                                <div class="col-sm-10 col-md-10 mt10 mb10">
+                                                    <span>2.</span>	Are there any pending legal actions, complaints, investigations or hearings in process?
+                                                </div>
+                                                <div class="col-sm-2 col-md-2 mt10 mb10">
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio14" name="optradio" />Yes
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio15" name="optradio" />No
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row legal-info">
+                                                <div class="col-sm-10 col-md-10 mt10 mb10">
+                                                    <span>3.</span>	Have you ever had a professional license, certification or registration denied, restricted, suspended or revoked?
+                                                </div>
+                                                <div class="col-sm-2 col-md-2 mt10 mb10">
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio16" name="optradio" />Yes
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio17" name="optradio" />No
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row legal-info">
+                                                <div class="col-sm-10 col-md-10 mt10 mb10">
+                                                    <span>4.</span>	Have you ever relinquished responsibilities, resigned a position or been fired while a complaint was pending against you?
+                                                </div>
+                                                <div class="col-sm-2 col-md-2 mt10 mb10">
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio20" name="optradio" />Yes
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio21" name="optradio" />No
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row legal-info">
+                                                <div class="col-sm-10 col-md-10 mt10 mb10">
+                                                    <span>5.</span>Have you ever been convicted of, or pled guilty or nolo contendere to, a violation of ANY federal or state statute, city or country ordinance, or any law of a foreign country?
+                                                    <span>(Exclude minor traffic violations.)</span>
+                                                </div>
+                                                <div class="col-sm-2 col-md-2 mt10 mb10">
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio22" name="optradio" />Yes
+                                                    </div>
+                                                    <div class="radio-inline">
+                                                        <input class="remove-margin" type="radio" id="radio23" name="optradio" />No
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="AckDeclaration" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Acknowledgment and Declaration</h4>
+                                        </div>
+                                        <div class="p10 ml10">
+                                            <div class="mb10">
+                                                <input type="checkbox" class="remove-margin" /><span class="ml10">	I acknowledge I have been informed of my duty as a mandatory reporter of abuse or neglect.</span>
+                                            </div>
+                                            <div class="mt10 mb10">
+                                                <input type="checkbox" class="remove-margin" /><span class="ml10"> <u>Veteran / Military Spouse</u> : Expedited processing / temporary license requested.</span>
+                                            </div>
+                                            <div class="mt10 mb10">
+                                                <span>
+                                                    <label class="required-label mr10">I,</label>
+                                                    <input type="text" id="txtLesaPensak" value=" LESA PENSAK" class="form-control input-sm input-width nat-alphabet nat-required" allowspace="true" requirederrormessage="field is required"/>
+                                                    , declare, under penalty of perjury, all the information supplied herein is to the best of my knowledge true, accurate and complete and I have not withheld, misrepresented, or falsely stated any information relevant to my training or experience or my fitness to practice as a License Specialist or Apprentice.
+                                                </span>
+                                            </div>
+                                            <div class="all-form license-input row mt10">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div ml10">
+                                                        <label id="lblName" class="control-label sm-label" for="inputSuccess2">Name :</label>
+                                                        <input type="Text" id="txtName" class="form-control input-sm input-width">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <div class="form-div">
+                                                        <label id="lblDateOfApplication" class="control-label sm-label" for="inputSuccess2">Date Of Application :</label>
+                                                        <input type="Text" id="txtDateOfApplication" class="form-control input-sm input-width datepicker date_us" placeholder="MM/DD/YYYY">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="UDocument" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Upload Document</h4>
+                                        </div>
+                                        <div class="p10">
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-3 col-md-3 text-right">
+                                                    <label id="lblDocumentName" class="control-label required-label" for="inputSuccess2">Document Name :</label>
+                                                </div>
+                                                <div class="col-sm-3 col-md-3">
+                                                    <input id="txtDocumentName" type="text" class="form-control input-sm input-width nat-required" requirederrormessage="Document name is required">
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-3 col-md-3 text-right">
+                                                    <label id="lblDocumentType" class="control-label" for="inputSuccess2">Document Type :</label>
+                                                </div>
+                                                <div class="col-sm-3 col-md-3">
+                                                    <select id="ddlDocumentType" class="form-control input-sm input-width">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="all-form license-input row">
+                                                <div class="col-sm-3 col-md-3 text-right">
+                                                    <label id="Label57" class="control-label required-label" for="inputSuccess2">Document :</label>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6">
+                                                    <a class="btn head-btn btn-sm">Choose file</a>
+                                                    No file chosen..
+                                                    <a class="btn btn-success btn-sm">Upload</a>
+                                                </div>
+                                            </div>
+                                            <div class="inner-round">
+                                                <div class="p10">
+                                                    <div class="all-form license-input row">
+                                                        <div class="col-sm-6 col-md-6">
+                                                            <div class="form-div">
+                                                                <label id="Label58" class="control-label sm-label" for="inputSuccess2">Document Type :</label>
+                                                                <select id="Select7" class="form-control input-width">
+                                                                    <option value="">Select</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-div">
+                                                                <label id="lblDocumentCategory" class="control-label sm-label" for="inputSuccess2">Document Category :</label>
+                                                                <select id="ddlDocumentCategory" class="form-control input-width">
+                                                                    <option value="">Select</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                            <div class="form-div">
+                                                                <label id="lblDocumentUploadDate" class="control-label sm-label" for="inputSuccess2">Document Upload Date :</label>
+                                                                <input id="txtDocumentUploadDate" type="text" class="form-control input-sm input-width datepicker date_us" placeholder="MM/DD/YYYY">
+                                                            </div>
+                                                            <div class="form-div">
+                                                                <span class="pull-right">
+                                                                    <a class="btn btn-success btn-sm">Search</a>
+                                                                    <a class="btn head-btn btn-sm">Cancel</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="table user-table table-bordered mt10">
+                                                <thead>
+                                                    <tr class="light-blue">
+                                                        <th class="lg-width text-center">Document Name</th>
+                                                        <th class="md-width text-center">Document Type</th>
+                                                        <th class="sm-width text-center">Date</th>
+                                                        <th class="md-width text-center">Link</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="lg-width text-center">Test1</td>
+                                                        <td class="md-width text-center">Certification of Individual</td>
+                                                        <td class="sm-width text-center">9/18/2015</td>
+                                                        <td class="md-width text-center"><a><u>Document Details</u></a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save & Next</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div id="FeePayment" class="tab-pane fade in">
+                                        <div class="header-sky" style="padding: 1px;">
+                                            <h5 class="text-center" style="font-size: 15px">inLumon</h5>
+                                        </div>
+                                        <div class="header-gray">
+                                            <h4 class="plr10">Fee and Payment</h4>
+                                        </div>
+                                        <div class="all-form license-input row p10">
+                                            <div class="col-sm-12 col-md-12 ml10">
+                                                <div class="form-div">
+                                                    <label id="lblPaymentMethod" class="control-label required-label" for="inputSuccess2">Payment Method :</label>
+                                                    <select id="ddlPaymentMethod" class="form-control input-sm input-width nat-required" requirederrormessage="Payment method is required">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblApplicationFees" class="control-label required-label" for="inputSuccess2">Application Fees :</label>$
+                                                    <input id="txtApplicationFees" type="text" class="form-control input-sm input-width nat-number nat-required" requirederrormessage="Fees is required">
+                                                </div>
+                                                <div class="form-div mt30 ml10 mb10">
+                                                    <span>I understand that my Application Fee is non-refundable regardless of the ultimate disposition of my Application.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="holder">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn medium" style="background: #9D9999; color: #C8C6C6 !important;" disabled>Save</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolBar mt20">
+                    <span class="fltrt pull-right">
+                        <input class="btn head-btn" type="submit" value="Close Application">
+                    </span>
+                </div>
+            </div>
+            <div class="gridUpperDiv mt10">
+                <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                <a class="show-all">Show All</a>
+                <span id="Search" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <table class="table user-table table-bordered">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="text-center">
+                            <input type="checkbox" />
+                        </th>
+                        <th></th>
+                        <th class="sm-width"><a>License #</a></th>
+                        <th class="text-center"><a>FirstName</a></th>
+                        <th class="text-center"><a>LastName</a></th>
+                        <th class="text-center"><a>Submitted Date</a></th>
+                        <th class="text-center sm-width">Status</th>
+                        <th class="text-center lg-width">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" />
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                <img src="/Styles/UI_BackOffice/Images/paid.png" style="height: 24px;" />
+                            </a>
+                        </td>
+                        <td class="text-center">3124</td>
+                        <td class="md-width text-center">Nancy</td>
+                        <td class="md-width text-center">Blachly</td>
+                        <td class="text-center">03/17/2015</td>
+                        <td class="text-center">Submitted</td>
+                        <td class="lg-width">
+                            <ul class="text-center">
+                                <li>
+                                    <button type="button" class="btn btn-success btn-sm">Verify</button>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/BC.png" style="height: 24px;" />
+                                    </a>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/icon_weight_lrg_orange.png" style="height: 24px;" />
+                                    </a>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/1443263723_mail-icon.png" style="height: 26px;" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-center">
+                            <input type="checkbox" />
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                <img src="/Styles/UI_BackOffice/Images/paid.png" style="height: 24px;" />
+                            </a>
+                        </td>
+                        <td class="text-center">2346</td>
+                        <td class="md-width text-center">David</td>
+                        <td class="md-width text-center">Hook</td>
+                        <td class="text-center">03/18/2015</td>
+                        <td class="text-center">Complete</td>
+                        <td class="lg-width">
+                            <ul class="text-center">
+                                <li>
+                                    <button type="button" class="btn btn-success btn-sm">Pre-Approved</button>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/BC.png" style="height: 24px;" />
+                                    </a>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/icon_weight_lrg_orange.png" style="height: 24px;" />
+                                    </a>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/1443263723_mail-icon.png" style="height: 26px;" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

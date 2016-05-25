@@ -1,0 +1,1316 @@
+﻿body
+{
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+.checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"], .radio input[type="radio"], .radio-inline input[type="radio"]
+{
+    display: inline-block;
+    margin-top: 0 !important;
+    position: static;
+    margin-right: 4px;
+    vertical-align: top;
+}
+
+.container
+{
+    padding: 0;
+}
+
+.btn-success
+{
+    background-image: linear-gradient(to bottom, #5cb85c 0px, #419641 100%);
+    background-repeat: repeat-x;
+    border-color: #3e8f3e;
+    cursor: pointer;
+}
+
+.input-sm, select.input-sm, .input-width
+{
+    height: inherit !important;
+    padding: 3px 3px !important;
+}
+
+a
+{
+    cursor: pointer;
+}
+
+h4
+{
+    font-size: 14px;
+}
+
+.pagination > li > a, .pagination > li > span
+{
+    padding: 4px 8px;
+    border: 1px solid #000080;
+    border-radius: 0 !important;
+    color: #000;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover
+{
+    background-color: #828DD6;
+    color: #ffffff;
+    cursor: default;
+    z-index: 2;
+}
+
+.peel-shadows::before
+{
+    background: url("/Styles/Images/application.v1355170819.png") -63px -483px no-repeat;
+    content: '';
+    display: block;
+    height: 7px;
+    left: 6px;
+    position: absolute;
+    bottom: -8px;
+    width: 110px;
+}
+
+.peel-shadows::after
+{
+    background: url("/Styles/Images/application.v1355170819.png") -173px -483px no-repeat;
+    content: '';
+    display: block;
+    height: 7px;
+    position: absolute;
+    right: 6px;
+    bottom: -8px;
+    width: 110px;
+}
+
+/*------------------- General Class -----------------*/
+
+.m0
+{
+    margin: 0;
+}
+
+.m10
+{
+    margin: 10px;
+}
+
+.mt0
+{
+    margin-top: 0px;
+}
+
+.mt5
+{
+    margin-top: 5px;
+}
+
+.mt10
+{
+    margin-top: 10px;
+}
+
+.mt30
+{
+    margin-top: 30px;
+}
+
+.mb0
+{
+    margin-bottom: 0 !important;
+}
+
+.mr0
+{
+    margin-right: 0;
+}
+
+.mr5
+{
+    margin-right: 10px;
+}
+
+.mr10
+{
+    margin-right: 10px;
+}
+
+.mb10
+{
+    margin-bottom: 10px;
+}
+
+.mb20
+{
+    margin-bottom: 20px;
+}
+
+.mb30
+{
+    margin-bottom: 30px;
+}
+
+.ml5
+{
+    margin-left: 5px;
+}
+
+.ml10
+{
+    margin-left: 10px;
+}
+
+.ml15
+{
+    margin-left: 15px;
+}
+
+.ml30
+{
+    margin-left: 30px;
+}
+
+.p0
+{
+    padding: 0px;
+}
+
+.p10
+{
+    padding: 10px;
+}
+
+.p5
+{
+    padding: 5px;
+}
+
+.plr10
+{
+    padding: 0 10px;
+}
+
+.plr15
+{
+    padding: 0 15px;
+}
+
+.f12
+{
+    font-size: 12px;
+}
+
+.f14
+{
+    font-size: 14px;
+}
+
+.f16
+{
+    font-size: 16px;
+}
+
+.f18
+{
+    font-size: 18px;
+}
+
+.line-add
+{
+    line-height: 23px;
+    margin-left: 3px;
+    vertical-align: top;
+}
+
+.btn
+{
+    font-size: 12px;
+}
+
+.remove-margin
+{
+    margin-top: 2px !important;
+}
+
+ul
+{
+    padding: 0;
+    margin: 0;
+}
+
+ul li
+{
+    list-style: none;
+}
+
+.fa-trash
+{
+    color: #e45454 !important;
+}
+
+.fa-ban
+{
+    color: #d04f05 !important;
+}
+
+.fa-pencil
+{
+    color: #304A6E !important;
+}
+
+h5
+{
+    font-weight: bold;
+}
+
+.rounded-container
+{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative;
+    padding: 10px;
+}
+
+.inner-round
+{
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+}
+
+.show-all
+{
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 18px;
+    margin-left: 2px;
+    text-decoration: underline;
+    vertical-align: middle;
+}
+
+table .lg-width
+{
+    width: 250px;
+}
+
+table .md-width
+{
+    width: 200px;
+}
+
+table .sm-width
+{
+    width: 90px;
+}
+
+/*.sm-label
+{
+    width: 150px !important;
+}*/
+
+.sm-label
+{
+    width: 170px !important;
+}
+
+.table-bordered > thead > tr > th > a
+{
+    color: #fff !important;
+}
+
+.table-bordered > tbody > tr > td ul li .btn
+{
+    width: 110px;
+    font-size: 12px;
+}
+
+.table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > th
+{
+    padding: 5px 8px;
+    border: 0 none;
+}
+
+.table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td, .table-bordered > thead > tr > td
+{
+    padding: 5px 8px;
+    vertical-align: middle;
+}
+
+.txt-disabled
+{
+    color: #ff0000;
+    font-weight: 600;
+}
+
+.txt-enabled
+{
+    color: #449D44;
+    font-weight: 600;
+}
+
+.action-bar a
+{
+    cursor: pointer;
+}
+
+
+.head-btn
+{
+    background-image: linear-gradient(to bottom, #ffffff 0px, #e0e0e0 100%);
+    background-repeat: repeat-x;
+    border-color: #cccccc;
+    cursor: pointer;
+    text-shadow: 0 1px 0 #ffffff;
+    color: #000;
+}
+
+
+input[type="text"], input[type="password"], textarea, .all-form select, .role-signup select, .document-form select
+{
+    /*background-color: rgb(252, 253, 253);*/
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 1px #e5e5e5 inset;
+    width: 200px;
+    border-color: #e5e5e5;
+    padding: 5px;
+}
+
+textarea:focus, input:focus, input[type=text]:focus, input[type=password]:focus, input[type=checkbox]:focus, input[type=radio]:focus, input[type=file]:focus, select:focus, a:focus, button:focus
+{
+    outline: none !important;
+}
+
+.user-form span
+{
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 4px;
+}
+
+.nav-tabs
+{
+    border-bottom: 0 none;
+    margin-left: 10px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover
+{
+    background-color: #90C05E;
+    color: #fff;
+}
+
+.nav > li > a
+{
+    padding: 4px 7px;
+    background-color: #1884B5;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 4px;
+    font-family: Arial;
+}
+
+.nav > li > a:focus, .nav > li > a:hover
+{
+    background-color: rgba(43, 148, 191, 0.70);
+}
+
+.down-arrow
+{
+    color: #5cb85c;
+    font-size: 30px;
+    margin-top: -3px;
+    transform: scale(-1);
+}
+
+.arrow-wout-color
+{
+    color: #919191;
+    font-size: 30px;
+    margin-top: -3px;
+    transform: scale(-1);
+}
+
+.close
+{
+    display: block;
+    text-align: right;
+    width: 100%;
+}
+/*------------------- Header class --------------------*/
+
+.light-blue
+{
+    background-color: #0d83dd !important;
+}
+
+.header-light-gray
+{
+    background-color: #fafafa;
+}
+
+.header-gray
+{
+    background-color: #d6d3d3;
+}
+
+.header-sky
+{
+    background-color: #E5EDF2;
+}
+
+.selected
+{
+    background-color: #a4d2ee !important;
+}
+
+/*------------------- End General Class -----------------*/
+
+/*---------------- User Account ----------------*/
+
+#searchdata
+{
+    height: auto !important;
+}
+
+.search-info
+{
+    background-color: #fafafa;
+    border: 1px solid #dddddd;
+    margin-top: 20px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-top: 12px;
+}
+
+.search-info a i
+{
+    color: #000000;
+    cursor: pointer;
+    line-height: 6px;
+    margin-right: 10px;
+    vertical-align: top;
+}
+
+.gridUpperDiv
+{
+    background: #eee none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: -3px;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.gridUpperDiv span
+{
+    display: inline-block;
+    line-height: 25px;
+    margin: 5px 7px 0 10px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.down_arrow
+{
+    background: rgba(0, 0, 0, 0) url("../Images/down-left-arrow.png") no-repeat scroll left center;
+    display: block;
+    float: left;
+    margin: 4px 5px 0 2px;
+    padding: 11px 10px;
+}
+
+.gridUpperDiv a.small.gray
+{
+    padding: 2px 15px !important;
+    float: left;
+    border-left: 1px solid #595959;
+    border-right: 1px solid #595959;
+    border-top: 1px solid #595959;
+    border-bottom: 1px solid #595959;
+}
+
+.gridUpperDiv a.pill-left
+{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.gridUpperDiv a.pill-right
+{
+    border-bottom-left-radius: 0;
+    border-left: 0 none !important;
+    border-right: 1px solid #595959;
+    border-top-left-radius: 0;
+}
+
+.small.gray
+{
+    background-color: #8B8B8B;
+    color: #fff;
+}
+
+.close:after .search-info
+{
+    display: none;
+}
+
+.all-form .form-div, .role-signup .form-div, .role-signup .form-div, .document-form .form-div
+{
+    line-height: 25px;
+    position: relative;
+}
+
+.all-form .form-div label, .role-signup .form-div label, .document-form .form-div label
+{
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: normal;
+}
+
+.all-form .form-div input, .all-form .form-div select, .document-form .form-div input, .document-form .form-div select
+{
+    display: inline-block;
+}
+
+.password-rule
+{
+    padding: 15px 25px 5px;
+}
+
+h4
+{
+    color: #000;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 30px;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+.password-rule p
+{
+    margin-bottom: 10px;
+}
+
+.useraccount-example
+{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0 15px 12px;
+    margin: 0 26px;
+}
+
+.heading span
+{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.useraccount-example .row
+{
+    margin-top: 10px;
+}
+
+.holder
+{
+    background-color: #fafafa;
+    border-radius: 0 0 4px 4px;
+    border-top: 1px solid #d3d3d0;
+    color: #41372b;
+    overflow: hidden;
+    padding: 10px 8px;
+    width: 100%;
+    z-index: 1;
+}
+
+.user-table tr th
+{
+    border-bottom: 0 none !important;
+    color: #fff;
+}
+
+.table.uaccount-table
+{
+    width: 63%;
+}
+
+.uaccount-table tr .sm-width, .uaccount-table tr td
+{
+    width: 57px !important;
+    padding: 3px !important;
+}
+
+.dash-table tr td
+{
+    color: #000 !important;
+    border-color: #b4b4b4 !important;
+}
+
+.user-table ul li
+{
+    display: inline-block;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+.user-table ul li i
+{
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.user-table ul li a
+{
+    text-decoration: none;
+}
+
+.user-table td i
+{
+    cursor: pointer;
+}
+
+.user-table ul li span
+{
+    margin-left: 2px;
+}
+
+.fa-search
+{
+    font-size: 18px;
+}
+
+.right-blk-ifont
+{
+    float: right;
+    margin-top: 4px;
+}
+
+.right-blk-ifont i
+{
+    font-size: 18px;
+}
+/*---------------- End User Account ----------------*/
+
+/*--------------- Register ----------------*/
+
+.box-register
+{
+    padding: 25px 30px 5px !important;
+}
+
+/*---------------- Roles ------------------*/
+
+
+.action-bar
+{
+    background: #e5e5e5 none repeat scroll 0 0;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    padding: 5px 12px;
+}
+
+.role-signup
+{
+    margin: 0 auto;
+    width: 50%;
+}
+
+.role-signup .form-div label, .document-form .form-div label, .all-form label
+{
+    /*width: 120px;*/
+    vertical-align: top;
+}
+
+.role-signup .form-div input, .role-signup .form-div select
+{
+    display: inline-block;
+}
+
+.toolBar
+{
+    background: #eeeeee none repeat scroll 0 0;
+    border: 1px solid #dddddd;
+    margin-top: 5px;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.per-data
+{
+    overflow: hidden;
+    padding: 4px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.per-data:last-child
+{
+    border-bottom: 0 none;
+}
+
+.sub-part1
+{
+    display: block;
+    margin-left: 35px;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.pertxt li
+{
+    display: inline-block;
+    font-size: 13px !important;
+    line-height: 28px;
+    margin-bottom: 0;
+    margin-right: 14px !important;
+    text-transform: uppercase;
+}
+
+.lblpagename
+{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.lblpagename-sub
+{
+    margin-left: 42px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.popup-title
+{
+    background-color: #E5E5E5;
+    display: inline-block;
+    padding: 5px;
+    width: 100%;
+}
+
+.chk-block
+{
+    display: inline-block;
+    margin-right: 44px;
+}
+
+.chk-block > span > input
+{
+    margin-top: -2px;
+}
+
+/*---------------- End Roles ------------------*/
+
+/*------------------ Password Management ---------------*/
+
+hr
+{
+    border-color: #656565;
+}
+
+.header-blue
+{
+    background-color: #0d83dd;
+}
+
+.header-blue div
+{
+    color: #fff;
+    font-family: Verdana;
+    padding: 5px 12px;
+}
+
+.header-blue p
+{
+    display: inline-block;
+    color: #fff;
+    margin: 0;
+}
+
+.inner-body
+{
+    margin-top: 22px;
+    padding: 0px 10px;
+}
+
+.inner-body .user-form
+{
+    margin-bottom: 10px;
+}
+
+.inner-body .user-form span
+{
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 4px;
+}
+
+.user-block .inner-body .table-bordered tr th, .user-block .inner-body .table-bordered tr td
+{
+    border: 1px solid #6d9eb8 !important;
+}
+
+.passmang-pagination
+{
+    overflow: hidden;
+}
+
+.passmang-pagination .pagination
+{
+    margin: 10px 0;
+}
+
+/*-------------------- Document List -----------------*/
+
+.doc-first-div
+{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.doc-savecode
+{
+    line-height: 33px;
+    margin-left: 10px;
+}
+
+.document-form
+{
+    margin: 18px auto;
+    width: 76%;
+}
+
+.dificency-top
+{
+    vertical-align: top;
+    line-height: 23px;
+}
+
+/*-------------------- Application Text ---------------*/
+
+.apptext-header span
+{
+    margin-right: 5px;
+}
+
+.apptext-header .show-all
+{
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 23px;
+    margin-left: 5px;
+}
+
+/*------------------- Council info ---------------*/
+
+.up-div
+{
+    margin-bottom: 6px;
+}
+
+.councilinfo h4
+{
+    font-size: 15px;
+}
+
+.council-input input
+{
+    width: 653px !important;
+}
+
+.council-address input
+{
+    margin-top: 8px;
+    vertical-align: top;
+    width: 22px !important;
+}
+
+.council-address span
+{
+    font-size: 13px;
+    color: #515151;
+    font-weight: bold;
+    line-height: 29px;
+    margin-left: 5px;
+    vertical-align: top;
+}
+
+.coun-heading
+{
+    display: block;
+    font-size: 11px;
+    margin-top: -10px;
+}
+
+/*----------------- Message and Bulletin -----------*/
+
+.msg-show-all
+{
+    margin: 0 !important;
+}
+
+.msg-bulletin h3
+{
+    background-color: #eeeeee;
+    border: 1px solid #eeeeee;
+    margin: 0;
+    padding: 3px;
+}
+
+/*------------------ Individual -------------*/
+
+.content
+{
+    padding: 15px 8px 18px;
+}
+
+.print-dropdown
+{
+    position: absolute;
+    top: 55px;
+    left: 596px;
+    width: 50px;
+}
+
+.brandytest
+{
+    border-right: 1px solid #dddddd;
+    /*height: 342px !important;*/
+    height: 285px !important;
+}
+
+.brandytest span b
+{
+    color:#000 !important;
+}
+
+.individual-status-amg
+{
+    width: 315px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.individual-status-amg span
+{
+    margin-top: 3px;
+    font-weight:bold;
+}
+
+.left-individual-block .left-block
+{
+    width: 330px !important;
+}
+
+.left-individual-block .right-block
+{
+    width: 770px !important;
+}
+
+.individual-person-ul .individual-person-li
+{
+    display: block;
+    margin-bottom: 0;
+}
+
+.individual-person-ul .individual-person-li > div
+{
+    display: inline-block;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.individual-person-ul li
+{
+    line-height: 14px;
+    margin-bottom: 14px;
+    vertical-align: top;
+}
+
+.statusicon
+{
+    color: #07b207;
+}
+
+.individual-education .form-div label
+{
+    width: 489px !important;
+}
+
+.individual-details .form-div
+{
+    line-height: inherit;
+}
+
+.individual-details .form-div label
+{
+    width: 95px !important;
+    text-align: left;
+}
+
+.individual-info
+{
+    margin-top: 30px;
+}
+
+.individual-info label
+{
+    width: 90px !important;
+}
+
+.govt-div .large-label
+{
+    width: 205px !important;
+}
+
+.individual-info .input-width, .individual-info select
+{
+    width: 137px !important;
+}
+
+.individual-info .radio-div
+{
+    width: inherit !important;
+    position: inherit !important;
+    margin-right: 5px;
+}
+
+.individual-info ul
+{
+    padding-left: 25px;
+}
+
+.individual-person label
+{
+    width: 160px !important;
+}
+
+.individual-person .input-width
+{
+    width: 160px !important;
+}
+
+.search-individual-input label
+{
+    width: 160px !important;
+}
+
+.search-individual-input input
+{
+    width: 610px !important;
+}
+
+/*------------------- Renewal -----------------*/
+
+.nev-business label
+{
+    width: 200px !important;
+}
+
+.branch-service label
+{
+    width: 276px !important;
+}
+
+.lirenew-info
+{
+    position: absolute;
+    right: 13px;
+    top: 13px;
+}
+
+.lirenew-info span
+{
+    font-size: 14px;
+    min-width: 165px !important;
+}
+
+
+.lirenew-info label
+{
+    font-size: 14px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+
+.legal-info
+{
+    margin: 10px 0 0;
+    line-height: 20px;
+}
+
+.legal-info span
+{
+    float: left;
+    height: 43px;
+    margin-right: 10px;
+}
+
+/*----------------------- Dashboard Applicant----------------*/
+
+.dashboard-content
+{
+    font-size: 15px;
+}
+
+/*---------------- Licensee Renewal --------------*/
+
+.residential-add input
+{
+    width: 20px !important;
+}
+
+.residential-csz input, .residential-csz select
+{
+    width: 142px !important;
+}
+
+.residential-csz label
+{
+    width: 73px !important;
+}
+
+.address-c
+{
+    width: 246px;
+    display: inline-block;
+}
+
+.address-s
+{
+    width: 242px;
+    display: inline-block;
+}
+
+.address-z
+{
+    width: 244px;
+    display: inline-block;
+}
+
+.status-acnumber
+{
+    margin-top: 33px;
+}
+
+.applicationform
+{
+    margin: 0 auto;
+    width: 950px;
+}
+
+.applicationform .inner-app-form
+{
+    min-height: 130px;
+    border-bottom: 1px solid rgb(222, 222, 222);
+    padding: 10px;
+}
+
+.get-started-content
+{
+    min-height: 450px;
+    overflow: hidden;
+    padding: 0px 19px 18px;
+}
+
+.header-span
+{
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.header-active-in li div
+{
+    font-size: 14px;
+    line-height: 15px;
+    vertical-align: top;
+}
+
+.sp-info input, .sp-info select
+{
+    width: 170px !important;
+}
+
+.flsApplReqForm
+{
+    margin: 10px auto 25px;
+    width: 95%;
+    line-height: 26px;
+}
+
+.flsApplReqForm-long input
+{
+    width: 619px !important;
+}
+
+.flsApplReqForm .all-form input, .flsApplReqForm .all-form select
+{
+    width: 180px;
+}
+
+.emp-info
+{
+    width: 89%;
+    margin: 0 auto 0 25px;
+}
+
+.child-support label
+{
+    vertical-align: top;
+    line-height: 15px;
+}
+
+.vetren-info span
+{
+    vertical-align: top;
+    line-height: 24px;
+}
+
+.legal-textarea
+{
+    float: left;
+    margin-left: 40px;
+    width: 700px;
+}
+
+.edu-info input, .edu-info select
+{
+    width: 138px !important;
+}
+
+.date-services b
+{
+    margin-left: 39px;
+}
+
+.date-services label
+{
+    width: 47px !important;
+}
+
+/*--------------------------- Print Queue -----------------*/
+
+.print-excel
+{
+    float: right;
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+.print-excel i
+{
+    font-size: 20px;
+    margin-right: 3px;
+}

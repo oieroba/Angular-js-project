@@ -1,0 +1,221 @@
+﻿<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+</script>
+<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<div class="container" ng-controller="AutomatedTaskController">
+    <div class="rounded-container p10 peel-shadows">
+        <div class="search-info collapse" id="searchdata">
+            <a id="Close" class="close">
+                <i class="fa fa-close"></i>
+            </a>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div">
+                        <label id="lblFromDate" class="control-label">From Date :</label>
+                        <input id="txtFromDate" type="text" class="form-control input-sm datepicker date_us" placeholder="MM/DD/YYYY" ng-model="SearchLastName" />
+                    </div>
+                    <div class="form-div">
+                        <label id="lblCommand" class="control-label">Command :</label>
+                        <select id="ddlCommand" ng-options="r.RoleId as r.Name for r in Role" class="form-control input-sm" ng-model="SearchRoleID">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div">
+                        <label id="lblToDate" class="control-label sm-label">To Date :</label>
+                        <input id="txtToDate" type="text" class="form-control input-sm datepicker date_us" placeholder="MM/DD/YYYY" ng-model="SearchLastName" />
+                    </div>
+                    <div class="form-div">
+                        <label id="lblCommand" class="control-label sm-label">Command Status:</label>
+                        <select id="ddlCommand" ng-options="r.RoleId as r.Name for r in Role" class="form-control input-sm" ng-model="SearchRoleID">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4>Automated Commands</h4>
+        <div class="inner-round">
+            <div class="gridUpperDiv">
+                <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                <span id="searchdata" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <table class="table user-table table-bordered">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="text-center md-width">Command Name</th>
+                        <th class="text-center md-width">Command Satus</th>
+                        <th class="text-center md-width">Execuation Date Status</th>
+                        <th class="text-center md-width">Record Count</th>
+                        <th class="text-center md-width">Current Expired Count</th>
+                        <th class="text-center sm-width">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center md-width">Expired Non-Renewed License</td>
+                        <td class="text-center smmdwidth">Proccesed</td>
+                        <td class="text-center md-width">04/01/2014 12:00 AM</td>
+                        <td class="text-center sm-width">109</td>
+                        <td class="text-center md-width">
+                            <button type="button" class="btn btn-success btn-sm">78/Print</button>
+                        </td>
+                        <td class="text-center sm-width">
+                            <ul>
+                                <li><i class="fa fa-print"></i></li>
+                                <li><i class="fa fa-eye"></i></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center md-width">Expired Non-Renewed License</td>
+                        <td class="text-center smmdwidth">Proccesed</td>
+                        <td class="text-center md-width">04/01/2014 12:00 AM</td>
+                        <td class="text-center sm-width">109</td>
+                        <td class="text-center md-width">
+                            <button type="button" class="btn btn-success btn-sm">78/Print</button>
+                        </td>
+                        <td class="text-center sm-width">
+                            <ul>
+                                <li><i class="fa fa-print"></i></li>
+                                <li><i class="fa fa-eye"></i></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav class="p10">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a aria-label="Previous" href="#" class="page-link">
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item">
+                        <a aria-label="Next" href="#" class="page-link">
+                            <span aria-hidden="true">»</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="search-info collapse" id="searchdata_Two">
+            <a id="Close" class="close">
+                <i class="fa fa-close"></i>
+            </a>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div">
+                        <label id="lblLicense" class="control-label" style="width:110px !important;"><span class="mr10">License # : </span> NVMT.</label>
+                        <input id="txtLicense" type="text" class="form-control input-sm" ng-model="SearchLastName" style="width:190px !important;" />
+                    </div>
+                    <div class="form-div">
+                        <label id="lblFirstName" class="control-label">First Name :</label>
+                        <input id="txtFirstName" type="text" class="form-control input-sm nat-alphabet" ng-model="SearchLastName" />
+                    </div>
+                    <div class="form-div">
+                        <label id="lblSsn" class="control-label">SSN # :</label>
+                        <input id="txtSsn" type="text" class="form-control input-sm" placeholder="XXX-XX-XXXX" ng-model="SearchLastName" />
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div">
+                        <label id="lblApplicationStatus" class="control-label sm-label">Application Status :</label>
+                        <select id="ddlApplicationStatus" ng-options="r.RoleId as r.Name for r in Role" class="form-control input-sm" ng-model="SearchRoleID">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                    <div class="form-div">
+                        <label id="lblLastName" class="control-label sm-label">Last Name :</label>
+                        <input id="txtLastName" type="text" class="form-control input-sm nat-alphabet" ng-model="SearchLastName" />
+                    </div>
+                    <div class="form-div">
+                        <label id="lblOrderBy" class="control-label sm-label"><b>Order By :</b></label>
+                        <select id="ddlOrderBy" ng-options="r.RoleId as r.Name for r in Role" class="form-control input-sm" ng-model="SearchRoleID">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inner-round">
+            <div class="gridUpperDiv">
+                <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                <span id="searchdata_Two" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata_Two" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <table class="table user-table table-bordered">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="text-center sm-width">
+                            <input type="checkbox" />
+                        </th>
+                        <th class="text-center md-width">Last Name</th>
+                        <th class="text-center md-width">First Name</th>
+                        <th class="text-center md-width">License #</th>
+                        <th class="text-center md-width">Renewel Period</th>
+                        <th class="text-center sm-width">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center sm-width">
+                            <input type="checkbox" />
+                        </td>
+                        <td class="text-center md-width">Varma</td>
+                        <td class="text-center md-width">Tuhin </td>
+                        <td class="text-center md-width">NVBMT.0038</td>
+                        <td class="text-center md-width">04/01/2015-03/03/2016</td>
+                        <td class="text-center sm-width">
+                            <ul><li><i class="fa fa-eye"></i></li></ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center sm-width">
+                            <input type="checkbox" />
+                        </td>
+                        <td class="text-center md-width">Varma</td>
+                        <td class="text-center md-width">Tuhin </td>
+                        <td class="text-center md-width">NVBMT.0038</td>
+                        <td class="text-center md-width">04/01/2015-03/03/2016</td>
+                        <td class="text-center sm-width">
+                            <ul><li><i class="fa fa-eye"></i></li></ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav class="p10">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a aria-label="Previous" href="#" class="page-link">
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item">
+                        <a aria-label="Next" href="#" class="page-link">
+                            <span aria-hidden="true">»</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

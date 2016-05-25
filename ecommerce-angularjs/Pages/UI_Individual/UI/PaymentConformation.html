@@ -1,0 +1,426 @@
+﻿<div ng-include="'/Modules/UI_Common/HeaderLicensee.html'"></div>
+<style>
+    .container {
+        width: 1040px;
+        margin: 0 auto;
+    }
+
+    .rounded-container {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        position: relative;
+        padding: 10px;
+    }
+
+    .peel-shadows::before {
+        background: url("/Styles/Images/application.v1355170819.png") -63px -483px no-repeat;
+        content: '';
+        display: block;
+        height: 7px;
+        left: 6px;
+        position: absolute;
+        bottom: -8px;
+        width: 110px;
+    }
+
+    .peel-shadows::after {
+        background: url("/Styles/Images/application.v1355170819.png") -173px -483px no-repeat;
+        content: '';
+        display: block;
+        height: 7px;
+        position: absolute;
+        right: 6px;
+        bottom: -8px;
+        width: 110px;
+    }
+
+    .inner-print {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    .print-address {
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+
+        .print-address .form-div {
+            margin-bottom: 7px;
+        }
+
+        .print-address .fa-dollar {
+            font-size: 12px;
+            line-height: 16px;
+            vertical-align: top;
+        }
+
+        .print-address .form-div span {
+            display: inline-block;
+            text-align: right;
+            width: 102px;
+        }
+
+    .total-paid {
+        margin-top: 40px;
+    }
+
+    .fee-details {
+        margin-top: 20px;
+    }
+
+        .fee-details table {
+            width: 75%;
+        }
+
+            .fee-details table tr th {
+                border: 0 none;
+            }
+
+            .fee-details table tr td {
+                border-top: 0 none !important;
+            }
+
+                .fee-details table tr td .fa-dollar {
+                    font-size: 12px;
+                    line-height: 16px;
+                    vertical-align: top;
+                }
+
+    .ttl-payment {
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+        .ttl-payment .fa-dollar {
+            font-size: 14px;
+            line-height: 25px;
+            vertical-align: top;
+        }
+
+    .pay-info {
+        margin-top: 30px;
+        font-size: 13px;
+    }
+</style>
+
+<div class="container" style="margin-top:10px;" ng-controller="PaymentConformationController" ng-init="init()">
+    <div class="rounded-container peel-shadows" id="PaymentConformationDivID">
+        <div style="text-align:center;margin:30px 0;">
+            <a role="button" class="btn btn-success" ng-click="exportToPDF()">Print Payment Receipt</a>
+            <a role="button" class="btn btn-success">Print Renewal Application</a>
+            <a role="button" id="BTNPrintLicense" class="btn btn-success" ng-click="GenerateLicensetToPDF()">Print License</a>
+            <a role="button" class="btn btn-primary" href="#/User/Loginwoemail">Back To Login</a>
+        </div>
+        <div class="inner-print" id="printData">
+            <h5 style="margin-top:60px;"> Your payment for license renewal application has been processed successfully.</h5>
+            <div style="border: 1px solid #ededed; margin-left: -35px; margin-top: 30px;"></div>
+            <div class="print-address">
+                <div class="form-div">
+                    <span>Application Type:</span> <b style="margin-left:5px;font-size:13px;">{{ApplicationName}}</b>
+                </div>
+                <div class="form-div">
+                    <span>Payment Method: </span><b style="margin-left:8px;font-size:13px;">Credit Card</b>
+                </div>
+                <div class="form-div">
+                    <span> Transaction Date:</span> <b style="margin-left:5px;font-size:13px;">{{TransactionDate | date:"MM/dd/yyyy"}}</b>
+                </div>
+                <div class="form-div">
+                    <span>Amount Paid: </span><b style="margin-left:8px;font-size:13px;"><i class="fa fa-dollar" style="line-height:19px !important;"></i>{{TotalFees}}.00</b>
+                </div>
+                <div class="form-div">
+                    <span> Application No:</span> <b style="margin-left:5px;font-size:13px;">{{ApplicationNumber}}</b>
+                </div>
+                <!--<div class="form-div">
+                    <span> Invoice No: </span><b style="margin-left:8px;font-size:13px;">{{InvoiceNumber}}</b>
+                </div>-->
+                <div class="form-div">
+                    <span> Transaction Time:</span> <b style="margin-left:5px;font-size:13px;">{{TransactionDate| date:'h:mm a'}}</b>
+                </div>
+                <div class="form-div">
+                    <span> Reference#:</span> <b style="margin-left:5px;font-size:13px;">{{ReferenceNumber}}</b>
+                </div>
+
+
+            </div>
+            <!--<div class="total-paid">
+                <div><span style="font-size:17px;">Total amount Paid :</span><span class="ttl-payment"> ${{TotalFees}}.00</span></div>
+            </div>-->
+            <div class="fee-details">
+                <b><span>Fee Details</span></b>
+                <table class="table">
+                    <thead>
+                        <tr style="background-color:#F2F2FA;">
+                            <th>Description</th>
+                            <th class="text-right">Fees</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>License Renewal Fee</td>
+                            <td class="text-right">${{ApplicationFee}}.00</td>
+                        </tr>
+                        <tr>
+                            <td>License Renewal Late Fee</td>
+                            <td class="text-right">${{MassageLicenseApplication}}.00</td>
+                        </tr>
+                        <!--<tr>
+                            <td>Background Check</td>
+                            <td class="text-right">${{BackgroundCheck}}.00</td>
+                        </tr>
+                        <tr>
+                            <td>License Fee</td>
+                            <td class="text-right">${{LicenseFee}}.00</td>
+                        </tr>
+                        <tr style="background-color:#F2F2FA;">
+                            <td style="font-weight:bold;">Total</td>
+                            <td class="text-right" style="font-weight:bold;"><i class="fa fa-dollar" style="font-weight:bold;"></i>{{TotalFees}}.00</td>
+                        </tr>-->
+                    </tbody>
+                    <thead>
+                        <tr style="background-color:#F2F2FA;">
+                            <th>Total</th>
+                            <th class="text-right">${{TotalFees}}.00</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="pay-info">
+                <p style="color:red;line-height:22px;">The Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board fees are NOT REFUNDABLE. </p>
+                <p style="line-height:22px;">A copy of the receipt has been sent to your email address on file.</p>
+                <p style="line-height:22px;">If you are missing emails from the Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board please check email accounts <u>Spam</u> or <u>Junk</u> folder to ensure email message was not filtered. If the message is in Spam or Junk folder, click Not Spam or Not Junk after selecting the message, which will allow future email messages from Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board to be delivered to your Inbox.</p>
+            </div>
+
+            <span style="display:block;margin:40px 0;font-size:13px;"><b>Thank you for using our website.</b></span>
+
+            <span style="display:block;margin-bottom:10px;font-size:13px;"><b>Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board</b></span>
+            <span style="font-size:12px;"><u style="text-decoration:none;">http://www.nvspeechhearing.org</u></span>
+        </div>
+        <!--<div class="text-center" style="margin-top:50px;font-size:13px;">
+            <p><b>If you selected Yes for Paperiess options you will receive an email with a temporary password once your application request is approved.</b></p>
+            <p><b>If you selected No for Paperiess options once your application is approved your application packet will be sent to you via postal mail.</b></p>
+        </div>-->
+    </div>
+
+    <div ng-show="PaymentReceiptFlag" id="PaymentReceiptID" style="width:620px;padding:20px;height:842px;margin:0 auto;">
+        <div>
+            <div>
+                <div class="licensee-box-logo" style="margin-bottom: 20px;background-color:#0d83dd;padding: 1px 0;">
+                    <div class="headerlicensee-fst-logo">
+                        <img src="/Styles/UI_BackOffice/Images/logo.png" style="height:80px;" />
+                    </div>
+                    <div class="headerlicensee-middle-logo">
+                        <span style="color: #fff;width: 410px;font-size: 15px;margin: 23px 11px 0 -1px;">Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board</span>
+                    </div>
+                    <div class="headerlicensee-sec-logo">
+
+                        <img src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" style="height:80px;" />
+                    </div>
+                </div>
+            </div>
+            <!--<div style="border: 1px solid #ededed; margin-top: 12px;"></div>-->
+            <div style="text-align:center;margin:20px 0;">
+                <a style="color:#000; background-image: linear-gradient(to bottom, #ffffff 0px, #e0e0e0 100%);background-repeat: repeat-x;border:1px solid #cccccc;cursor: pointer;border-radius: 4px;display: inline-block;font-size: 14px;font-weight: 400;line-height: 1.42857;margin-bottom: 0;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap;">Print Payment Receipt</a>
+            </div>
+            <div>
+
+                <div style="display:block;">
+                    <div style="margin-left:100px;">
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;">Application Name :</span> <b style="margin-left:5px;font-size:13px;">{{ApplicationName}}</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Application No :</span> <b style="margin-left:5px;font-size:13px;">{{ApplicationNumber}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: block; overflow: hidden; margin-top: 20px; margin-bottom: 20px; margin-left: 100px;">
+                    <div style="float: left; width: 240px;">
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;">Payment Method : </span><b style="margin-left:8px;font-size:13px;">Credit Card</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Transaction Date :</span> <b style="margin-left:5px;font-size:13px;">{{TransactionDate | date:"MM/dd/yyyy"}}</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;">Amount Paid : </span><b style="margin-left:8px;font-size:13px;">${{TotalFees}}.00</b>
+                        </div>
+                    </div>
+                    <div style="float: left; width: 215px;">
+
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Invoice No : </span><b style="margin-left:8px;font-size:13px;">{{InvoiceNumber}}</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Transaction Time :</span> <b style="margin-left:5px;font-size:13px;">{{TransactionDate| date:'h:mm a'}}</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Reference# :</span> <b style="margin-left:5px;font-size:13px;">{{ReferenceNumber}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: block; overflow: hidden; margin-top: 20px; margin-left: 15px;">
+                    <div><span style="font-size:17px;">Total amount Paid :</span><span class="ttl-payment"> ${{TotalFees}}.00</span></div>
+                </div>
+                <div style="margin-top: 30px; margin-left: 19px;">
+                    <span style="display: block; margin-bottom: 7px;">Fee Details</span>
+                    <table style="width: 75%;">
+                        <thead>
+                            <tr style="background-color:#F2F2FA;">
+                                <th style="text-align: left; padding: 4px 6px;">Description</th>
+                                <th style="text-align: right; padding: 4px 6px;" class="text-right">Fees</th>
+                            </tr>
+                        </thead>
+                        <tbody style="height: 155px;">
+                            <tr style="height: 25px;">
+                                <td>License Renewal Fee</td>
+                                <td style="text-align:right;">${{ApplicationFee}}.00</td>
+                            </tr>
+                            <tr style="height: 25px;">
+                                <td>Late Renewal Fee</td>
+                                <td style="text-align:right;">${{LateFee}}.00</td>
+                            </tr>
+                            <!--<tr style="height: 25px;">
+                                <td>Background Check</td>
+                                <td style="text-align:right;">$125.00</td>
+                            </tr>
+                            <tr style="height: 25px;">
+                                <td>License Fee</td>
+                                <td style="text-align:right;">$150.00</td>
+                            </tr>-->
+                            <tr style="background-color:#F2F2FA;">
+                                <td style="font-weight:bold;">Total</td>
+                                <td style="text-align:right;font-weight:bold;">${{TotalFees}}.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top:45px;margin-left:22px;">
+                    <p style="color:red;line-height:22px;">The Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board fees are NOT REFUNDABLE. </p>
+                    <p style="line-height:22px;">A copy of the receipt has been sent to your email address on file.</p>
+                    <p style="line-height:22px;">If you are missing emails from the Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board please check email accounts <u>Spam</u> or <u>Junk</u> folder to ensure email message was not filtered. If the message is in Spam or Junk folder, click Not Spam or Not Junk after selecting the message, which will allow future email messages from Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board to be delivered to your Inbox.</p>
+                </div>
+                <div style="margin-left:22px;">
+                    <p style="display:block;margin:20px 0;"><b>Thank you for using our website.</b></p>
+                    <p style="display:block;margin-bottom:10px;"><b>Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board</b></p>
+                    <p><u style="text-decoration:none;">http://www.nvspeechhearing.org</u></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="PrintLicenseID" ng-show="PrintLicenseFlag" style="width:660px;margin:0 auto;height:954px;border:1px solid #000;">
+        <div style="padding: 20px;">
+            <div style="padding-bottom: 10px;overflow:hidden;">
+                <div style="width:120px;float:left;">
+                    <img src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                </div>
+                <div style="float: left; width: 430px; padding-left: 11px;">
+
+                    <h5 style="margin: 0px 0px 12px;">STATE OF NEVADA</h5>
+                    <span>
+                        <h4 style="font-weight: bolder; margin-bottom: 0px; margin-top: -8px;">SPEECH-LANGUAGE PATHOLOGY, AUDIOLOGY, & HEARING AID DISPENSING BOARD</h4>
+                    </span>
+                    <div>P.O. BOX 34540</div>
+                    <div>Reno, Nevada 89533-4540</div>
+                    <div>
+                        <label>Phone:</label>
+                        (775) 787-3421 / Fax: (775) 746-4105
+                    </div>
+                    <div>
+                        www.nvspeechhearing.org
+                        <label>Email: </label>
+                        <span>board@nvspeechhearing.org</span>
+                    </div>
+
+                </div>
+            </div>
+            <div style="border: 1px solid #000;">
+            </div>
+            <div style="padding-top: 15px;">
+                <!--<label>DATE: </label>
+                April 15, 2016-->
+            </div>
+            <div style="border: 3px solid rgb(0, 0, 0); padding: 5px; margin-bottom: 25px; margin-top: 25px;">
+                <div style="overflow: hidden; height: 106px;">
+                    <div style="width:120px;float:left;">
+                        <img src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                    </div>
+                    <div style="width: 525px;margin-left:5px;">
+
+                        <h5 style="margin: 5px 0px 12px;">STATE OF NEVADA</h5>
+                        <span>
+                            <h4 style="font-weight: bolder; margin-top: -8px;">SPEECH-LANGUAGE PATHOLOGY, AUDIOLOGY, & HEARING AID DISPENSING BOARD</h4>
+                        </span>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h2 style="margin: -5px 0px 8px;">{{LicenseTypeName}}</h2>
+                    <h3 style="font-size: 22px; margin: 0px 0px 5px;">{{IndividualName}}</h3>
+                    <h4 style="margin: 12px 0px 12px;">License No. {{LicenseNumber}}</h4>
+                    <span style="width:500px;margin:0 auto;">
+                        The person whose name appears on this document has complied with the provision of Nevada Revised Statutes
+                        Chapter 637B; and is duly licensed and authorized to practice the above referenced profession in the State of Nevada
+                    </span>
+                    <div style="padding-top: 20px; display: block; overflow: hidden; text-align: left;">
+                        <span style="float:left;">Original Issue Date: {{OriginalLicenseDate | date:'MM/dd/yyyy'}}</span>
+                        <span style="float:right;">Expiration Date: {{LicenseExpirationDate | date:'MM/dd/yyyy'}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <hr style="border-color: #000000 -moz-use-text-color -moz-use-text-color;border-image: none;border-style: solid none none;border-width: 2px 0 0;margin-bottom: 0;margin-top: 5px;width: 617px;" />
+            <hr style="border-color: #000000 -moz-use-text-color -moz-use-text-color;border-image: none;border-style: solid none none;border-width: 2px 0 0;margin-bottom: 0;margin-top: 5px;width: 617px;" />
+            <hr style="border-color: #000000 -moz-use-text-color -moz-use-text-color;border-image: none;border-style: solid none none;border-width: 2px 0 0;margin-bottom: 0;margin-top: 5px;width: 617px;" />
+            <div style="border: 2px dotted #000 !important; margin-top: 22px; padding: 5px;overflow:hidden;">
+                <div style="width:300px;border-right: 2px solid;float:left;">
+                    <div style="display:block;overflow:hidden;">
+                        <div style="width:70px;float:left;">
+                            <img style="height:70px;" src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                        </div>
+                        <div style="width: 200px; padding-left: 10px;float:left;">
+
+                            <h4 style="margin: 0px 0px -3px;"><b><i>State of Nevada</i></b></h4>
+                            <h4 style="font-weight: bolder;margin: 0px 0px 11px;line-height: 20px;width:200px;"><i>Speech-Language Pathology, Audiology, & Hearing Aid Dispensing Board</i></h4>
+
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <h3 style="margin-top:0px;font-size:22px;"><i>{{IndividualName}}</i></h3>
+                        <h3 style="margin:-8px 0 0;font-size:18px;"><i>{{LicenseTypeName}}</i></h3>
+                        <h4 style="margin-top:5px;">
+                            <span><i>License No.</i></span>
+                            <span style="font-weight: normal; margin-right: 5px; margin-left: 15px;">{{LicenseNumber}}</span>
+                        </h4>
+                        <span style="margin: 0px 0px 10px; display: inline-block;"><b>Expriration Date: {{LicenseExpirationDate | date:'MM/dd/yyyy'}}</b></span>
+                        <div style="width: 293px;">
+                            <span>
+                                Licensed pursuat to the provisions of NRS 637B License staus may be verified at www.nvspeechhearing.org
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:300px;padding:0 5px; float:left;">
+                    <div style="display:block;overflow:hidden;">
+                        <div style="width:70px;float:left;">
+                            <img style="height:70px;" src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                        </div>
+                        <div style="padding-left: 10px; float: left; width: 200px;">
+
+                            <h4 style="margin: 0px 0px -3px;"><b><i>State of Nevada</i></b></h4>
+                            <h4 style="font-weight: bolder;margin: 0px 0px 11px;line-height: 20px;width:200px;"><i>Speech-Language Pathology, Audiology, & Hearing Aid Dispensing Board</i></h4>
+                            <div style="width: 222px;"><b><i>PO Box 34540, Reno, NV 89533-4540</i></b></div>
+                            <div style="width: 222px;">
+                                <b><i>(775) 787-3421 / (775) 746-4105 Fax</i></b>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: justify; width: 298px; padding-top: 65px;">
+                        <span>The person whose name appears on this document has complied with the provision of Nevada Revised Statutes, Chapter 637B and holds the license specified on the front of this card.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'/Modules/UI_Common/Footer.html'"></div>

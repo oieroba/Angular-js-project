@@ -1,0 +1,567 @@
+<div ng-include="'/Modules/UI_Common/HeaderLicensee.html'"></div>
+<style>
+    .container
+    {
+        width: 1040px;
+    }
+
+    .error-payment .nat-err-msg
+    {
+        right: 100px !important;
+    }
+
+    .ddl-width
+    {
+        width: 100px !important;
+    }
+
+    .div-lborder
+    {
+        border-left: 1px double #999;
+    }
+
+    .SectionHeadingBorder
+    {
+        border-bottom: 1px solid #828282;
+        margin-bottom: 5px;
+        width: 100%;
+        padding-bottom: 3px;
+    }
+
+    .page
+    {
+        background: #fcfcfc none repeat scroll 0 0;
+        border: 1px solid #000;
+        font-family: Helvetica, sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 500px;
+        padding: 5px;
+        text-align: left;
+        width: 998px;
+    }
+
+    #divOrderDetailsBottom
+    {
+        clear: both;
+        height: 110px;
+        position: relative;
+    }
+
+    #divOrderDetailsBottom td
+    {
+        padding: 3px;
+    }
+
+    .LabelColTotal, .DataColTotal
+    {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .required-msg
+    {
+        line-height: 15px;
+        margin: 0 10px;
+        vertical-align: top;
+    }
+
+    .credit-process
+    {
+        overflow: hidden;
+    }
+
+    .credit-process #AuthorizeNetText
+    {
+        font-size: 10px;
+        margin-left: 5px;
+        color: #000;
+    }
+
+    .credit-process img
+    {
+        display: block;
+    }
+
+    .payment-btn
+    {
+        float: right;
+        margin-top: 45px;
+        margin-right: 80px;
+    }
+
+    .payment-text
+    {
+        font-size: 13px;
+        color: red;
+        font-weight: bold;
+        line-height: 22px;
+    }
+
+    .payment-img
+    {
+        margin-left: 25px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .payment-img img
+    {
+        height: 23px;
+    }
+
+    .input-text-payment
+    {
+        font-size: 12px;
+        display: block;
+        text-align: Center;
+        margin-top: -12px;
+        margin-left: 22px;
+        margin-bottom: 5px;
+    }
+
+    .payment-btn-color
+    {
+        background-color: #337ab7;
+        border: 1px solid #293ea6 !important;
+        color: #ffffff;
+    }
+
+    .payment-btn-color
+    {
+        background-image: linear-gradient(to bottom, #337ab7 0px, #265a88 100%);
+        background-repeat: repeat-x;
+        border-color: #245580;
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+</style>
+<div class="container" ng-controller="PaymentController" ng-init="init()">
+    <div class="rounded-container peel-shadows payment-font">
+        <div class="page">
+            <div class="mb20">
+                <a ui-sref="LicenseRenewalHASnA" ng-click='back()' href="" style="width: 165px; cursor: pointer; font-size: 16px; color: rgb(0, 0, 0); text-decoration: none;"><i class="fa fa-long-arrow-left mr5"></i>Back To application</a>
+                <h3 style="float: right;margin-right: 333px;margin-top: 2px;" class="text-center">
+                    SECURE PAYMENT PORTAL
+                </h3>
+            </div>
+
+            <div class="SectionHeadingBorder">
+                <div class="row">
+                    <div class="col-md-offset-2 col-sm-5 col-md-5">
+                        <span class="f14"><b class="mr10">Application Number :</b> <span ng-bind="ApplicationNumber"></span></span>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <span c class="f14 pull-right" style="margin-right: 82px;"><b class="mr10">Invoice Number :</b>	<span ng-bind="InvoiceNumber"></span></span> <!--class="nat-required" requiredErrorMessage="Invoice Number is required."-->
+
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt30">
+                <span class="f14"><b>Select Payment Method</b></span>
+            </div>
+            <div class="text-center mt5">
+                <div class="radio-inline">
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="" checked="checked" ng-model="PaymentMethod" style="margin-top:4px !important;">
+                    <b class="f14">Credit/Debit Card</b>
+                </div>
+                <!--<div class="radio-inline">
+                    <input class="remove-margin" type="radio" name="optionsRadios" id="optionsRadios2" value="" ng-model="LNAStatus">
+                    <b class="f14">PayPal</b>
+                </div>-->
+            </div>
+            <div class="row mt30">
+                <div class="col-sm-6 col-md-6">
+                    <div class="SectionHeadingBorder" style="overflow:hidden;">
+                        <span class="f14" style="display: inline-block; margin-bottom: 15px;">
+                            <b>Order Information </b>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="SectionHeadingBorder" style="overflow:hidden;">
+                        <span class="f14" style="float: left;"><b>Billing Information </b><span style="display: block; font-size: 11px;">(Address must match Credit/Debit Card Address)</span></span>
+                        <span class="pull-right f14"><span class="required-label required-msg" style="position: static; display: inline-block;"></span>Required Fields</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <div id="divOrderDetailsBottom">
+                        <table style="float: right; margin-right: 73px;" id="">
+                            <tbody>
+                                <tr>
+                                    <td class="LabelColTotal">
+                                        License Renewal Fee :
+                                    </td>
+                                    <td class="DescrColTotal">
+                                        &nbsp;
+                                    </td>
+                                    <td class="DataColTotal">
+                                        <!--x_amount.val-->
+                                        <!--end-->
+                                        <span id="ContentPlaceHolder1_ucPayment1_lblApplicationFee">US ${{ApplicationFee}}.00</span>
+                                    </td>
+                                </tr>
+                                <!--<tr>
+                                    <td class="LabelColTotal">
+                                        Convenience Fee :
+                                    </td>
+                                    <td class="DescrColTotal">
+                                        &nbsp;
+                                    </td>
+                                    <td class="DataColTotal">
+                                        <span id="ContentPlaceHolder1_ucPayment1_lblConvenienceFee">US ${{ConvenienceFee}}.00</span>
+                                    </td>
+                                </tr>-->
+                                <tr>
+                                    <td class="LabelColTotal">
+                                        Late Renewal Fee :
+                                    </td>
+                                    <td class="DescrColTotal">
+                                        &nbsp;
+                                    </td>
+                                    <td class="DataColTotal">
+                                        <!--x_amount.val-->
+                                        <!--end-->
+                                        <span id="ContentPlaceHolder1_ucPayment1_lblLateFee">US ${{LateFee}}.00</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-top: 1px solid #eee;" class="LabelColTotal">
+                                        Total :
+                                    </td>
+                                    <td style="border-top: 1px solid #eee;" class="DescrColTotal">
+                                        &nbsp;
+                                    </td>
+                                    <td style="border-top: 1px solid #eee;" class="DataColTotal">
+                                        <!--x_amount.val-->
+                                        <!--end-->
+                                        <span id="ContentPlaceHolder1_ucPayment1_lblTotal">US ${{TotalFees}}.00</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" colspan="3">
+                                        <div style="color: Red; font-size: 14px;">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- tableOrderDetailsBottom -->
+                    </div>
+                    <div class="SectionHeadingBorder">
+                        <span class="f14"><b>Payment Information</b></span>
+                    </div>
+                    <div class="all-form individual-person" style="margin-top:20px;">
+                        <div class="payment-img">
+                            <img src="/Styles/Images/V.gif" />
+                            <img src="/Styles/Images/MC.gif" />
+                            <!--<img src="/Styles/Images/Amex.gif" />-->
+                            <img src="/Styles/Images/Disc.gif" />
+                        </div>
+                        <div class="form-div error-payment">
+                            <label id="lblCardNumber" class="control-label required-label sm-label f14">Card Number :</label>
+                            <input id="txtCardNumber" type="text" class="form-control nat-required nat-number UI_Paymentvalidation" minlength="10" maxlength="30" ng-model="CardNumber" valueLengthErrorMessage="Please enter a valid card number." requiredErrorMessage="Please enter a valid card number(numeric value only)." />
+                            <span class="input-text-payment">(no dash or space accepted)</span>
+                        </div>
+                        <div class="form-div error-payment">
+                            <label id="lblCVV" class="control-label required-label sm-label f14" for="inputSuccess2">CVV :</label>
+                            <input id="txtCVV" type="password" class="form-control nat-required nat-number UI_Paymentvalidation" minlength="3" maxlength="4" ng-model="CVV" requiredErrorMessage="Please enter a CVV number." valueLengthErrorMessage="Please enter a valid CVV number.">
+                        </div>
+                        <div class="form-div error-payment">
+                            <label id="Label3" class="control-label required-label sm-label f14">Expiration Date :</label>
+                            <select id="ddlExpirationMonth" class="form-control ddl-width input-sm nat-required UI_Paymentvalidation" ng-options="ml.Value as ml.Text for ml in MonthList" ng-model="ExpirationMonth" requiredErrorMessage="Please select Card expiration month.">
+                                <option value="">Month</option>
+                            </select>
+
+                            <select id="ddlExpirationYear" class="form-control ddl-width input-sm nat-required UI_Paymentvalidation" ng-model="ExpirationYear" ng-options="yl.Value as yl.Text for yl in YearList" requiredErrorMessage="Please select Card expiration year.">
+                                <option value="">Year</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 individual-person all-form div-lborder">
+                    <div class="checkbox" style="padding-left: 102px; font-size: 13px;">
+                        <input type="checkbox" class="remove-margin" id="copyData" style="margin-top: 2px ! important; margin-right: 10px;" ng-model="copyValue" ng-change="fillDetail(copyValue)" />Copy Name and Mailing Address from the Renewal Application.
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblFirstName" class="control-label required-label sm-label f14">First Name :</label>
+                        <input id="txtFirstName" type="text" class="form-control nat-required nat-alphabet UI_Paymentvalidation" ng-model="FirstName" requiredErrorMessage="Please enter First name.">
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblLastName" class="control-label required-label sm-label f14">Last Name :</label>
+                        <input id="txtLastName" type="text" class="form-control nat-required nat-alphabet UI_Paymentvalidation" ng-model="LastName" requiredErrorMessage="Please enter Last name.">
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblEmail" class="control-label required-label sm-label f14">Email :</label>
+                        <input id="txtEmail" type="text" class="form-control nat-required nat-string UI_Paymentvalidation nat-email" ng-model="Email" requiredErrorMessage="Please enter Email." valueErrorMessage="Please enter valid Email">
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblStreet" class="control-label required-label sm-label f14">Street :</label>
+                        <input id="txtStreet" type="text" class="form-control nat-required nat-string UI_Paymentvalidation" ng-model="Street" requiredErrorMessage="Please enter Street.">
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblCity" class="control-label required-label sm-label f14" for="inputSuccess2">City :</label>
+                        <input id="txtCity" type="text" class="form-control nat-required nat-alphabet UI_Paymentvalidation" ng-model="City" requiredErrorMessage="Please enter City.">
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblCountry" class="control-label required-label sm-label f14">Country :</label>
+                        <select id="ddlCountry" class="form-control nat-required UI_Paymentvalidation" ng-model="Country" ng-options="cl.CountryId as cl.Name for cl in CountryList" ng-change="countrySelectChange(Country)" requiredErrorMessage="Please select Country.">
+                            <option value="">-Select-</option>
+                        </select>
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblState" class="control-label required-label sm-label f14">State/Province :</label>
+                        <select id="ddlState" class="form-control nat-required UI_Paymentvalidation" ng-model="State" ng-options="sl.StateCode as sl.Name for sl in StatList" requiredErrorMessage="Please select State.">
+                            <option value="">-Select-</option>
+                        </select>
+                    </div>
+                    <div class="form-div error-payment">
+                        <label id="lblZip" class="control-label required-label sm-label f14" for="inputSuccess2">Zip/Postal Code :</label>
+                        <input id="txtZip" type="text" class="form-control nat-required nat-number UI_Paymentvalidation zip_us" valueexpression="" valueerrormessage="Invalid Zip Code Format" ng-model="Zip" requiredErrorMessage="Please enter valid Postal Code." placeholder="XXXXX" />
+                    </div>
+
+                </div>
+            </div>
+            <hr width="100%" height="2px" />
+            <div class="text-center">
+                <span class="payment-text">Your credit/debit card will be charged by Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board. The fees are NOT REFUNDABLE. PLEASE ENSURE THE ACCURACY OF YOUR INFORMATION.</span>
+            </div>
+            <hr width="100%" height="2px" style="color: #999" />
+            <div class="credit-process">
+                <div class="pull-left">
+                    <img src="/Styles/Images/secure90x72.png" style="margin-left:10px;" />
+                    <a id="AuthorizeNetText" target="_blank" href="http://www.authorize.net/">Credit Card Processing</a>
+                </div>
+                <span class="payment-btn">
+                    <a class="btn medium payment-btn-color" ng-click="Save()">Pay Now</a>
+                    <a class="btn head-btn ml10" style="padding: 8px 12px;font-size:13px;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);" href="/#/User/LicenseRenewalHASnA">Cancel Payment</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="PaymentFlag" id="PaymentReceeiptID" style="width:620px;padding:20px;height:842px;margin:0 auto;">
+        <div>
+            <div>
+                <div class="licensee-box-logo" style="margin-bottom: 20px;background-color:#0d83dd;padding: 1px 0;">
+                    <div class="headerlicensee-fst-logo">
+                        <img src="/Styles/UI_BackOffice/Images/logo.png" style="height:80px;" />
+                    </div>
+                    <div class="headerlicensee-middle-logo">
+                        <span style="color: #fff;width: 410px;font-size: 15px;margin: 23px 11px 0 -1px;">Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board</span>
+                    </div>
+                    <div class="headerlicensee-sec-logo">
+
+                        <img src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" style="height:80px;" />
+                    </div>
+                </div>
+            </div>
+            <!--<div style="border: 1px solid #ededed; margin-top: 12px;"></div>-->
+            <div style="text-align:center;margin:20px 0;">
+                <a style="color:#000; background-image: linear-gradient(to bottom, #ffffff 0px, #e0e0e0 100%);background-repeat: repeat-x;border:1px solid #cccccc;cursor: pointer;border-radius: 4px;display: inline-block;font-size: 14px;font-weight: 400;line-height: 1.42857;margin-bottom: 0;padding: 6px 12px;text-align: center;vertical-align: middle;white-space: nowrap;">Print License Renewal</a>
+            </div>
+            <div>
+
+                <div style="display:block;">
+                    <div style="margin-left:100px;">
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;">Application Name :</span> <b style="margin-left:5px;font-size:13px;">License Renewal</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Application No :</span> <b style="margin-left:5px;font-size:13px;">{{ApplicationNumber}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: block; overflow: hidden; margin-top: 20px; margin-bottom: 20px; margin-left: 100px;">
+                    <div style="float: left; width: 240px;">
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;">Payment Method : </span><b style="margin-left:8px;font-size:13px;">Credit Card</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Transaction Date :</span> <b style="margin-left:5px;font-size:13px;">{{TransactionDate | date:"MM/dd/yyyy"}}</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;">Amount Paid : </span><b style="margin-left:8px;font-size:13px;">${{TotalFees}}.00</b>
+                        </div>
+                    </div>
+                    <div style="float: left; width: 215px;">
+
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Invoice No : </span><b style="margin-left:8px;font-size:13px;">{{InvoiceNumber}}</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Transaction Time :</span> <b style="margin-left:5px;font-size:13px;">{{TransactionDate| date:'h:mm a'}}</b>
+                        </div>
+                        <div>
+                            <span style="text-align: right; display: inline-block; width: 128px;"> Reference# :</span> <b style="margin-left:5px;font-size:13px;">{{ReferenceNumber}}</b>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: block; overflow: hidden; margin-top: 30px; margin-left: 15px;">
+                    <div><span style="font-size:17px;">Total amount Paid :</span><span class="ttl-payment"> ${{TotalFees}}.00</span></div>
+                </div>
+                <div style="margin-top: 30px; margin-left: 19px;">
+                    <span style="display: block; margin-bottom: 7px;">Fee Details</span>
+                    <table style="width: 75%;">
+                        <thead>
+                            <tr style="background-color:#F2F2FA;">
+                                <th style="text-align: left; padding: 4px 6px;">Description</th>
+                                <th style="text-align: right; padding: 4px 6px;" class="text-right">Fees</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="height: 25px;">
+                                <td style="padding-left: 7px;">License Renewal Fee</td>
+                                <td style="text-align:right;padding-right: 7px;">${{ApplicationFee}}.00</td>
+                            </tr>
+                            <tr style="height: 25px;">
+                                <td style="padding-left: 7px;">Late Renewal Fee</td>
+                                <td style="text-align:right;padding-right: 7px;">${{LateFee}}.00</td>
+                            </tr>
+                            <!--<tr style="height: 25px;">
+                                <td>Background Check</td>
+                                <td style="text-align:right;">$125.00</td>
+                            </tr>
+                            <tr style="height: 25px;">
+                                <td>License Fee</td>
+                                <td style="text-align:right;">$150.00</td>
+                            </tr>-->
+                            <tr style="background-color:#F2F2FA;height: 25px;">
+                                <td style="font-weight:bold;padding-left:7px;">Total</td>
+                                <td style="text-align:right;font-weight:bold;padding-right: 7px;">${{TotalFees}}.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top:75px;margin-left:22px;">
+                    <p style="color:red;line-height:22px;">The Nevada State Board ofr Massage Therapists fees are NOT REFUNDEABLE. The Application Fee expires in 12 months and the Background Check Fee expires in 6 months.</p>
+                </div>
+                <div style="margin-left:22px;">
+                    <p style="display:block;margin:40px 0;"><b>Thank you for using our website.</b></p>
+
+                    <p style="display:block;margin-bottom:10px;"><b>Nevada State Board of Massage Therapists</b></p>
+                    <p><u style="text-decoration:none;">http://massagetherapy.nv.gov/</u></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="PrintLicenseID" ng-show="PrintLicenseFlag" style="width:660px;margin:0 auto;height:954px;border:1px solid #000;">
+        <div style="padding: 20px;">
+            <div style="padding-bottom: 10px;overflow:hidden;">
+                <div style="width:120px;float:left;">
+                    <img src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                </div>
+                <div style="float: left; width: 430px; padding-left: 11px;">
+
+                    <h5 style="margin: 0px 0px 12px;">STATE OF NEVADA</h5>
+                    <span>
+                        <h4 style="font-weight: bolder; margin-bottom: 0px; margin-top: -8px;">SPEECH-LANGUAGE PATHOLOGY, AUDIOLOGY, & HEARING AID DISPENSING BOARD</h4>
+                    </span>
+                    <div>P.O. BOX 34540</div>
+                    <div>Reno, Nevada 89533-4540</div>
+                    <div>
+                        <label>Phone:</label>
+                        (775) 787-3421 / Fax: (775) 746-4105
+                    </div>
+                    <div>
+                        www.nvspeechhearing.org
+                        <label>Email: </label>
+                        <span>board@nvspeechhearing.org</span>
+                    </div>
+
+                </div>
+            </div>
+            <div style="border: 1px solid #000;">
+            </div>
+            <div style="padding-top: 15px;">
+                <label>DATE: </label>
+                April 15, 2016
+            </div>
+            <div style="border: 3px solid rgb(0, 0, 0); padding: 5px; margin-bottom: 25px; margin-top: 25px;">
+                <div style="overflow: hidden; height: 106px;">
+                    <div style="width:120px;float:left;">
+                        <img src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                    </div>
+                    <div style="width: 525px;margin-left:5px;">
+
+                        <h5 style="margin: 5px 0px 12px;">STATE OF NEVADA</h5>
+                        <span>
+                            <h4 style="font-weight: bolder; margin-top: -8px;">SPEECH-LANGUAGE PATHOLOGY, AUDIOLOGY, & HEARING AID DISPENSING BOARD</h4>
+                        </span>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h2 style="margin: -5px 0px 8px;">Hearing Aid Apprentice</h2>
+                    <h3 style="font-size: 22px; margin: 0px 0px 5px;">Lorettatest Pontontest2</h3>
+                    <h4 style="margin: 12px 0px 12px;">License No. {{LicenseNumber}}</h4>
+                    <span style="width:500px;margin:0 auto;">
+                        The person whose name appears on this document has complied with the provision of Nevada Revised Statutes
+                        Chapter 637B; and is duly licensed and authorized to practice the above referenced profession in the State of Nevada
+                    </span>
+                    <div style="padding-top: 20px; display: block; overflow: hidden; text-align: left;">
+                        <span style="float:left;">Original Issue Date: {{OriginalLicenseDate | date:'MM/dd/yyyy'}}</span>
+                        <span style="float:right;">Expiration Date: {{LicenseExpirationDate | date:'MM/dd/yyyy'}}</span>
+                    </div>
+                </div>
+
+            </div>
+            <hr style="border-color: #000000 -moz-use-text-color -moz-use-text-color;border-image: none;border-style: solid none none;border-width: 2px 0 0;margin-bottom: 0;margin-top: 5px;width: 617px;" />
+            <hr style="border-color: #000000 -moz-use-text-color -moz-use-text-color;border-image: none;border-style: solid none none;border-width: 2px 0 0;margin-bottom: 0;margin-top: 5px;width: 617px;" />
+            <hr style="border-color: #000000 -moz-use-text-color -moz-use-text-color;border-image: none;border-style: solid none none;border-width: 2px 0 0;margin-bottom: 0;margin-top: 5px;width: 617px;" />
+            <div style="border: 2px dotted #000; margin-top: 22px; padding: 5px;overflow:hidden;">
+                <div style="width:300px;border-right: 2px solid;float:left;">
+                    <div style="display:block;overflow:hidden;">
+                        <div style="width:70px;float:left;">
+                            <img style="height:70px;" src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                        </div>
+                        <div style="width: 200px; padding-left: 10px;float:left;">
+
+                            <h4 style="margin: 0px 0px -3px;"><b><i>State of Nevada</i></b></h4>
+                            <h4 style="font-weight: bolder;margin: 0px 0px 11px;line-height: 20px;width:200px;"><i>Speech-Language Pathology, Audiology, & Hearing Aid Dispensing Board</i></h4>
+
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <h3 style="margin-top:0px;font-size:22px;"><i>Lorettatest Pontontest2</i></h3>
+                        <h3 style="margin:-8px 0 0;font-size:22px;"><i>Hearing Aid Apprentice</i></h3>
+                        <h4 style="margin-top:5px;">
+                            <span><i>License No.</i></span>
+                            <span style="font-weight: normal; margin-right: 5px; margin-left: 15px;">{{LicenseNumber}}</span>
+                        </h4>
+                        <span style="margin: 0px 0px 10px; display: inline-block;"><b>Expriration Date: {{LicenseExpirationDate | date:'MM/dd/yyyy'}}</b></span>
+                        <div style="width: 293px;">
+                            <span>
+                                Licensed pursuat to the provisions of NRS 637B License staus may be verified at www.nvspeechhearing.org
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width:300px;padding:0 5px; float:left;">
+                    <div style="display:block;overflow:hidden;">
+                        <div style="width:70px;float:left;">
+                            <img style="height:70px;" src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                        </div>
+                        <div style="padding-left: 10px; float: left; width: 200px;">
+
+                            <h4 style="margin: 0px 0px -3px;"><b><i>State of Nevada</i></b></h4>
+                            <h4 style="font-weight: bolder;margin: 0px 0px 11px;line-height: 20px;width:200px;"><i>Speech-Language Pathology, Audiology, & Hearing Aid Dispensing Board</i></h4>
+                            <div style="width: 222px;"><b><i>PO Box 34540, Reno, NV 89533-4540</i></b></div>
+                            <div style="width: 222px;">
+                                <b><i>(775) 787-3421 / (775) 746-4105 Fax</i></b>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: justify; width: 298px; padding-top: 65px;">
+                        <span>The person whose name appears on this document has complied with the provision of Nevada Revised Statutes, Chapter 637B and holds the license specified on the front of this card.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'/Modules/UI_Common/Footer.html'"></div>

@@ -1,0 +1,2070 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<style>
+    .tab-bordered
+    {
+        border: 1px solid blue;
+        padding-bottom: 0px;
+    }
+
+    .tabination .tab-bordered ul li a
+    {
+        padding: 3px 6px;
+        border-radius: 6px 6px 0 0;
+        font-weight: normal;
+        margin-bottom: 1px;
+    }
+
+    .box-bordered
+    {
+        border: 1px solid rgb(231, 231, 231);
+        padding: 10px 1px 0 0;
+        border-left: 0px;
+        margin-left: 5px;
+        width: 70%;
+    }
+
+    .small
+    {
+        border-radius: 3px;
+        font-size: 12px !important;
+        font-weight: normal !important;
+        line-height: 16px;
+        padding: 4px 8px;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+</script>
+<div class="container" ng-controller="BackofficeIndividualController" ng-init="init()">
+
+    <div class="inner-round collapse p10" id="searchdata">
+        <div class="all-form row">
+            <div class="col-md-offset-1 col-sm-10 col-md-10">
+                <div class="form-div search-individual-input">
+                    <label id="lnlSearchByName" class="control-label" for="inputSuccess2">Search By Name :</label>
+                    <input type="text" id="txtSearchByName" class="form-control input-sm input-width" ng-model="SearchName">
+                </div>
+            </div>
+        </div>
+        <div class="all-form individual-person row">
+            <div class="col-md-offset-1 col-sm-5 col-md-5">
+                <div class="form-div">
+                    <label id="lblID#" class="control-label" for="inputSuccess2">ID# :</label>
+                    <input type="text" id="txtID#" class="form-control input-sm input-width" ng-model="SearchID">
+                </div>
+                <div class="form-div">
+                    <label id="lblLastName" class="control-label" for="inputSuccess2">Last Name :</label>
+                    <input type="text" id="txtLastName" class="form-control input-sm input-width" ng-model="SearchLastName">
+                </div>
+                <div class="form-div">
+                    <label id="lblPhoneNumber" class="control-label" for="inputSuccess2">Phone Number :</label>
+                    <input type="text" id="txtPhoneNumber" class="form-control input-sm input-width" ng-model="SearchPhoneNo">
+                </div>
+            </div>
+            <div class="col-sm-5 col-md-5">
+                <div class="form-div">
+                    <label id="lblLicense#" class="control-label" for="inputSuccess2">License# :</label>
+                    <input type="text" id="txtLicense#" class="form-control input-sm input-width" ng-model="SearchLicense">
+                </div>
+                <div class="form-div">
+                    <label id="lblFirstName" class="control-label" for="inputSuccess2">First Name :</label>
+                    <input type="text" id="txtFirstName" class="form-control input-sm input-width" ng-model="SearchFirstName">
+                </div>
+                <div class="form-div">
+                    <label id="lblEmailAddress" class="control-label" for="inputSuccess2">Email Address :</label>
+                    <input type="text" id="txtEmailAddress" class="form-control input-sm input-width" ng-model="SearchEmail">
+                </div>
+            </div>
+        </div>
+        <div class="all-form row">
+            <div class="col-md-offset-1 col-sm-10 col-md-10">
+                <div class="form-div search-individual-input">
+                    <label id="lblAddress" class="control-label" for="inputSuccess2">Address :</label>
+                    <input type="text" id="txtAddress" class="form-control input-sm input-width" ng-model="SearchAddress">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="pull-right">
+                    <a class="btn btn-success medium" id="btnIndividual_search">Search</a>
+                    <a class="btn head-btn" id="cancel">Cancel</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="comment" role="dialog">
+        <div class="modal-dialog p10" style="width:900px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Comment</h4>
+                </div>
+                <div class="p10">
+                    <div class="modal-body p10 inner-round">
+                        <div class="p10">
+                            <textarea maxlength="100" class="col-xs-12"></textarea>
+                        </div>
+                        <div class="all-form row">
+                            <div class="col-sm-12 text-right p10">
+                                <span class="fltrt text-right">
+                                    <a class="btn btn-success medium" id="A8">Save</a>
+                                    <a class="btn head-btn" id="A9">Cancel</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="all-form row left-individual-block" id="Individual_alltab">
+        <div class="col-sm-3 col-md-3 left-block">
+            <div class="inner-round peel-shadows content">
+                <div class="">
+                    <div class="user-form mt5" style="margin-bottom:15px;">
+                        <span class="f16">Search Results</span>
+                    </div>
+                    <table class="table user-table table-bordered">
+                        <thead>
+                            <tr class="light-blue">
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th class="sm-width">License#</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a style="color:#0000ff !important"><u>Hook</u></a></td>
+                                <td><a style="color:#0000ff !important"><u>Devid</u></a></td>
+                                <td class="sm-width">NVPT.0004</td>
+                                <td style="padding: 0px 3px;"><span><i class="fa fa-pencil" style="margin: 0px 5px 0 1px;"></i><i class="fa fa-circle statusicon" style="font-size:13px;"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td><a style="color:#0000ff !important"><u>Bills</u></a></td>
+                                <td><a style="color:#0000ff !important"><u>Don</u></a></td>
+                                <td class="sm-width">NVPT.0003</td>
+                                <td style="padding: 0px 3px;"><span><i class="fa fa-pencil" style="margin: 0px 5px 0 1px;"></i><i class="fa fa-circle statusicon" style="font-size:13px;"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td><a style="color:#0000ff !important"><u>Cooper</u></a></td>
+                                <td><a style="color:#0000ff !important"><u>Lisa</u></a></td>
+                                <td class="sm-width">NVPT.0002</td>
+                                <td style="padding: 0px 3px;"><span><i class="fa fa-pencil" style="margin: 0px 5px 0 1px;"></i><i class="fa fa-circle statusicon" style="font-size:13px;"></i></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9 right-block">
+            <div class="mt10">
+                <div class="gridUpperDiv">
+                    <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                    <span class="fltlt ml10">
+                        <a class="btn small gray btn-xs pill-left">Archive</a>
+                        <a class="btn small gray btn-xs pill-right">Delete</a>
+                    </span>
+                    <div class="right-blk-ifont">
+                        <span id="commenting" class="pull-right" data-toggle="modal" data-target="#comment"><i class="fa fa-commenting"></i></span>
+                        <span id="print" class="pull-right dropdown-toggle" data-toggle="dropdown"><i class="fa fa-print"></i></span>
+                        <ul class="dropdown-menu user-dropdown print-dropdown">
+                            <li>
+                                <span>Print<a><i class="fa fa-close" style="margin-left: 95px"></i></a></span>
+                            </li>
+                            <li class="p10">
+                                <a class="btn btn-success medium" id="A10">Print Board Packet</a>
+                            </li>
+                        </ul>
+                        <span id="Search" class="pull-right" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+
+                <div class="mt10" style="padding-left: 15px;">
+                    <h4 class="f16">Individual Detail</h4>
+                </div>
+                <div class="tabination mt30">
+                    <div class="tab-bordered p10">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="" data-target="#person" aria-controls="home" role="tab" data-toggle="tab">Personal</a></li>
+                            <li role="presentation"><a href="" data-target="#address" aria-controls="profile" role="tab" data-toggle="tab">Address</a></li>
+                            <li role="presentation"><a href="" data-target="#finance" aria-controls="messages" role="tab" data-toggle="tab">Financial</a></li>
+                            <li role="presentation"><a href="" data-target="#name" aria-controls="settings" role="tab" data-toggle="tab">Name</a></li>
+                            <li role="presentation"><a href="" data-target="#education" aria-controls="settings" role="tab" data-toggle="tab">Education</a></li>
+                            <li role="presentation"><a href="" data-target="#employment" aria-controls="home" role="tab" data-toggle="tab">Employment</a></li>
+                            <li role="presentation"><a href="" data-target="#applicationdata" aria-controls="profile" role="tab" data-toggle="tab">Application Data</a></li>
+                            <li role="presentation"><a href="" data-target="#license" aria-controls="messages" role="tab" data-toggle="tab">License</a></li>
+                            <li role="presentation"><a href="" data-target="#dojfbi" aria-controls="settings" role="tab" data-toggle="tab">DOJ/FBI</a></li>
+                            <li role="presentation"><a href="" data-target="#deficiency" aria-controls="settings" role="tab" data-toggle="tab">Deficiency</a></li>
+                            <li role="presentation"><a href="" data-target="#notes" aria-controls="home" role="tab" data-toggle="tab">Notes</a></li>
+                            <li role="presentation"><a href="" data-target="#log" aria-controls="profile" role="tab" data-toggle="tab">Log</a></li>
+                            <li role="presentation"><a href="" data-target="#correspondence" aria-controls="messages" role="tab" data-toggle="tab">Correspondence</a></li>
+                            <li role="presentation"><a href="" data-target="#investigativedoc" aria-controls="settings" role="tab" data-toggle="tab">Investigative Doc</a></li>
+                            <li role="presentation"><a href="" data-target="#verification" aria-controls="settings" role="tab" data-toggle="tab">Verification</a></li>
+                        </ul>
+                    </div>
+                    <div class="inner-round" style="border-top: 0px; border-top-left-radius: 0px; border-top-right-radius: 0px;">
+                        <div class="text-right mt10 mr10">
+                            <!--<span>
+                                    <i class="fa fa-minus-circle"></i>
+                                  </span>
+                                <span><i class="fa fa-plus-circle"></i></span>-->
+                            <img src="http://localhost:5010/Styles/Images/plus.png" id="plus"></img>
+                            <img src="http://localhost:5010/Styles/Images/minus.png" id="minus"></img>
+                        </div>
+                        <div class="header-gray">
+                            <div class="text-center btn-success">
+                                <div class="individual-status-amg">
+                                    <span class="pull-left">Status :</span><select id="ddlStatus" class="form-control pull-left input-sm ml5 mb0">
+                                        <option value="">Active</option>
+                                    </select><span class="pull-left ml5">At AMG</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="all-form row" id="Info">
+                            <div class="col-sm-5 col-md-5 brandytest mt5" style="padding-right: 0px">
+                                <span class="plr10"><b>Individual Details</b></span>
+                                <div class="plr10 individual-details mt5">
+                                    <div class="form-div">
+                                        <label class="control-label sm-label">Name :</label>
+                                        <span>Devid Hook</span>
+                                    </div>
+                                    <div class="form-div">
+                                        <label class="control-label sm-label">DOB :</label>
+                                        <span>6/4/1982</span>
+                                    </div>
+                                    <div class="form-div">
+                                        <label class="control-label sm-label">License# :</label>
+                                        <span>NAUDSP.001</span>
+                                    </div>
+                                    <div class="form-div">
+                                        <label class="control-label sm-label">ID# :</label>
+                                        <span>PSD1</span>
+                                    </div>
+                                    <div class="form-div">
+                                        <label class="control-label sm-label">Mailing Address :</label>
+                                        <span>PO Box 152</span>
+                                        <div class="form-div">
+                                            <label class="control-label sm-label">Primary Phone :</label>
+                                            <span>(355) 464-5475</span>
+                                        </div>
+                                        <div class="form-div">
+                                            <label class="control-label sm-label">Email Address :</label>
+                                            <span>info@nvaud-sp.org</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="margin-bottom: 10px; margin-top: 10px;" />
+                                <span class="plr10">
+                                    <b>License Details</b>
+                                </span>
+                                <div class="plr10 mt5">
+                                    <ul>
+                                        <li>NAUDSP License Pending 10/01/2013</li>
+                                        <li class="mt5">NAUDSP License Expired   10/01/2012</li>
+                                        <li class="mt5">NAUDSP Renewed 10/01/2013</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-3 col-md-3 brandytest mt5" style="padding: 0px;">
+
+                                <span class="plr10">
+                                    <b>Deficiency</b>
+                                </span>
+                                <div class="mt5 plr10">
+                                    <ul>
+                                        <li style="margin-bottom:2px;">Photo incorrect</li>
+                                        <li style="margin-bottom:2px;">Payment amount not correct</li>
+                                        <li>Livescan ATI</li>
+                                    </ul>
+                                </div>
+                                <hr style="margin-bottom: 10px; margin-top: 10px;" />
+                                <span class="plr10">
+                                    <b>Unpaid Invoice</b>
+                                </span>
+                                <div class="mt5 plr10">
+                                    <ul>
+                                        <li>Late Fee<span class="pull-right" style="margin-right: 6px;">$250.00</span></li>
+                                        <li class="mt5">License Fee	<span class="pull-right" style="margin-right: 6px;">$150.00</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3" style="padding: 0px 15px 0px 0px;">
+                                <img src="/Styles/UI_BackOffice/Images/indiviudal-sample.jpg" style="width: 241px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content mt10">
+                        <div role="tabpanel" class="tab-pane active" id="person">
+                            <div class="rounded-container">
+                                <div class="all-form individual-info row">
+                                    <div class="col-sm-9 col-md-9 box-bordered">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div">
+                                                    <label id="lblLastName" class="control-label required-label" for="inputSuccess2">Last Name :</label>
+                                                    <input type="text" id="txtLastName" class="form-control input-width nat-required UI_BackofficeIndividualPersonValidation nat-alphabet" requirederrormessage="Please enter Last name" ng-model="PersonLaastName">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblMiddleName" class="control-label" for="inputSuccess2">Middle Name :</label>
+                                                    <input type="text" id="txtMiddleName" class="form-control input-width" ng-model="PersonMiddleName">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblSS#" class="control-label required-label" for="inputSuccess2">SS# :</label>
+                                                    <input type="text" id="txtSS#" class="form-control input-width nat-number nat-required UI_BackofficeIndividualPersonValidation ssn_us" placeholder="XXX-XX-XXXX" valuelengtherrormessage="SS# must be NNN-NN-NNNN format." requirederrormessage="Please enter Social security number" ng-model="PersonSSN">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblDOB" class="control-label required-label" for="inputSuccess2">DOB :</label>
+                                                    <input type="text" id="txtDOB" class="form-control input-width UI_BackofficeIndividualPersonValidation nat-required datepicker date_us" requirederrormessage="Date of Birth  is required" placeholder="MM/DD/YYYY" ng-model="PersonDOB">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblPlaceOfBirth" class="control-label indi-label" for="inputSuccess2">Place Of Birth :</label>
+                                                    <input type="text" id="txtPlaceOfBirth" class="form-control input-width" ng-model="PersonPlaceOfBirth">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblBirthCity" class="control-label required-label" for="inputSuccess2">Birth City :</label>
+                                                    <input type="text" id="txtBirthCity" class="form-control input-width nat-required UI_BackofficeIndividualPersonValidation" value="Sacramento" requirederrormessage="Please enter Birth city" ng-model="PersonBirthCity">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblountry" class="control-label" for="inputSuccess2">Country :</label>
+                                                    <select id="ddlCountry" class="form-control input-width" ng-model="PersonCountry" ng-options="cl.CountryId as cl.Name for cl in CountryList" ng-change="countrySelectChange(PersonCountry)">
+                                                        <option value="">-Select Country-</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblHeight" class="control-label " for="inputSuccess2">Height :</label>
+                                                    <input type="text" id="txtHeight" class="form-control input-width  " ng-model="PersonHeight">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblEyeColor" class="control-label " for="inputSuccess2">Eye Color :</label>
+                                                    <input type="text" id="txtEyeColor" class="form-control input-width " ng-model="PersonEyeColor">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div">
+                                                    <label id="lblFirstName" class="control-label required-label" for="inputSuccess2">First Name :</label>
+                                                    <input type="text" id="txtFirstName" class="form-control input-width nat-required UI_BackofficeIndividualPersonValidation nat-alphabet" requirederrormessage="Please enter First name" ng-model="PersonFirstName">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblSuffix" class="control-label" for="inputSuccess2">Suffix :</label>
+                                                    <input type="text" id="txtSuffix" class="form-control input-width" ng-model="PersonSuffix">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblStatus" class="control-label required-label" for="inputSuccess2">Status :</label>
+                                                    <select id="ddlStatus" class="form-control input-width nat-required UI_BackofficeIndividualPersonValidation" requirederrormessage="Please select Status" ng-options="us.UserStatusId as us.Name for us in UserStatus" ng-model="PersonStatus">
+                                                        <option value="">-Select Status-</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblAge" class="control-label" for="inputSuccess2">Age :</label>
+                                                    <input type="text" id="txtAge" class="form-control input-width" ng-model="PersonAge">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblState" class="control-label required-label" for="inputSuccess2">State :</label>
+                                                    <select id="ddlState" class="form-control input-width nat-required UI_BackofficeIndividualPersonValidation" requirederrormessage="Please select state" ng-model="PersonState" ng-options="sl.StateCode as sl.Name for sl in StatList">
+                                                        <option value="">-Select State-</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblGender" class="control-label" for="inputSuccess2">Gender :</label>
+                                                    <div class="radio-inline" style="vertical-align: top; line-height: 13px; margin-top: 6px;">
+                                                        <input class="radio-div" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" ng-model="PersonGender">Male
+                                                    </div>
+                                                    <div class="radio-inline" style="vertical-align: top; line-height: 13px; margin-top: 6px;">
+                                                        <input class="radio-div" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" ng-model="PersonGender">Female
+                                                    </div>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblWeightPounds" class="control-label" for="inputSuccess2">Weight Pounds :</label>
+                                                    <input type="text" id="txtWeightPounds" class="form-control input-width" ng-model="PersonWeightPounds">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblHairColor" class="control-label" for="inputSuccess2">Hair Color :</label>
+                                                    <input type="text" id="txtHairColor" class="form-control input-width" ng-model="PersonHairColor">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="plr10">
+                                            <div class="inner-round" style="box-shadow: inset 0px 0px 3px #DBDBDB">
+                                                <div class="all-form govt-div">
+                                                    <div class="form-div">
+                                                        <label id="lblDriverLicenseOrGovt.ID" class="control-label large-label" for="inputSuccess2"><b>Driver License or Govt. ID :</b></label>
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="lblD/LOrGovt.IDNO" class="control-label required-label large-label" for="inputSuccess2">D/L or Govt. ID NO :</label>
+                                                        <input type="text" id="txtD/LOrGovt.IDNO" class="form-control input-sm UI_BackofficeIndividualPersonValidation nat-required" requirederrormessage="Please enter Govt. ID No" ng-model="PersonGovNO" style="width: 136px ! important;">
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="lblIssuedByState" class="control-label required-label large-label" for="inputSuccess2">Issued by State :</label>
+                                                        <select id="ddlIssuedByState" class="form-control input-sm nat-required UI_BackofficeIndividualPersonValidation" requirederrormessage="Please select state" ng-model="PersonIssuedState" ng-options="sl.StateCode as sl.Name for sl in StatList">
+                                                            <option value="">-Select-</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr style="margin-top: 10px; margin-bottom: 5px;" />
+                                            <div class="form-div pull-left">
+                                                <label id="lblWebUserName" class="control-label required-label input-width mt5 mb0" for="inputSuccess2">Web User Name :</label>
+                                                <input type="text" id="txtWebUserName" class="form-control input-sm mt5 mb0 nat-required UI_BackofficeIndividualPersonValidation" requirederrormessage="Please enter web user name." ng-model="PersonWebUserName">
+                                            </div>
+                                            <span class="pull-right mt5">
+                                                <a class="btn btn-success medium small">Reset Password</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3">
+                                        <h4 style="font-size: 16px;">Record Hits</h4>
+                                        <ul class="individual-person-ul">
+                                            <li class="individual-person-li">
+                                                <div class="checkbox" style="margin-right:30px;">
+                                                    <input type="checkbox" />DOJ
+                                                </div>
+                                                <div class="checkbox">
+                                                    <input type="checkbox" />FBI
+                                                </div>
+                                            </li>
+                                            <li class="checkbox">
+                                                <input type="checkbox" />Outside Agencies
+                                            </li>
+                                            <li class="checkbox">
+                                                <input type="checkbox" />Complaint
+                                            </li>
+                                            <li class="checkbox">
+                                                <input type="checkbox" />Self Report
+                                            </li>
+                                            <li class="checkbox">
+                                                <input type="checkbox" />SAN
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="inner-round" style="box-shadow: inset 0px 0px 3px #DBDBDB" id="Individual_AddNewBlock">
+                                    <div class="all-form individual-person row p10">
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-div">
+                                                <label id="lblLastName" class="control-label required-label" for="inputSuccess2">Last Name :</label>
+                                                <input type="text" id="txtLastName" class="form-control input-sm input-width nat-required UI_BackofficeIndividualPersonAddNewValidation nat-alphabet" requirederrormessage="Please enter Last name" ng-model="PersonANLastName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="lblMiddleName" class="control-label" for="inputSuccess2">Middle Name :</label>
+                                                <input type="text" id="txtMiddleName" class="form-control input-sm input-width" ng-model="PersonANMiddleName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="lblPrevious/MaidenName" class="control-label" for="inputSuccess2">Previous/Maiden Name :</label>
+                                                <input type="text" id="txtPrevious/MaidenName" class="form-control input-sm input-width" ng-model="PersonANMaidenName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="lblBeginDate" class="control-label required-label" for="inputSuccess2">Begin Date :</label>
+                                                <input type="text" id="txtBeginDate" class="form-control input-sm input-width nat-required UI_BackofficeIndividualPersonAddNewValidation datepicker date_us" requirederrormessage="Please enter Begin date" placeholder="MM/DD/YYYY" ng-model="PersonANBeginDate">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="lblComment" class="control-label" for="inputSuccess2">Comments :</label>
+                                                <textarea class="input-width" maxlength="100" ng-model="PersonANComment"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <div class="form-div">
+                                                <label id="lblFirstName" class="control-label required-label" for="inputSuccess2">First Name :</label>
+                                                <input type="text" id="txtFirstName" class="form-control input-sm input-width nat-required UI_BackofficeIndividualPersonAddNewValidation nat-alphabet" requirederrormessage="Please enter First name" ng-model="PersonANFirstName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="lblSuffix" class="control-label" for="inputSuccess2">Suffix :</label>
+                                                <input type="text" id="txtSuffix" class="form-control input-sm input-width" ng-model="PersonANSuffix">
+                                            </div>
+
+                                            <div class="form-div">
+                                                <label id="lblStatus" class="control-label required-label" for="inputSuccess2">Status :</label>
+                                                <select id="ddlStatus" class="form-control input-sm input-width nat-required UI_BackofficeIndividualPersonAddNewValidation" ng-options="us.UserStatusId as us.Name for us in UserStatus" ng-model="PersonANStatus" requirederrormessage="Please select Status">
+                                                    <option value="">-Select Status-</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="lblEndDate" class="control-label required-label" for="inputSuccess2">End Date :</label>
+                                                <input type="text" id="txtEndDate" class="form-control input-sm input-width nat-required UI_BackofficeIndividualPersonAddNewValidation datepicker date_us" placeholder="MM/DD/YYYY" requirederrormessage="Please enter End date" ng-model="PersonANEndDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="toolBar" style="margin-top: -10px;">
+                                        <span class="fltrt pull-right">
+                                            <a class="btn btn-success medium">Save</a>
+                                            <a class="btn head-btn" id="btnIndividual_AddNewBlockCancel">Cancel</a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="text-right mt10 mb10">
+                                    <a class="btn btn-success" id="btnIndividual_AddNew">Add New</a>
+                                </div>
+                                <table class="table user-table table-bordered">
+                                    <thead>
+                                        <tr class="light-blue">
+                                            <th class="md-width">First Name</th>
+                                            <th class="md-width">Last Name</th>
+                                            <th class="md-width">Status</th>
+                                            <th class="md-width text-center">Begin Date</th>
+                                            <th class="md-width text-center">End Date</th>
+                                            <th class="md-width text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="md-width">Devid</td>
+                                            <td class="md-width">Hook</td>
+                                            <td class="md-width">Current</td>
+                                            <td class="md-width text-center">3/4/2015</td>
+                                            <td class="md-width text-center">3/4/2016</td>
+                                            <td class="md-width">
+                                                <ul class="text-center">
+                                                    <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                    <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="inner-round">
+                                    <div class="all-form row">
+                                        <div class="p10">
+                                            <div class="col-sm-8 col-sm-offset-1">
+                                                <div class="form-div">
+                                                    <label id="lblFirstName" class="control-label" for="inputSuccess2">First Name :</label>
+                                                    <input type="text" id="txtFirstName" class="form-control input-sm" style="width: 75%;" ng-model="PersonFormFirstName">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblLastName" class="control-label" for="inputSuccess2">Last Name :</label>
+                                                    <input type="text" id="txtLastName" class="form-control input-sm" style="width: 75%;" ng-model="PersonFormLastName">
+                                                </div>
+                                                <div class="text-right mb10">
+                                                    <a class="btn btn-success small">Add</a>
+                                                </div>
+                                                <table class="table user-table table-bordered ml30" style="width: 93%;">
+                                                    <thead>
+                                                        <tr class="light-blue">
+                                                            <th class="md-width">First Name</th>
+                                                            <th class="md-width">Last Name</th>
+                                                            <th class="sm-width">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="md-width">Devid</td>
+                                                            <td class="md-width">Hook</td>
+                                                            <td class="sm-width">
+                                                                <ul class="text-center">
+                                                                    <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                    <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="toolBar">
+                                    <span class="fltrt pull-right">
+                                        <a class="btn btn-success medium" ng-click="SavePerson()">Save</a>
+                                        <a class="btn head-btn">Cancel</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="address">
+                            <div class="inner-round">
+                                <div class="p10">
+                                    <div class="inner-round p10" style="box-shadow: inset 0px 0px 3px #DBDBDB" id="AddressAddNewBlock">
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblType" class="control-label required-label sm-label">Type :</label>
+                                                    <select id="Select3" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation" requirederrormessage="Please select Type" ng-options="a.AddressTypeId as a.AddressTypeDesc for a in AddressTypeList" ng-model="addressType">
+                                                        <option value="">-Select Type-</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblAddressLineTwo" class="control-label sm-label required-label">Street :</label>
+                                                    <input id="txtAddressLineTwo" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation" maxlength="250" requirederrormessage="Please enter Street" ng-model="addressStreet">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblCity" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                                                    <input id="txtCity" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation nat-alphabet" requirederrormessage="Please enter City" ng-model="addressCity">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblState" class="control-label required-label sm-label">State :</label>
+                                                    <select id="ddlState" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation" requirederrormessage="Please select State" ng-model="addressState" ng-options="sl.StateCode as sl.Name for sl in StatList">
+                                                        <option value="">-Select State-</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div text-center">
+                                                    <input type="checkbox" />
+                                                    <span class="ml10">Military Address</span>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="Label1" class="control-label sm-label">Street2 :</label>
+                                                    <input id="Text2" type="text" class="form-control input-sm input-width" maxlength="250" ng-model="addressStreet2">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblZip" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                                                    <input id="txtZip" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation zip_us" placeholder="XXXXX-XXXX or XXXXX" requirederrormessage="Please enter Zip code" ng-model="addressZip">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-div text-right">
+                                            <a class="btn btn-success btn-sm small">Verify Address</a>
+                                        </div>
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblCountry" class="control-label required-label sm-label">Country :</label>
+                                                    <select id="ddlCountry" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation" requirederrormessage="Please select Country" ng-model="addressCountry" ng-options="cl.CountryId as cl.Name for cl in CountryList" ng-change="countrySelectChange(addressCountry)">
+                                                        <option value="">-Select Country-</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblBeginDate" class="control-label required-label sm-label">Begin Date :</label>
+                                                    <input id="txtPersonBeginDate" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation datepicker date_us" requirederrormessage="Please select Begin Date" ng-model="addressBeginDate">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="Label2" class="control-label sm-label">Comment :</label>
+                                                    <textarea class="input-width" maxlength="100" ng-model="addressComment"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblEndDate" class="control-label required-label sm-label">End Date :</label>
+                                                    <input id="txtPersonEndDate" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualAddressAddNewValidation datepicker date_us" requirederrormessage="Please select End Date" ng-model="addressEndDate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success medium" ng-click="SaveAddress()">Save</a>
+                                                <a class="btn head-btn" id="btnAddress_AddressAddNewBlockCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="text-right mt10 mb10">
+                                        <a class="btn btn-success btn-sm" id="btnAddressAddNew">Add New</a>
+                                    </div>
+                                    <div class="header-sky">
+                                        <h4 class="ml10">Contact:</h4>
+                                    </div>
+                                    <div class="inner-round p10" style="box-shadow: inset 0px 0px 3px #DBDBDB" id="AddressContactAddNewBlock">
+                                        <table style="width: 100%;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <label id="Label3" class="control-label required-label" for="inputSuccess2" style="width: 42px ! important; display: inline-block;">Type :</label>
+                                                    </td>
+                                                    <td>
+                                                        <select id="ddlType" class="form-control input-sm input-width mb0 nat-required UI_BackofficeIndividualAddressContactValidation" style="display: inline-block; width: 135px ! important;" requirederrormessage="Please select Contact type" ng-options="c.ContactTypeId as c.Desc for c in ContactTypeList" ng-model="addressContactType">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" id="Text1" class="form-control input-sm input-width mb0" style="width: 210px ! important;" ng-model="addressContactBlank">
+                                                    </td>
+                                                    <td>
+                                                        <input class="remove-margin" type="checkbox" ng-model="addressContactPreferredContact" />
+                                                        <span>Preferred Contact</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="fltrt pull-right">
+                                                            <a class="btn btn-success btn-sm small">Save</a>
+                                                            <a class="btn head-btn btn-sm small" id="btnAddress_AddressContactAddNewBlockCancel">Cancel</a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="text-right mt10 mb10">
+                                        <a class="btn btn-success btn-sm small" id="btnAddressContactAddNew">Add New</a>
+                                    </div>
+                                    <table class="table user-table table-bordered">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="md-width">Type</th>
+                                                <th class="lg-width">Value</th>
+                                                <th class="sm-width text-center">Preferred</th>
+                                                <th class="text-center sm-width">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="md-width">Email</td>
+                                                <td class="md-width">Joe@example.com</td>
+                                                <td class="sm-width text-center">
+                                                    <input type="checkbox" />
+                                                </td>
+                                                <td class="sm-width">
+                                                    <ul class="text-center">
+                                                        <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                        <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="finance">
+                            <div class="inner-round">
+                                <div class="p10">
+                                    <div class="header-sky">
+                                        <h4 class="ml10">UnPaid</h4>
+                                    </div>
+                                    <table class="table user-table table-bordered" style="margin-bottom: 0px;">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="lg-width text-center">Fee Type</th>
+                                                <th class="md-width text-center">Amount</th>
+                                                <th class="lg-width tect-center">Amount Updated</th>
+                                                <th class="sm-width text-center">Paid</th>
+                                                <th class="md-width text-center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div style="height:170px;overflow:auto;">
+                                        <table class="table user-table">
+                                            <tbody style="border: 1px solid #DBDBDB;">
+                                                <tr>
+                                                    <td class="lg-width text-center">License Renewal Fee</td>
+                                                    <td class="md-width text-center">$ 150.00</td>
+                                                    <td class="lg-width text-center">
+                                                        <input type="text" class="input-sm mb0 nat-number" />
+                                                    </td>
+                                                    <td class="sm-width text-center">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td class="md-width text-center">
+                                                        <a class="btn btn-success btn-sm small">Update</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="lg-width text-center">License Renewal Fee</td>
+                                                    <td class="md-width text-center">$ 150.00</td>
+                                                    <td class="lg-width text-center">
+                                                        <input type="text" class="input-sm mb0" />
+                                                    </td>
+                                                    <td class="sm-width text-center">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td class="md-width">
+                                                        <ul class="text-center"></ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="lg-width text-center">License Renewal Fee</td>
+                                                    <td class="md-width text-center">$ 150.00</td>
+                                                    <td class="lg-width text-center">
+                                                        <input type="text" class="input-sm mb0" />
+                                                    </td>
+                                                    <td class="sm-width text-center">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td class="md-width">
+                                                        <ul class="text-center"></ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="lg-width text-center">License Renewal Fee</td>
+                                                    <td class="md-width text-center">$ 150.00</td>
+                                                    <td class="lg-width text-center">
+                                                        <input type="text" class="input-sm mb0" />
+                                                    </td>
+                                                    <td class="sm-width text-center">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td class="md-width">
+                                                        <ul class="text-center"></ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="lg-width text-center">License Renewal Fee</td>
+                                                    <td class="md-width text-center">$ 150.00</td>
+                                                    <td class="lg-width text-center">
+                                                        <input type="text" class="input-sm mb0" />
+                                                    </td>
+                                                    <td class="sm-width text-center">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td class="md-width">
+                                                        <ul class="text-center"></ul>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="lg-width text-center">License Renewal Fee</td>
+                                                    <td class="md-width text-center">$ 150.00</td>
+                                                    <td class="lg-width text-center">
+                                                        <input type="text" class="input-sm mb0" />
+                                                    </td>
+                                                    <td class="sm-width text-center">
+                                                        <input type="checkbox" />
+                                                    </td>
+                                                    <td class="md-width">
+                                                        <ul class="text-center"></ul>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="header-sky">
+                                        <table style="width: 100%;">
+                                            <tr>
+                                                <td style="text-align: center; width: 160px">
+                                                    <h4 style="margin-bottom:0;">Total:</h4>
+                                                </td>
+                                                <td style="text-align: center; width: 130px">
+                                                    <h4 style="margin-bottom:0;">$ 1500.00</h4>
+                                                </td>
+                                                <td class="md-width" colspan="3">
+                                                    <div class="text-right mr10">
+                                                        <a class="btn btn-success btn-sm small" id="btnfinanceMPayment">Make Payment</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div style="padding-top: 10px">
+                                        <div class="table-bordered" id="financeMPaymentBlock">
+                                            <div class="header-sky">
+                                                <h4 class="ml10">Payment Section</h4>
+                                            </div>
+                                            <div class="row individual-person">
+                                                <div class=" col-sm-offset-2 col-sm-8">
+                                                    <div class="form-div">
+                                                        <label id="lblAmountPaid" class="control-label required-label" for="inputSuccess2">Amount Paid :</label>
+                                                        <input type="text" id="txtAmountPaid" class="form-control input-sm input-width nat-number nat-required UI_BackofficeIndividualFinanceValidation" requirederrormessage="Please enter Amount paid" ng-model="financeAmountPaid">
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="lblPaymentMethod" class="control-label" for="inputSuccess2">Payment Method :</label>
+                                                        <select id="ddlPaymentMethod" class="form-control input-sm input-width" ng-model="financePaymentMethod">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="toolBar">
+                                                <span class="fltrt pull-right">
+                                                    <a class="btn btn-success">Save</a>
+                                                    <a class="btn head-btn" id="btnfinanceMPaymentCancel">Cancel</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="header-sky mt10">
+                                            <h4 class="ml10">Paid</h4>
+                                        </div>
+                                        <div class="inner-round">
+                                            <table class="table user-table table-bordered">
+                                                <thead>
+                                                    <tr class="light-blue">
+                                                        <th class="sm-width">Date</th>
+                                                        <th class="md-width">Invoice#</th>
+                                                        <th class="lg-width tect-center">Application</th>
+                                                        <th class="md-width text-center">Fee(s)</th>
+                                                        <th class="md-width tect-center">Amount Paid</th>
+                                                        <th class="sm-width text-center">Status</th>
+                                                        <th class="sm-width text-center">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="financeView_tbody">
+
+                                                    <tr>
+                                                        <td class="sm-width">9/18/2015</td>
+                                                        <td class="md-width">MT54914</td>
+                                                        <td class="lg-width">License Application</td>
+                                                        <td class="md-width text-center">$650.00</td>
+                                                        <td class="md-width text-center">$650.00</td>
+                                                        <td class="sm-width text-center">Paid</td>
+                                                        <td class="sm-width">
+                                                            <ul class="text-center">
+                                                                <li class="text-left"><a><i class="fa fa-eye" id="btnfinanceView"></i></a></li>
+                                                                <li class="text-left"><a><i class="fa fa-print"></i></a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div id="financeViewBlock">
+                                                <div class="toolBar">
+                                                    <table>
+                                                        <tr>
+                                                            <td class="sm-width">9/18/2015</td>
+                                                            <td class="sm-width">MT54914</td>
+                                                            <td class="md-width">License Application</td>
+                                                            <td class="sm-width text-center">$650.00</td>
+                                                            <td class="sm-width text-center">$650.00</td>
+                                                            <td class="sm-width text-center">Paid</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="all-form row">
+                                                    <div class="col-sm-6 col-md-6 mt10">
+                                                        <div class="form-div">
+                                                            <label id="lblApplicationName" class="control-label  sm-label" for="inputSuccess2">Application Name :</label>
+                                                            <span>Renewal Application</span>
+                                                        </div>
+                                                        <div class="form-div">
+                                                            <label id="lblInvoice" class="control-label  sm-label" for="inputSuccess2">Invoice # :</label>
+                                                            <span>MT54914</span>
+                                                        </div>
+                                                        <div class="form-div">
+                                                            <label id="lblTransactionDate" class="control-label  sm-label" for="inputSuccess2">Transaction Date :</label>
+                                                            <span>9/18/2015</span>
+                                                        </div>
+                                                        <div class="form-div">
+                                                            <label id="lblApplicationFees" class="control-label sm-label" for="inputSuccess2">Application Fees :</label>
+                                                            <span>Renewal Application</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 mt10">
+                                                        <div class="form-div">
+                                                            <label id="lblApplicationNo" class="control-label  sm-label" for="inputSuccess2">Application No :</label>
+                                                            <span>MI150810025233</span>
+                                                        </div>
+                                                        <div class="form-div">
+                                                            <label id="lblTransactionTime" class="control-label  sm-label" for="inputSuccess2">Transaction Time :</label>
+                                                            <span>1:37 AM</span>
+                                                        </div>
+                                                        <div class="form-div">
+                                                            <label id="lblPaymentMode" class="control-label  sm-label" for="inputSuccess2">Payment Mode :</label>
+                                                            <span>Credit Card</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="header-sky">
+                                                    <h4 class="ml10">Fee Detail(s)</h4>
+                                                </div>
+                                                <table class="table user-table table-bordered">
+                                                    <thead>
+                                                        <tr class="header-blue">
+                                                            <th>Description</th>
+                                                            <th>Fee Type</th>
+                                                            <th>Fee</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>License period from 4/1/2010 To 4/30/2011 </td>
+                                                            <td>License Fee </td>
+                                                            <td>$150.00 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>Late Fee </td>
+                                                            <td>$500.00 </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><b>Total </b></td>
+                                                            <td><b>$650.00 </b></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="toolBar">
+                                                    <span class="fltrt pull-right">
+                                                        <a class="btn head-btn" id="btnfinanceViewCancel">Close</a>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success">Save</a>
+                                                <a class="btn head-btn">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="name">
+                            <div class="rounded-container">
+                                <div class="inner-round p10" id="name_AddNewBlock">
+                                    <div class="all-form row individual-person">
+                                        <div class="col-sm-6">
+                                            <div class="form-div">
+                                                <label id="Label4" class="control-label required-label" for="inputSuccess2">Last Name :</label>
+                                                <input type="text" id="txtNameFirstName" class="form-control input-sm input-width nat-required UI_BackofficeIndividualNameValidation nat-alphabet" requirederrormessage="Please enter Last name" ng-model="nameLastName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="Label5" class="control-label" for="inputSuccess2">Middle Name :</label>
+                                                <input type="text" id="txtNameMiddleName" class="form-control input-sm input-width" ng-model="nameMiddleName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="Label6" class="control-label" for="inputSuccess2">Previous/Maiden Name :</label>
+                                                <input type="text" id="txtNamePrevious/MaidenName" class="form-control input-sm input-width" ng-model="nameMaidenName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="Label8" class="control-label required-label" for="inputSuccess2">Begin Date :</label>
+                                                <input type="text" id="txtNameBeginDate" class="form-control input-sm input-width datepicker nat-required UI_BackofficeIndividualNameValidation date_us" placeholder="MM/DD/YYYY" requirederrormessage="Please enter Begin date" ng-model="nameBeginDate">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="Label9" class="control-label " for="inputSuccess2">Comments :</label>
+                                                <textarea class="input-width " id="txtNameComments" maxlength="100" ng-model="nameComment"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-div">
+                                                <label id="Label10" class="control-label required-label" for="inputSuccess2">First Name :</label>
+                                                <input type="text" id="txtNameFirstName" class="form-control input-sm input-width nat-required UI_BackofficeIndividualNameValidation nat-alphabet" requirederrormessage="Please enter First Name" ng-model="nameFirstName">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="Label11" class="control-label" for="inputSuccess2">Suffix :</label>
+                                                <input type="text" id="txtNameSuffix" class="form-control input-sm input-width" ng-model="nameSuffix">
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="Label12" class="control-label required-label" for="inputSuccess2">Status :</label>
+                                                <select id="SelectNameStatus" class="form-control input-sm input-width nat-required UI_BackofficeIndividualNameValidation" requirederrormessage="Please select status." ng-options="us.UserStatusId as us.Name for us in UserStatus" ng-model="nameStatus">
+                                                    <option value="">-Select State-</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-div">
+                                                <label id="Label13" class="control-label required-label" for="inputSuccess2">End Date :</label>
+                                                <input type="text" id="txtNameEndDate" class="form-control input-sm input-width datepicker nat-required UI_BackofficeIndividualNameValidation date_us" placeholder="MM/DD/YYYY" requirederrormessage="Please enter End date" ng-model="nameEndDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="toolBar">
+                                        <span class="fltrt pull-right">
+                                            <a class="btn btn-success" ng-click="SaveName()">Save</a>
+                                            <a class="btn head-btn" id="btnname_AddNewBlockCancel">Cancel</a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="text-right mt10 mb10">
+                                    <a class="btn btn-success" id="btnNameAddNew">Add New</a>
+                                </div>
+                                <table class="table user-table table-bordered">
+                                    <thead>
+                                        <tr class="light-blue">
+                                            <th class="md-width text-center">First Name</th>
+                                            <th class="md-width text-center">Last Name</th>
+                                            <th class="md-width tect-center">Status</th>
+                                            <th class="md-width text-center">Begin Date</th>
+                                            <th class="md-width text-center">End Date</th>
+                                            <th class="sm-width text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="md-width">David</td>
+                                            <td class="md-width">Hook</td>
+                                            <td class="lg-width">Current</td>
+                                            <td class="md-width text-center">1/1/2015</td>
+                                            <td class="md-width text-center">1/2/2015</td>
+                                            <td class="sm-width">
+                                                <ul class="text-center">
+                                                    <li class="text-left"><a><i class="fa fa-eye"></i></a></li>
+                                                    <li class="text-left"><a><i class="fa fa-print"></i></a></li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="table-bordered p10">
+                                    <div class="all-form  row">
+                                        <div class="p10">
+                                            <div class="col-sm-2">
+                                                <label class="control-label">Other Name :</label>
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <div class="text-right mb10">
+                                                    <input id="txtOtherName" type="text" class="form-control input-sm pull-left" style="width: 340px;" ng-model="nameOtherName">
+                                                    <a class="btn btn-success btn-sm small">Add</a>
+                                                </div>
+                                                <table class="table user-table table-bordered">
+                                                    <thead>
+                                                        <tr class="light-blue">
+                                                            <th class="lg-width">Other Name</th>
+                                                            <th class="sm-width text-center">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="lg-width">Michael Clarcke</td>
+                                                            <td class="sm-width">
+                                                                <ul class="text-center">
+                                                                    <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                                    <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="education">
+                            <div class="inner-round">
+                                <div class="p10">
+                                    <div class="inner-round" id="AddEducationBlock">
+                                        <div>
+                                            <label id="lblFullNameOfTherapySchoolYouAttended" class="control-label required-label pull-left" for="inputSuccess2" style="font-weight: normal;width:240px !important;">
+                                                Full name of Therapy School you attended :
+                                            </label>
+                                            <input type="text" id="txtFullNameOfTherapySchoolYouAttended" class="form-control input-sm input-width nat-alphabet nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please enter School Name" style="display: inline-block; margin-left: 15px; width: 455px;" ng-model="educationSchoolName">
+                                        </div>
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="all-form individual-person">
+                                                    <div class="form-div">
+                                                        <label id="lblCountry" class="control-label sm-label required-label" for="inputSuccess2">Country :</label>
+                                                        <select id="ddlCountry" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please select Country" ng-model="educationCountry" ng-options="cl.CountryId as cl.Name for cl in CountryList" ng-change="countrySelectChange(educationCountry)">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="lblStreet" class="control-label required-label sm-label" for="inputSuccess2">Street :</label>
+                                                        <input type="text" id="txtStreet" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please enter Street" ng-model="educationStreet1">
+                                                    </div>
+                                                    <div class="form-div">
+                                                        <label id="lblStreet2" class="control-label sm-label" for="inputSuccess2">Street2 :</label>
+                                                        <input type="text" id="txtStreet2" class="form-control input-sm input-width" ng-model="educationStreet2">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-div">
+                                                    <label id="lblCity" class="control-label required-label" for="inputSuccess2">City :</label>
+                                                    <input type="text" id="txtCity" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please select City" ng-model="educationCity">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblState" class="control-label required-label" for="inputSuccess2">State :</label>
+                                                    <select id="ddlState" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please select State" ng-model="educationState" ng-options="sl.StateCode as sl.Name for sl in StatList">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblZip" class="control-label required-label" for="inputSuccess2">Zip :</label>
+                                                    <input type="text" id="txtZip" class="form-control input-sm input-width zip_us nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please enter Zip code" placeholder="XXXXX-XXXX or XXXXX" ng-model="educationZip">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblSchoolPhone" class="control-label required-label" for="inputSuccess2">School Phone :</label>
+                                                    <input type="text" id="txtSchoolPhone" class="form-control input-sm input-width phone_us nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please enter School Phone" ng-model="educationSchoolPhone">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblSchoolWebsite" class="control-label required-label" for="inputSuccess2">School Website :</label>
+                                                    <input type="text" id="txtSchoolWevsite" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please enter School Website" ng-model="educationSchoolWebsite">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblContactPersonName" class="control-label required-label" for="inputSuccess2">Contact Person Name :</label>
+                                                    <input type="text" id="txtContactPersonName" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation nat-required" requirederrormessage="Please enter Contact Person Name" ng-model="educationContactPersonName">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblCEUsReceived" class="control-label required-label" for="inputSuccess2">CEUs Received :</label>
+                                                    <input type="text" id="Text14" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please enter CEUs Received" ng-model="educationCEUsReceived">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblSchoolEmail" class="control-label" for="inputSuccess2" style="margin-left:2px;">School Email :</label>
+                                                    <input type="text" id="txtSchoolEmail" class="form-control input-sm input-width nat-email" valueerrormessage="Please enter valid email" ng-model="educationSchoolEmail">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblSchoolEmail" class="control-label" for="inputSuccess2" style="margin-left:2px;">Compelling Evidence :</label><input type="checkbox" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form individual-education row">
+                                            <div class="col-sm-12">
+                                                <div class="form-div text-right">
+                                                    <label id="lblDateStartedProgram " class="control-label required-label" for="inputSuccess2">Date Started Program  :</label>
+                                                    <input type="text" id="txtDateStartedProgram " class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation datepicker date_us" placeholder="MM/DD/YYYY" requirederrormessage=" please select date started program " ng-model="educationDateStartedProgram">
+                                                </div>
+                                                <div class="form-div text-right">
+                                                    <label id="lblDateCompletedProgram" class="control-label required-label" for="inputSuccess2">Date Completed Program (Graduation Date) :</label>
+                                                    <input type="text" id="txtDateCompletedProgram" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation datepicker date_us" placeholder="MM/DD/YYYY" requirederrormessage="Please select Graduation Date " ng-model="educationDateCompletedDate">
+                                                </div>
+                                                <div class="form-div text-right">
+                                                    <label id="lblTotalNumberOfDocumentedHoursOfEducationCompletedAtThisSchool" class="control-label required-label" for="inputSuccess2">Total number of documented hours of education completed at this school :</label>
+                                                    <input type="text" id="txtTotalNumberOfDocumentedHoursOfEducationCompletedAtThisSchool" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEducationValidation" requirederrormessage="Please enter Total number of documented hours" ng-model="educationDocumentedHours">
+                                                </div>
+                                                <div class="form-div text-right">
+                                                    <label id="Label17" class="control-label mb0 mr0" for="inputSuccess2" style="margin-right:0;">If you did not graduate, please type in your own brief explanation for non-graduation.</label>
+                                                </div>
+                                                <div class="form-div text-right">
+                                                    <label id="Label7" class="control-label mr0" for="inputSuccess2" style="margin-right:0;">My Own Explanation :</label>
+                                                </div>
+                                                <div class="form-div text-right">
+                                                    <textarea class="col-sm-12" maxlength="100" ng-model="educationExplanation"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success medium" id="A4" ng-click="SaveEducation()">Save</a>
+                                                <a class="btn head-btn" id="btnAddEducationBlockCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="text-right mt10 mb10">
+                                        <a class="btn btn-success small" id="btnAddEducationBlock">Add Education</a>
+                                    </div>
+                                    <table class="table user-table table-bordered">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="lg-width">School Name</th>
+                                                <th class="md-width">Date Started</th>
+                                                <th class="md-width text-center">Date Completed</th>
+                                                <th class="sm-width text-center">Total Hrs</th>
+                                                <th class="text-center">Closed</th>
+                                                <th class="sm-width text-center">Explanation</th>
+                                                <th class="sm-width text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="lg-width">NATIONAL HOLISTIC INSTITUTE</td>
+                                                <td class="md-width">01/02/2012</td>
+                                                <td class="md-width">2/4/2014</td>
+                                                <td class="sm-width text-center">201</td>
+                                                <td class="text-center">
+                                                    <input type="checkbox" />
+                                                </td>
+                                                <td class="sm-width text-center">
+                                                    <img src="/Styles/UI_BackOffice/Images/notepad.png" style="height:23px;" />
+                                                </td>
+                                                <td class="sm-width text-center">
+                                                    <ul class="text-center">
+                                                        <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                        <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div id="EducationAddNewBlock">
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblExamName" class="control-label" for="inputSuccess2">Exam Name :</label>
+                                                    <select id="ddlExamName" class="form-control input-sm input-width" ng-model="educationExamName">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblPassDate" class="control-label" for="inputSuccess2">Pass Date :</label>
+                                                    <input type="text" id="txtPassDate" class="form-control input-sm input-width datepicker date_us" ng-model="educationPassDate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success medium" id="ca">Save</a>
+                                                <a class="btn head-btn" id="btnEducationAddNewBlockCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right mt10 mb10">
+                                        <a class="btn btn-success small" id="btnEducationAddNew">Add New</a>
+                                    </div>
+                                    <table class="table user-table table-bordered">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="lg-width">Exam Name</th>
+                                                <th class="md-width">Pass Date</th>
+                                                <th class="sm-width text-right">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="lg-width">NATIONAL HOLISTIC INSTITUTE</td>
+                                                <td class="md-width">01/02/2012</td>
+                                                <td class="sm-width text-right">
+                                                    <ul class="text-right">
+                                                        <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                        <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div id="footer1" class="toolBar">
+                                        <span class="fltrt pull-right">
+                                            <a class="btn btn-success medium" id="A2">Save</a>
+                                            <a class="btn head-btn" id="A3">Cancel</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="employment">
+                            <div class="inner-round">
+                                <div class="p10">
+
+                                    <div id="employmentAddBlock">
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblEmployeeName" class="control-label sm-label required-label">Employee Name :</label>
+                                                    <input id="Text10" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEmploymentValidation" maxlength="250" requirederrormessage="Please enter Employee Name" ng-model="employmentName">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="Label15" class="control-label sm-label"><b>Physical Address :</b></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblStreet" class="control-label sm-label required-label">Street :</label>
+                                                    <input id="txtStreet" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEmploymentValidation" maxlength="250" requirederrormessage="Please enter Street" ng-model="employmentStreet1">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblCity" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                                                    <input id="txtCity" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEmploymentValidation" requirederrormessage="Please enter City" ng-model="employmentCity">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblState" class="control-label required-label sm-label">State :</label>
+                                                    <select id="ddlState" class="form-control input-sm input-width nat-required UI_BackofficeIndividualEmploymentValidation" requirederrormessage="Please select State" ng-model="employmentState" ng-options="sl.StateCode as sl.Name for sl in Stat">
+                                                        <option value="">-Select State-</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="Label19" class="control-label sm-label">Street2 :</label>
+                                                    <input id="Text12" type="text" class="form-control input-sm input-width" maxlength="250" ng-model="employmentStreet2">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="Label20" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                                                    <input id="Text13" type="text" class="form-control input-sm input-width zip_us nat-required UI_BackofficeIndividualEmploymentValidation" placeholder="XXXXX-XXXX or XX" requirederrormessage="Please enter Zip Code" ng-model="employmentZip">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-div text-right">
+                                            <a class="btn btn-success btn-sm small">Verify Address</a>
+                                        </div>
+                                        <div class="all-form individual-person row mt10">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblWorkPhone" class="control-label sm-label">Work Phone :</label>
+                                                    <input id="txtWorkPhone" type="text" class="form-control input-sm input-width phone_us" placeholder="(XXX) XXX-XXXX" maxlength="250" ng-model="employmentWorkPhone">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblStartDate" class="control-label sm-label" for="inputSuccess2">Start Date :</label>
+                                                    <input id="txtStartDate" type="text" class="form-control input-sm input-width datepicker date_us" placeholder="MM/DD/YYYY" ng-model="employmentStartDate">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblAlternatePhone" class="control-label sm-label">Alternate Phone :</label>
+                                                    <input id="txtAlternatePhone" type="text" class="form-control input-sm input-width" maxlength="250" ng-model="employmentAlternateDate">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblFax" class="control-label sm-label" for="inputSuccess2">Fax :</label>
+                                                    <input id="txtFax" type="text" class="form-control input-sm input-width phone_us" ng-model="employmentFax">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success" ng-click="SaveEmployment()">Save</a>
+                                                <a class="btn head-btn" id="employmentAddBlockCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="text-right mt10 mb10">
+                                        <a class="btn btn-success small" id="btnemploymentAdd">Add</a>
+                                    </div>
+                                    <table class="table user-table table-bordered">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="lg-width">Employee Name</th>
+                                                <th class="lg-width text-center">Work Phone</th>
+                                                <th class="md-width text-center">City</th>
+                                                <th class="md-width text-center">State</th>
+                                                <th class="md-width text-center">Zip</th>
+                                                <th class="text-center md-width">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="lg-width">Test Company</td>
+                                                <td class="lg-width text-center">(775)0200220</td>
+                                                <td class="md-width text-center">Reno</td>
+                                                <td class="md-width text-center">Nevada</td>
+                                                <td class="md-width text-center">89511</td>
+                                                <td class="md-width">
+                                                    <ul class="text-center">
+                                                        <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                        <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="applicationdata">
+                            <div class="inner-round">
+                                <div class="p10">
+                                    <table class="table user-table table-bordered">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="lg-width">Application Type</th>
+                                                <th class="lg-width text-center">Application Number</th>
+                                                <th class="md-width text-center">Submitted On</th>
+                                                <th class="md-width text-center">Approved On</th>
+                                                <th class="sm-width text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="lg-width">New Application</td>
+                                                <td class="lg-width text-center">MI15092111213</td>
+                                                <td class="md-width text-center">9/12/2015</td>
+                                                <td class="md-width text-center">9/12/2015</td>
+                                                <td class="sm-width text-center">
+                                                    <ul class="text-center">
+                                                        <li class="text-left"><a><i class="fa fa-eye"></i></a></li>
+                                                        <li class="text-left"><a><i class="fa fa-envelope"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="lg-width">Renewal</td>
+                                                <td class="lg-width text-center">MI15092111213</td>
+                                                <td class="md-width text-center">9/12/2015</td>
+                                                <td class="md-width text-center">9/12/2015</td>
+                                                <td class="sm-width text-center">
+                                                    <ul class="text-center">
+                                                        <li class="text-left"><a><i class="fa fa-eye"></i></a></li>
+                                                        <li class="text-left"><a><i class="fa fa-envelope"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="license">
+                            <div class="inner-round">
+                                <div class="p10">
+                                    <div id="licenseViewBlock">
+                                        <table class="table user-table table-bordered">
+                                            <thead>
+                                                <tr class="light-blue">
+                                                    <th class="sm-width">Year</th>
+                                                    <th class="lg-width text-center">Status History</th>
+                                                    <th class="lg-width text-center">Status Action</th>
+                                                    <th class="md-width text-center">Current Status</th>
+                                                    <th class="sm-width text-center">Picture</th>
+                                                    <th class="sm-width text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblLicenseNumber" class="control-label required-label sm-label">License Number :</label>
+                                                    <input id="txtLicenseNumber" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualLicenseValidation" requirederrormessage="Please enter License Number" ng-model="licenseNO">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblStatus" class="control-label required-label sm-label">Status :</label>
+                                                    <select id="ddlStatus" class="form-control input-sm input-width nat-required UI_BackofficeIndividualLicenseValidation" requirederrormessage="Please enter Status" ng-model="licenseStatus" ng-options="us.UserStatusId as us.Name for us in UserStatus">
+                                                        <option value="">-Select Status-</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblBeginningDate" class="control-label required-label sm-label" for="inputSuccess2">Beginning Date  :</label>
+                                                    <input id="txtBeginningDate " type="text" class="form-control input-sm input-width datepicker  date_us nat-required UI_BackofficeIndividualLicenseValidation" placeholder="MM/DD/YYYY" requirederrormessage="Please select Beginning Date" ng-model="licenseBeginningDate">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblOriginalLicenseDate" class="control-label sm-label" for="inputSuccess2">Original License Date :</label>
+                                                    <input id="txtOriginalLicenseDate" type="text" class="form-control input-sm input-width" ng-model="licenseOriginalLicenseDate">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblComments" class="control-label sm-label" for="inputSuccess2">Comments :</label>
+                                                    <textarea class="input-width" maxlength="100" ng-model="licenseComment"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblPortal " class="control-label sm-label">Portal  :</label>
+                                                    <input id="txtPortal " type="text" class="form-control input-sm input-width" ng-model="licensePortal">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblLicenseType" class="control-label required-label sm-label">License Type :</label>
+                                                    <select id="ddlLicenseType" class="form-control input-sm input-width nat-required UI_BackofficeIndividualLicenseValidation" requirederrormessage="Please enter License Type" ng-options="cl.LicenseTypeId as cl.LicenseTypeName for cl in LicenseTypeList" ng-model="licenseType">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblEndingDate" class="control-label required-label sm-label" for="inputSuccess2">Ending Date :</label>
+                                                    <input id="txtEndingDate" type="text" class="form-control input-sm input-width datepicker nat-required date_us" placeholder="MM/DD/YYYY" requirederrormessage="Please select Ending Date" ng-model="licenseEndingDate">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblPostMarkDate" class="control-label sm-label" for="inputSuccess2">Post Mark date :</label>
+                                                    <input id="txtPostMarkDate" type="text" class="form-control input-sm input-width datepicker date_us" placeholder="MM/DD/YYYY" ng-model="licensePostMarkDate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success" ng-click="SaveLicense()">Save</a>
+                                                <a class="btn head-btn" id="btnlicenseCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <table class="table user-table table-bordered" id="licenseTable">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="sm-width">Year</th>
+                                                <th class="lg-width text-center">Status History</th>
+                                                <th class="lg-width text-center">Status Action</th>
+                                                <th class="md-width text-center">Current Status</th>
+                                                <th class="sm-width text-center">Picture</th>
+                                                <th class="sm-width text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="sm-width">2015</td>
+                                                <td class="lg-width text-center">Active</td>
+                                                <td class="lg-width text-center">New License</td>
+                                                <td class="md-width text-center">Active</td>
+                                                <td class="sm-width text-center"><a>Link</a></td>
+                                                <td class="sm-width text-center">
+                                                    <ul class="text-center">
+                                                        <li class="text-center"><a><i class="fa fa-eye" id="btnlicenseView"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="dojfbi">
+                            <div class="inner-round">
+                                <div class="p10">
+                                    <div class="table-bordered p5" id="dojfbiAddNewBlock">
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblDOJFingerprintStatus" class="control-label required-label sm-label">DOJ Fingerprint Status :</label>
+                                                    <select id="ddlDOJFingerprintStatus" class="form-control input-sm input-width nat-required UI_BackofficeIndividualdojfbiValidation" requirederrormessage="Please select DOJ Fingerprint Status" ng-model="dojfbiDOJStatus">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblFBIFingerprintStatus" class="control-label required-label sm-label">FBI Fingerprint Status :</label>
+                                                    <select id="ddlFBIFingerprintStatus" class="form-control input-sm input-width nat-required UI_BackofficeIndividualdojfbiValidation" requirederrormessage="Please select FBI Fingerprint Status" ng-model="dojfbiFBIStatus">
+                                                        <option value=" ">
+                                                            Select
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblCharges" class="control-label sm-label" for="inputSuccess2">Charges :</label>
+                                                    <input id="txtCharges" type="text" class="form-control input-sm input-width" ng-model="dojfbiCharges">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblDOJFingerprintsDate" class="control-label sm-label">DOJ Fingerprints Date :</label>
+                                                    <input id="txtDOJFingerprintsDate" type="text" class="form-control input-sm input-width datepicker date_us" placeholder="MM/DD/YYYY" ng-model="dojfbiDOJDate">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblFBIFingerprintsDate" class="control-label sm-label" for="inputSuccess2">FBI Fingerprints Date :</label>
+                                                    <input id="txtFBIFingerprintsDate" type="text" class="form-control input-sm input-width datepicker date_us" placeholder="MM/DD/YYYY" ng-model="dojfbiFBIDate">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success">Save</a>
+                                                <a class="btn head-btn" id="btndojfbiAddNewBlockCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right mt10 mb10">
+                                        <a class="btn btn-success small" id="btndojfbiAddNew">Add New</a>
+                                    </div>
+                                    <table class="table user-table table-bordered">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="lg-width">FBI Fingerprint Status</th>
+                                                <th class="lg-width text-center">FBI Fingerprints Date</th>
+                                                <th class="lg-width text-center">DOJ Fingerprints Status</th>
+                                                <th class="lg-width text-center">DOJ Fingerprints Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="lg-width">Pass</td>
+                                                <td class="lg-width text-center">15/9/2015</td>
+                                                <td class="lg-width text-center">Pass</td>
+                                                <td class="lg-width text-center">18/9/2015</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="table-bordered" id="AddSubsequentArrestBlock">
+                                        <div class="p10 all-form individual-person row">
+                                            <div class="col-sm-4">
+                                                <div class="form-div text-right">
+                                                    <label id="lblDateReceived" class="control-label sm-label">Date Received :</label>
+                                                </div>
+                                                <div class="form-div text-right">
+                                                    <label id="lblCharges" class="control-label sm-label">Charges :</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div text-left">
+                                                    <input id="Text11" type="text" class="form-control input-sm input-width datepicker date_us" placeholder="MM/DD/YYYY" ng-model="dojfbiDateReceived">
+                                                </div>
+                                                <div class="form-div text-left">
+                                                    <input id="txtCharges" type="text" class="form-control input-sm input-width" ng-model="dojfbiAddCharges">
+                                                </div>
+                                                <div class="form-div text-left">
+                                                    <input class="btn head-btn btn-sm small" type="submit" value="Browse...">
+                                                    No choosen file
+                                                    <input class="btn btn-success btn-sm small" type="submit" value="Upload" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success">Save</a>
+                                                <a class="btn head-btn" id="btnAddSubsequentArrestCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-right mt10 mb10">
+                                        <a class="btn btn-success small" id="btnAddSubsequentArrest">Add Subsequent Arrest</a>
+                                    </div>
+                                    <table class="table user-table table-bordered">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="lg-width">Date Recieved</th>
+                                                <th class="lg-width text-center">Charges</th>
+                                                <th class="md-width text-center">Document Link</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="lg-width">9/12/2015</td>
+                                                <td class="lg-width text-center">Charge</td>
+                                                <td class="md-width text-center"><a style="color: #0000ff !important;"><u>Document Detail</u></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="header-sky mt10">
+                                        <h4 class="ml10">History</h4>
+                                    </div>
+                                    <div class="all-form row mb20">
+                                        <div class="col-sm-9 col-md-9">
+                                            <div style="text-align: justify;line-height:20px;">
+                                                Have you ever received an administrative or civil citation related to the practice of massage therapy or a massage therapy business, or any other profession, or been denied or refused the renewal of a license, permit, certificate, or other authorization to practice massage therapy or related to a massage therapy or school business or any other profession in any city, county, state, country or jurisdiction?
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3">
+                                            <div class="checkbox-inline">
+                                                <input class="remove-margin" type="radio" value="Yes" /><label class="ml10" style="font-weight:normal;">Yes</label>
+                                            </div>
+                                            <div class="checkbox-inline">
+                                                <input class="remove-margin" type="radio" value="No" /><label class="ml10" style="font-weight:normal;">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="all-form row mt10">
+                                        <div class="col-sm-9 col-md-9">
+                                            <div style="text-align: justify;line-height:20px;">
+                                                Have you ever had a license, certificate, certification of registration, permit, or other authorization for a massage therapy business or to practice massage therapy, or for any other profession, revoked, suspended, or otherwise acted against (including administrative citation, civil citation, municipal code violation, probation, fine, reprimand, settlement, or surrender of a license, permit, certificate, or other authorization)?
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 col-md-3">
+                                            <div class="checkbox-inline">
+                                                <input class="remove-margin" type="radio" value="Yes" /><label class="ml10" style="font-weight:normal;">Yes</label>
+                                            </div>
+                                            <div class="checkbox-inline">
+                                                <input class="remove-margin" type="radio" value="No" /><label class="ml10" style="font-weight:normal;">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="deficiency">
+                            <div class="inner-round">
+                                <div class="header-sky">
+                                    <h4 class="ml10">Deficiency</h4>
+                                </div>
+                                <table class="table user-table table-bordered mb0">
+                                    <thead>
+                                        <tr class="light-blue">
+                                            <th class="lg-width" style="text-align: left;">Deficiency Name</th>
+                                            <th class="sm-width">Date Deficient</th>
+                                            <th class="sm-width">Date Resolved</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="lg-width" style="text-align: left;">Renewal - Place of Business Information Incomplete</td>
+                                            <td class="sm-width">9/18/2015 1:33:16 AM</td>
+                                            <td class="sm-width">9/18/2015 1:41:11 AM</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="notes">
+                            <div class="inner-round">
+                                <div class="header-gray">
+                                    <h4 class="ml10">Comment</h4>
+                                </div>
+                                <div class="p10">
+                                    <div class="all-form individual-person row">
+                                        <div class="col-sm-12">
+                                            <div class="form-div">
+                                                <label id="lblComment" class="control-label required-label sm-label">Comment :</label>
+                                                <textarea class="input-width nat-required UI_BackofficeIndividualNotesValidation" maxlength="100" style="width: 535px !important; margin-bottom: 0px;" requirederrormessage="Please enter Comment" ng-model="notesComment"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="all-form individual-person row">
+                                        <div class="col-sm-6">
+                                            <div class="form-div">
+                                                <label id="lblDocumentName" class="control-label sm-label">Document Name :</label>
+                                                <input id="txtDocumentName" type="text" class="form-control input-sm input-width" ng-model="notesDocumentName">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-div">
+                                                <label id="lblDocumentType" class="control-label sm-label">Document Type :</label>
+                                                <select id="ddlDocumentType" class="form-control input-sm input-width" ng-model="notesDocumentType">
+                                                    <option value=" ">
+                                                        Select
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="all-form individual-person row">
+                                        <div class="col-sm-12">
+                                            <div class="form-div">
+                                                <label id="lblAttachment" class="control-label sm-label">Document :</label>
+                                                <a class="btn head-btn btn-sm small">Browse..</a>
+                                                <span>No choosen file</span>
+                                                <a class="btn btn-success btn-sm small">Upload</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="toolBar">
+                                    <span class="fltrt pull-right">
+                                        <a class="btn btn-success" ng-click="SaveNotes()">Save</a>
+                                        <a class="btn head-btn">Cancel</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="log">
+                            <div class="inner-round">
+                                <div class="header-sky">
+                                    <h4 class="ml10">Logs</h4>
+                                </div>
+                                <table class="table user-table table-bordered mb0">
+                                    <thead>
+                                        <tr class="light-blue">
+                                            <th class="md-width" style="text-align: left;">Date</th>
+                                            <th class="lg-width" style="text-align: left;">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="md-width" style="text-align: left;">9/18/2015</td>
+                                            <td class="lg-width" style="text-align: left;">Application request form submitted</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="correspondence">
+                            <div class="inner-round">
+                                <div class="p10">
+                                    <div class="header-sky">
+                                        <h4 class="ml10">correspondence:</h4>
+                                    </div>
+                                    <div class="text-right">
+                                        <img src="/Styles/UI_BackOffice/Images/1443263723_mail-icon.png" style="height:23px;" id="btncorrespondenceEmail" />
+                                    </div>
+
+                                    <div class="table-bordered p10" id="correspondenceEmailBlock">
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblFrom" class="control-label required-label sm-label">From :</label>
+                                                    <input id="txtFrom" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualCorrespondenceValidation nat-email" requirederrormessage="Please enter From email" valueerrormessage="Please enter valid email" ng-model="correspondenceFrom">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblTo" class="control-label required-label sm-label">To :</label>
+                                                    <input id="txtTO" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualCorrespondenceValidation nat-email" requirederrormessage="Please enter To email" valueerrormessage="Please enter valid email" ng-model="correspondenceTo">
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblSubject" class="control-label required-label sm-label">Subject :</label>
+                                                    <input id="txtSubject" type="text" class="form-control input-sm input-width nat-required UI_BackofficeIndividualCorrespondenceValidation" requirederrormessage="Please enter Subject" ng-model="correspondenceSubject">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <input type="checkbox" value="checked" ng-model="correspondenceCopyToSender" /><span> Email a Copy to sender?</span>
+                                                </div>
+                                                <div class="form-div">
+                                                    <select id="ddlSelect" class="form-control input-width">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-7">
+                                                <div class="form-div">
+                                                    <label id="Label14" class="control-label required-label sm-label">Attachment :</label>
+                                                    <a class="btn head-btn btn-sm small nat-required UI_BackofficeIndividualCorrespondenceValidation" requirederrormessage="Please select file">Choose File</a>
+                                                    No choosen file
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="Label16" class="control-label sm-label">
+                                                        <h3>Email :</h3>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="toolBar">
+                                            <span class="fltrt pull-right">
+                                                <a class="btn btn-success" ng-click="Savecorrespondence()">Send</a>
+                                                <a class="btn head-btn" id="btncorrespondenceEmailBlockCancel">Cancel</a>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <table class="table user-table table-bordered mt10">
+                                        <thead>
+                                            <tr class="light-blue">
+                                                <th class="sm-width">Date Sent</th>
+                                                <th class="lg-width">Subject</th>
+                                                <th class="sm-width">Type</th>
+                                                <th class="sm-width">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="sm-width">9/18/2015</td>
+                                                <td class="lg-width">Test Company</td>
+                                                <td class="sm-width">Email</td>
+                                                <td class="sm-width">
+                                                    <ul class="text-center">
+                                                        <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                                        <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="investigativedoc">
+                            <div class="inner-round">
+                                <div class="header-sky">
+                                    <h4 class="ml10">Add Document</h4>
+                                </div>
+                                <div class="p10">
+                                    <div class="all-form individual-person row">
+                                        <div class="form-div">
+                                            <label id="lblLastName" class="control-label sm-label" for="inputSuccess2">Document Name :</label>
+                                            <input type="text" id="txtLastName" class="form-control input-sm input-width" ng-model="investigativedocDocumentName">
+                                        </div>
+                                        <div class="form-div">
+                                            <label id="lblDcType" class="control-label sm-label" for="inputSuccess2">Document Type :</label>
+                                            <select id="ddlDcType" class="form-control input-sm input-width" ng-model="investigativedocDocumentType">
+                                                <option value=" ">
+                                                    Select
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-div">
+                                            <label id="lblountry" class="control-label sm-label" for="inputSuccess2">Document :</label>
+                                            <a class="btn head-btn btn-sm small">Choose file</a>
+                                            No File selected..
+                                            <a class="btn btn-success btn-sm small">Upload</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inner-round">
+                                    <div class="p10">
+                                        <div class="all-form individual-person row">
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblDcType" class="control-label sm-label" for="inputSuccess2">Document Type :</label>
+                                                    <select id="ddlDcType" class="form-control input-sm input-width" ng-model="investigativedocFormDocumentType">
+                                                        <option value=" ">
+                                                            Select
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-div">
+                                                    <label id="lblDcCategory" class="control-label sm-label" for="inputSuccess2">Document Category :</label>
+                                                    <select id="ddlDcCategory" class="form-control input-sm input-width" ng-model="investigativedocFromDocumentCat">
+                                                        <option value=" ">
+                                                            Select
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-div">
+                                                    <label id="lblUplodDate" class="control-label sm-label" for="inputSuccess2">Document Upload Date :</label>
+                                                    <input type="text" id="txtLastName" class="form-control input-sm input-width datepicker date_us" ng-model="investigativedocDocumentUploadDate">
+                                                </div>
+                                            </div>
+                                            <div class="text-right" style="margin-right: 20px;">
+                                                <span>
+                                                    <a class="btn btn-success medium" id="A6" ng-click="Saveinvestigativedoc()">Search</a>
+                                                    <a class="btn head-btn" id="A7">Cancel</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table user-table table-bordered mt10">
+                                    <thead>
+                                        <tr class="light-blue">
+                                            <th class="lg-width" style="text-align: left;">Document Name</th>
+                                            <th class="md-width" style="text-align: left;">Document Type</th>
+                                            <th class="sm-width" style="text-align: left;">Date</th>
+                                            <th class="md-width" style="text-align: left;">Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="lg-width" style="text-align: left;">MI1509211123563-78-Individual.jpg</td>
+                                            <td class="md-width" style="text-align: left;">Certification of Individual</td>
+                                            <td class="sm-width" style="text-align: left;">9/18/2015</td>
+                                            <td class="md-width" style="text-align: left;"><a style="color: Blue !important;"><u>Document Details</u></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="verification">
+                            <div class="inner-round">
+                                <div class="header-sky">
+                                    <h4 class="ml10">Add Form</h4>
+                                </div>
+                                <div class="p10">
+                                    <div class="all-form individual-person row">
+                                        <div class="form-div">
+                                            <label id="lblMovingTo" class="control-label" for="inputSuccess2">Moving To :</label>
+                                            <select id="ddlMovingTo" class="form-control input-sm input-width" ng-model="verificationMovingTo">
+                                                <option value="">SD</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-div">
+                                            <label id="lblFormName" class="control-label" for="inputSuccess2">Form Name :</label>
+                                            <input id="txtFormName" type="text" class="form-control input-sm input-width" ng-model="verificationFromName">
+                                        </div>
+                                    </div>
+                                    <div class="all-form individual-person row">
+                                        <div class="form-div">
+                                            <label id="Label18" class="control-label" for="inputSuccess2">From :</label>
+                                            <a class="btn head-btn btn-sm small">Choose file</a>
+                                            No File selected..
+                                            <a class="btn btn-success btn-sm small">Upload</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-right mt10 mr10">
+                                    <a class="btn btn-success">Add Row</a>
+                                </div>
+                                <table class="table user-table table-bordered mt10">
+                                    <thead>
+                                        <tr class="light-blue">
+                                            <th class="sm-width text-center">Moving To</th>
+                                            <th class="lg-width text-center">Form Name</th>
+                                            <th class="sm-width text-center">Date</th>
+                                            <th class="md-width text-center">Document Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="sm-width text-center">NV</td>
+                                            <td class="lg-width text-center">Out Of State Verification - NV</td>
+                                            <td class="sm-width text-center">9/18/2015</td>
+                                            <td class="md-width text-center"><a style="color: Blue !important;"><u>Document Details</u></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="toolBar">
+                                    <span class="fltrt pull-right">
+                                        <a class="btn btn-success">Save</a>
+                                        <a class="btn head-btn">Cancel</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

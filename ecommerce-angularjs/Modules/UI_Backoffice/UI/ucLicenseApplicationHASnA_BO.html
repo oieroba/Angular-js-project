@@ -1,0 +1,884 @@
+﻿<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+    });
+</script>
+<div class="get-started-content" id="LicenseReHASBo" style="width: 100%;"  ng-init="init()">
+    <div class="inner-round applicationform">
+        <div class="inner-app-form header-light-gray">
+            <div class="text-center">
+                <ul>
+                    <li class="header-span">
+                        <b>License Specialist & Apprentice</b>
+                    </li>
+                    <li class="header-span">
+                        <b>License Renewal Application</b>
+                    </li>
+                    <li>
+                        <ul class="header-active-in">
+                            <li class="mt10">
+                                <div class="radio-inline">
+                                    <input class="remove-margin" type="radio" name="optionsRadios" id="optionsRadios1" value="Active" ng-model="LNAStatus">
+                                    Active
+                                </div>
+                                <div class="radio-inline">
+                                    <input class="remove-margin" type="radio" name="optionsRadios" id="optionsRadios2" value="InActive" ng-model="LNAStatus">
+                                    Inactive
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="InactiveLicense" class="p10" style="display: block; margin-bottom: 17px; margin-top: 10px;">
+                <div class="ml10 checkbox" style="width: 752px; margin: 0 auto 0 106px;">
+                    <input class="remove-margin" type="checkbox" value="checked" />
+                    <span style="font-weight: bold; font-size: 15px; display: inline-block; margin-top: -1px;"><b>Inactive License :</b></span>
+                    <span class="pull-right ml10" style="line-height: 21px; font-size: 14px; width: 584px; margin-right: 33px; margin-top: -20px;">I will not practice as a License Aid Specialist, or represent that I am authorized to practice as a License Aid Specialist in Nevada during the period my license is inactive.</span>
+                </div>
+            </div>
+            <div class="lirenew-info">
+                <div class="form-div ml10">
+                    <label class="control-label sm-label text-right mr5">
+                        <b>Fee :</b>
+                    </label>
+                    <span>$100</span>
+                </div>
+                <div class="form-div ml10">
+                    <label class="control-label sm-label text-right mr5">
+                        <b>Renewal # :</b>
+                    </label>
+                    <span>OL150831034777</span>
+                </div>
+                <div class="form-div ml10">
+                    <label class="control-label sm-label text-right mr5">
+                        <b>License # :</b>
+                    </label>
+                    <span>{{LicenseNumber}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="flsApplReqForm">
+            <p>This renewal application must be completed prior to the expiration date on your license.</p>
+            <p>To renew your license and receive your current license (aka renewal certificate), you must submit this completed form and pay the required fee no later than the expiration date of your license.</p>
+            <p>
+                Be certain to<b> answer all questions on the form </b>including the Continuing Education requirement section. This education must be obtained between the current license period start date and the date of this renewal. Fraudently representing, or failure to obtain continuing education as represented on this renewal/continuing education form could result in disciplinary action.
+            </p>
+            <p>Any changes to your personal information must be made in the form below, and you MUST provide legal documentation if needed ( i.e. for name change you will need to provide a marriage certificate or divorce decree).</p>
+        </div>
+        <fieldset class="flsApplReqForm">
+            <div style="text-align:center;">
+                <span>
+                    <input id="ContentPlaceHolder1_ucLicenseRenewalHASnA1_CheckBox1" type="checkbox" checked="checked" name="ctl00$ContentPlaceHolder1$ucLicenseRenewalHASnA1$CheckBox1">
+                    <label for="ContentPlaceHolder1_ucLicenseRenewalHASnA1_CheckBox1" style="font-weight: normal; display: inline-block; vertical-align: top; line-height: 21px;">Renewal period from {{LicenseEffectiveDate|date}} To {{LicenseExpirationDate|date}}</label>
+                </span>
+            </div>
+        </fieldset>
+
+        <div class="header-gray">
+            <div class="text-center">
+                <h4>Licensee Information </h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm">
+            <p><b>If different than license, Legal proof of name change such as marriage certificate or divorce degree is required.</b></p>
+            <div class="inner-round">
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="Label4" class="control-label sm-label" for="inputSuccess2">
+                                <b>Legal Name :</b>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblFirstName" class="control-label required-label sm-label" for="inputSuccess2">First Name :</label>
+                            <input type="text" id="txtFirstName" class="form-control input-sm nat-alphabet nat-required UI_IndividualRenewalLicenseRenewalHASnAvalidation" requirederrormessage="Firstname is required" ng-model="FirstName">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div pull-right">
+                            <label id="lblLastName" class="control-label required-label sm-label" for="inputSuccess2">Last Name :</label>
+                            <input type="text" id="txtLastName" class="form-control input-sm nat-alphabet nat-required UI_IndividualRenewalLicenseRenewalHASnAvalidation" requirederrormessage="Lastname is required" ng-model="LastName">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblMiddleName" class="control-label sm-label" for="inputSuccess2">Middle Name :</label>
+                            <input type="text" id="txtMiddleName" class="form-control nat-alphabet input-sm" ng-model="MiddleName">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div pull-right">
+                            <label id="lblDateOfBirth" class="control-label required-label sm-label" for="inputSuccess2">Date of Birth :</label>
+                            <input type="text" id="txtDateOfBirth" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAvalidation datepicker date_us" requirederrormessage="Date of Birth  is required" ng-model="DateOfBirth | date :'short'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-round p10">
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <h4 class="text-center f12">Residential Address :</h4>
+                        <div class="form-div">
+                            <label id="lblStreet" class="control-label sm-label">Street :</label>
+                            <input id="txtStreet" type="text" class="form-control input-sm" ng-model="Street">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblStreet2" class="control-label sm-label"></label>
+                            <input id="txtStreet2" type="text" class="form-control input-sm" ng-model="Street2">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblCity" class="control-label sm-label" for="inputSuccess2">City :</label>
+                            <input id="txtCity" type="text" class="form-control input-sm" ng-model="City">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblState" class="control-label sm-label">State :</label>
+                            <select id="ddlState" class="form-control input-sm" ng-options="sl.StateCode as sl.Name for sl in StatList" ng-model="State">
+                                <option value="">-Select State-</option>
+                            </select>
+                        </div>
+                        <div class="form-div">
+                            <label id="Label1" class="control-label sm-label" for="inputSuccess2">Zip :</label>
+                            <input id="Text1" type="text" class="form-control input-sm zip_us" ng-model="ZIP" />
+                        </div>
+
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <h4 class="text-center council-address f12">
+                            Mailing Address : <span>
+                                (<input type="checkbox" ng-model="IsMailingSameasPhysical" ng-click="makeSameAsPhysicalAddress($event)" />
+                                Same as Physical Address )
+                            </span>
+                        </h4>
+                        <div class="form-div pull-right">
+                            <label id="Label2" class="control-label sm-label">Street :</label>
+                            <input id="Text2" type="text" class="form-control input-sm" ng-model="MailingStreet">
+                        </div>
+                        <div class="form-div pull-right">
+                            <label id="Label3" class="control-label sm-label"></label>
+                            <input id="Text3" type="text" class="form-control input-sm" ng-model="MailingStreet2">
+                        </div>
+                        <div class="form-div pull-right">
+                            <label id="Label5" class="control-label sm-label" for="inputSuccess2">City :</label>
+                            <input id="Text4" type="text" class="form-control input-sm" ng-model="MailingCity">
+                        </div>
+                        <div class="form-div pull-right">
+                            <label id="Label6" class="control-label sm-label">State :</label>
+                            <select id="Select1" class="form-control input-sm" ng-options="sl.StateCode as sl.Name for sl in StatList" ng-model="MailingState">
+                                <option value="">-Select State-</option>
+                            </select>
+                        </div>
+                        <div class="form-div pull-right">
+                            <label id="Label7" class="control-label sm-label" for="inputSuccess2">Zip :</label>
+                            <input id="Text5" type="text" class="form-control input-sm zip_us" ng-model="MailingZIP">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-round">
+                <div class="all-form row mt10">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblHomePhone" class="control-label sm-label" for="inputSuccess2">Home phone :</label>
+                            <input type="Text" id="txtHomePhone" class="form-control input-sm nat-regex phone_us" valueexpression="^\([0-9]{3}\) ?[0-9]{3}-[0-9]{4}$" maxlength="15" valueerrormessage="Invalid Home phone. Format eg:(XXX) XXX-XXXX Or (XXX)XXX-XXXX" ng-model="HomePhone">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div ml5">
+                            <label id="lblCellPhone" class="control-label sm-label" for="inputSuccess2">Cell Phone :</label>
+                            <input type="Text" id="txtCellPhone" class="form-control input-sm nat-regex phone_us" valueexpression="^\([0-9]{3}\) ?[0-9]{3}-[0-9]{4}$" maxlength="15" valueerrormessage="Invalid Cell phone. Format eg:(XXX) XXX-XXXX Or (XXX)XXX-XXXX" ng-model="CellPhone">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblOfficePhone" class="control-label sm-label" for="inputSuccess2">Office Phone :</label>
+                            <input type="text" id="txtOfficePhone" class="form-control input-sm nat-regex phone_us" valueexpression="^\([0-9]{3}\) ?[0-9]{3}-[0-9]{4}$" maxlength="15" valueerrormessage="Invalid Office phone. Format eg:(XXX) XXX-XXXX Or (XXX)XXX-XXXX" ng-model="OfficePhone">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div ml5">
+                            <label id="lblFax" class="control-label sm-label" for="inputSuccess2">Fax :</label>
+                            <input type="text" id="txtFax" class="form-control input-sm phone_us" ng-model="Fax">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblEmailAddress" class="control-label sm-label" for="inputSuccess2">Email Address :</label>
+                            <input type="text" id="txtEmailAddress" class="form-control input-sm nat-email" valueerrormessage="Invalid Email" ng-model="EmailAddress">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Employment Information (list the employer name and primary professional address) </h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm">
+            <div class="text-right mt10 mr10 mb10" style="margin-right: 38px;">
+                <a class="btn btn-success" id="btnEmploymentInformation" ng-click="clearDataEmployment()">Add</a>
+            </div>
+            <div id="LicenseRenewal_EmploymentInformation">
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblEmployerName" class="control-label required-label sm-label" for="inputSuccess2">Employer Name :</label>
+                            <input type="text" id="txtEmployreName" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAEmployementvalidation" requirederrormessage="Employee name is required" ng-model="EmployerName">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="" class="control-label sm-label" for="inputSuccess2">
+                                <h6>
+                                    <b>Physical Address :</b>
+                                </h6>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblStreet" class="control-label required-label sm-label" for="inputSuccess2">Street :</label>
+                            <input type="text" id="txtStreet" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAEmployementvalidation" requirederrormessage="Street is required" ng-model="PhysicalAddressStreet">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="Label22" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                            <input type="text" id="Text6" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAEmployementvalidation" requirederrormessage="City is required" ng-model="EmployerCity">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="" class="control-label sm-label" for="inputSuccess2"></label>
+                            <input type="text" id="txtStreet" class="form-control input-sm" ng-model="PhysicalAddressStreet2">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="Label23" class="control-label required-label sm-label" for="inputSuccess2">State :</label>
+                            <select id="Select2" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAEmployementvalidation" requirederrormessage="State is required" ng-options="sl.StateCode as sl.Name for sl in StatList" ng-model="PhysicalAddressState">
+                                <option value="">-Select State-</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="all-form row plr10">
+                                    <div class="col-sm-6 col-md-6">
+                                        <h4 class="modal-title">User Address</h4>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <h4 class="modal-title">Verified Address</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class=" all-form row plr10">
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-div ml10">
+                                            <label id="Label24" class="control-label" for="inputSuccess2">Street :</label>
+                                            <span></span>
+                                        </div>
+                                        <div class="form-div ml10">
+                                            <label id="Label25" class="control-label" for="inputSuccess2">City :</label>
+                                            <span></span>
+                                        </div>
+                                        <div class="form-div ml10">
+                                            <label id="Label26" class="control-label" for="inputSuccess2">State :</label>
+                                            <span></span>
+                                        </div>
+                                        <div class="form-div ml10">
+                                            <label id="Label27" class="control-label" for="inputSuccess2">Zip :</label>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div class="form-div ml10">
+                                            <label id="Label28" class="control-label" for="inputSuccess2">Street :</label>
+                                            <span></span>
+                                        </div>
+                                        <div class="form-div ml10">
+                                            <label id="Label29" class="control-label" for="inputSuccess2">City :</label>
+                                            <span></span>
+                                        </div>
+                                        <div class="form-div ml10">
+                                            <label id="Label30" class="control-label" for="inputSuccess2">State :</label>
+                                            <span></span>
+                                        </div>
+                                        <div class="form-div ml10">
+                                            <label id="Label31" class="control-label" for="inputSuccess2">Zip :</label>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="all-form row plr10">
+                                    <div class="col-sm-6 col-md-6">
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Use User Address </button>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Use Verified Address</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Modal -->
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblZip" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                            <input type="text" id="txtZip" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAEmployementvalidation zip_us" requirederrormessage="Zip is required" ng-model="PhysicalAddressZIP">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <div class="text-right mr10 mb10">
+                                <a class="btn btn-success" data-toggle="modal" data-target="#myModal">Verify Address</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblWorkPhone" class="control-label sm-label" for="inputSuccess2">Work Phone :</label>
+                            <input type="text" id="txtWorkPhone" class="form-control input-sm phone_us" ng-model="WorkPhone">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblAlternatePhone" class="control-label sm-label" for="inputSuccess2">Alternate Phone :</label>
+                            <input type="text" id="txtAlternatePhone" class="form-control input-sm  phone_us" ng-model="AlternatePhone">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblDateofBirth" class="control-label sm-label" for="inputSuccess2">Employment StartDate :</label>
+                            <input type="text" id="txtDateofBirth" class="form-control input-sm datepicker date_us" ng-model="EmploymentStartDate">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div ml10">
+                            <label id="lblFax" class="control-label sm-label" for="inputSuccess2">Fax :</label>
+                            <input type="text" id="txtFax" class="form-control input-sm phone_us" ng-model="Fax">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row mb10">
+                    <div class="col-md-offset-1 col-sm-10 col-md-10">
+                        <div class="toolBar">
+                            <span class="pull-right">
+                                <a class="btn btn-success medium" ng-click="SaveEmploymentInformation()">Save</a>
+                                <a class="btn head-btn" id="btnCancelEmployementInformation">Cancel</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table user-table table-bordered emp-info">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="lg-width">Employer Name</th>
+                        <th class="lg-width text-center">Work Phone</th>
+                        <th class="sm-width">City</th>
+                        <th class="text-center sm-width">State</th>
+                        <th class="text-center sm-width">Zip</th>
+                        <th class="text-center sm-width">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="EmploymentInformation.length==0">
+                        <td class="lg-width" colspan="6" align="center"><h4>No Record Found</h4></td>
+                    </tr>
+                    <tr ng-repeat="ei in EmploymentInformation">
+                        <td class="lg-width">{{ei.EmployerName}}</td>
+                        <td class="sm-width" ng-hide="{{ei.EmploymentContact[0].ContactTypeId==3}}">No Work Phone Found</td>
+                        <td class="sm-width" ng-show="{{ei.EmploymentContact[0].ContactTypeId==3}}">{{ei.EmploymentContact[0].ContactInfo}}</td>
+                        <td class="lg-width">{{ei.EmploymentAddress[0].City}}</td>
+                        <td class="text-center sm-width">{{ei.EmploymentAddress[0].StateCode}}</td>
+                        <td class="text-center sm-width">{{ei.EmploymentAddress[0].Zip}}</td>
+                        <td class="sm-width">
+                            <ul class="text-center">
+                                <li class="text-left">
+                                    <a id="{{ei.IndividualEmploymentId}}" ng-click="EditEmploymentInformation(ei.IndividualEmploymentId,$index + 1)">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </li>
+                                <li class="text-left">
+                                    <a id="{{ei.IndividualEmploymentId}}" ng-click="DeleteEmploymentInformation($index + 1)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Certification Status Update</h4>
+            </div>
+        </div>
+        <div class="plr10">
+            <div class="all-form row mb20">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="checkbox mb20">
+                        <input class="remove-margin" type="checkbox" value="" ng-model="NoChanges" />No Changes
+                    </div>
+                    <div class="checkbox mb10">
+                        <input class="remove-margin" type="checkbox" value="" ng-model="IsNBCHIS" />NBC-HIS
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div mt30">
+                        <label id="lblAccountNumber" class="control-label sm-label" for="inputSuccess2">Account Number :</label>
+                        <input type="Text" id="txtAccountNumber" class="form-control input-sm" ng-model="NBCHISAccount">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-gray mt20">
+            <div class="text-center">
+                <h4>Apprentice-Sponsor Information</h4>
+            </div>
+        </div>
+        <div class="plr10 sp-info">
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div ml10">
+                        <label id="lblFirstNameOfSponser" class="control-label required-label sm-label" for="inputSuccess2">FirstName:</label>
+                        <input type="text" id="txtFirstNameOfSponser" class="form-control input-sm nat-required nat-alphabet UI_IndividualRenewalLicenseRenewalHASnAvalidation" requirederrormessage="Sponsor's firstname is required" ng-model="SponserFirstName">
+                    </div>
+                    <div class="form-div ml10">
+                        <label id="lblMiddleNameOfSponser" class="control-label sm-label" for="inputSuccess2">MiddleName:</label>
+                        <input type="text" id="txtMiddleNameOfSponser" class="form-control nat-alphabet input-sm" ng-model="SponserMiddleName">
+                    </div>
+                    <div class="form-div ml10">
+                        <label id="lblLastNameOfSponser" class="control-label required-label sm-label" for="inputSuccess2">LastName:</label>
+                        <input type="text" id="txtLastNameOfSponser" class="form-control input-sm nat-required nat-alphabet UI_IndividualRenewalLicenseRenewalHASnAvalidation" requirederrormessage="Sponsor's Lastname is required" ng-model="SponserLastName">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-div">
+                        <label id="lblSponsersNevadaLicenseNumber" class="control-label required-label" for="inputSuccess2" style="width: auto;">Sponsor's Nevada License Number :</label>
+                        <input type="text" id="txtSponsersNevadaLicenseNumber" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAvalidation" requirederrormessage="Sponsors license number is required" ng-model="SponsersLicenseNumber">
+                    </div>
+                </div>
+            </div>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div ml10">
+                        <label id="Label9" class="control-label sm-label" for="inputSuccess2">
+                            <h6>
+                                <b>Business Location :</b>
+                            </h6>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div ml10">
+                        <label id="lblStreet" class="control-label sm-label" for="inputSuccess2">Street :</label>
+                        <input type="Text" id="txtStreet" class="form-control input-sm" ng-model="BusinessLocationStreet1">
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div pull-right">
+                        <label id="lblState" class="control-label sm-label" for="inputSuccess2">State :</label>
+                        <select id="Select3" class="form-control input-sm" ng-options="sl.StateCode as sl.Name for sl in StatList" ng-model="BusinessLocationState">
+                            <option value="">-Select State-</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div ml10">
+                        <label id="lblStreet2" class="control-label sm-label" for="inputSuccess2"></label>
+                        <input type="text" id="txtStreet2" class="form-control input-sm" ng-model="BusinessLocationStreet2">
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div pull-right">
+                        <label id="lblZip" class="control-label sm-label" for="inputSuccess2">Zip :</label>
+                        <input type="text" id="txtZip" class="form-control input-sm zip_us" ng-model="BusinessLocationZIP">
+                    </div>
+                </div>
+            </div>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div ml10">
+                        <label id="lblCity" class="control-label sm-label" for="inputSuccess2">City :</label>
+                        <input type="text" id="txtCity" class="form-control input-sm " ng-model="BusinessLocationCity">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Nevada Business License Information- Check Appropriate answer</h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm child-support">
+            <div ng-if="BusinessLicenseInformation.length==0">
+                <div class="text-center"><h4>No Record Found</h4></div>
+            </div>
+            <div ng-repeat="bl in BusinessLicenseInformation">
+                <div class="radio">
+                    <label>
+                        <input class="remove-margin" type="radio" ng-model="ContentItemResponse" name="NBLicenseInfo" ng-click="addBusinessInformation(bl.IndividualNVBusinessLicenseId)" value="{{bl.IndividualNVBusinessLicenseId}}" />
+                        {{bl.ContentDescription}}
+                    </label>
+                </div>
+                <div class="all-form row nev-business" ng-if="bl.ContentItemHash==1">
+                    <div class="col-md-offset-1 col-sm-10 col-md-10">
+                        <div class="form-div ml10">
+                            <label id="lblNameOfBusinessLicense" class="control-label sm-label" for="inputSuccess2">Name of business license :</label>
+                            <input type="text" id="txtNameOfBusinessLicense" ng-blur="addBusinessInformation(bl.IndividualNVBusinessLicenseId)" ng-model="txtNameOfBusinessLicense" class="form-control input-sm">
+                        </div>
+
+                        <div class="form-div ml10">
+                            <label id="lblBusinessLicense" class="control-label sm-label" for="inputSuccess2">Business License # :</label>
+                            <input type="text" id="txtBusinessLicense" ng-blur="addBusinessInformation(bl.IndividualNVBusinessLicenseId)" ng-model="txtBusinessLicense" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p>
+                    The C3 INFO SYSTEM is not the arbiter of determining whether the applicant needs a business license. Information about the Nevada business license can be found on the Secretary of State’s website at : <a target="_blank" style="color:blue;">http://nvsos.gov/</a>
+                </p>
+            </div>
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Child Support Information – AN ANSWER IS MANDATORY – Check ONE appropriate answer</h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm child-support">
+            <center>
+                <span class="text-center">
+                    <b>Mark the appropriate response (failure to mark one of the three will result in denial of your application) :</b>
+                </span>
+            </center>
+            <div></div>
+            <div class="radio mt30" ng-repeat="csi in IndividualChildSupport">
+                <label>
+                    <input class="remove-margin" type="radio" ng-model="IndividualChildSupportContentItemResponse" value="{{csi.IndividualChildSupportId}}" ng-click="addIndividualChildSupport(csi.IndividualChildSupportId)" name="ChildSupportInfo" />
+                    {{csi.ContentDescription}}
+                </label>
+            </div>
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Veteran Information</h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm vetren-info">
+            <div class="radio mt30">
+                <div id="Label8" class="required-label mr10 pull-left" for="inputSuccess2" style="width:220px;">
+                    <b>Have you ever served in the military :</b>
+                </div>
+                <div class="ml10 radio-inline mt5">
+                    <input class="remove-margin" type="radio" id="radio7" name="optradio" ng-model="Military" value="yes" /><span class="mt5">Yes</span>
+                </div>
+                <div class="radio-inline" style="margin-top:5px;">
+                    <input class="remove-margin" type="radio" id="radio19" name="optradio" ng-model="Military" value="no" /><span class="mt5">No</span>
+                </div>
+            </div>
+            <div class="mb10">
+                <div>
+                    <b>Branch(es) of Services :</b> (Check all that apply)
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li ng-repeat="vb in VeteranBranches">
+                        <input id="{{vb.BranchofServicesId}}" class="remove-margin" type="checkbox" ng-model="vb.BranchofServicesIdResponse" ng-checked="vb.BranchofServicesIdResponse==true" ng-click="getSelectedCheckboxValue(vb.BranchofServicesId)" />
+                        <span class="ml5">{{vb.ContentDescription}}</span>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="all-form row">
+                <div class="col-sm-7 col-md-7 branch-service">
+                    <div class="form-div ml10">
+                        <label id="lblMilitaryOccupationSpeciality/Specialitie" class="required-label sm-label" for="inputSuccess2">
+                            <b>Military Occupation Speciality/Specialities :</b>
+                        </label>
+                        <input type="text" id="txtMilitaryOccupationSpeciality/Specialitie" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAvalidation" requirederrormessage="Military specialist is required" ng-model="MilitarySpecialist">
+                    </div>
+                </div>
+            </div>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-6 col-md-6 date-services">
+                    <div class="form-div ml10">
+                        <b class="">Date(s) of Service :</b>
+                        <label id="lblFrom" class="required-label" for="inputSuccess2">From :</label>
+                        <input type="text" id="txtFrom" class="form-control input-sm nat-required UI_IndividualRenewalLicenseRenewalHASnAvalidation datepicker date_us" requirederrormessage="FromDate of service is required" ng-model="FromDateOfService" placeholder="MM/DD/YYYY">
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div">
+                        <label id="lblTo" class="control-label required-label" for="inputSuccess2">To :</label>
+                        <input type="text" id="txtTo" class="form-control input-sm  nat-required UI_IndividualRenewalLicenseRenewalHASnAvalidation datepicker date_us" requirederrormessage="ToDate of service is required" ng-model="ToDateOfService" placeholder="MM/DD/YYYY">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Legal Information - If YES - please provide explanation</h4>
+            </div>
+        </div>
+        <div class="plr10">
+            <div class="all-form row legal-info" ng-repeat="IL in IndividualLegal">
+                <div class="col-sm-10 col-md-10 required-label">
+                    <span>{{$index + 1}}</span> {{IL.ContentDescription}}
+                </div>
+                <div class="col-sm-2 col-md-2">
+                    <div class="radio-inline">
+                        <input class="remove-margin" type="radio" name="LicenseRenewalradio{{$index}}" ng-click="checkLegalRB(IL.ContentItemNumber)" ng-model="IL.ContentItemResponse" ng-checked="IL.ContentItemResponse==true" />Yes
+                    </div>
+                    <div class="radio-inline">
+                        <input class="remove-margin" type="radio" name="LicenseRenewalradio{{$index}}" ng-click="checkLegalRB1(IL.ContentItemNumber)" ng-model="IL.ContentItemResponse" ng-checked="IL.ContentItemResponse==false" />No
+                    </div>
+                </div>
+                <div id="LicenseRenewalLegalInfo{{IL.ContentItemNumber}}" class="row plr10 text-center" ng-show="IL.ContentItemResponse==true">
+                    <div class="col-sm-10 col-md-10"></div>
+                    <textarea class="legal-textarea input-sm" cols="20" rows="3" ng-model="IL.Desc" ng-blur="checkLegalRB(IL.ContentItemNumber)"></textarea>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Continuing Education Information - Minimum 12 hours</h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm">
+            <span>
+                List date of completion; course(S), and CE Hours awarded for continuing education credit that was completed in the <b>previous 12 months</b>.
+            </span>
+            <div class="text-right mt10 mr10 mb10" style="margin-right: 37px;">
+                <a class="btn btn-success" id="btnContinuingEducationInfo">Add Rows</a>
+            </div>
+            <div class="emp-info">
+                <div class="inner-round mb10" id="ContinuingEductationInfoRow">
+                    <div class="all-form edu-info mt10">
+                        <div style="width:262px; display:inline-block;">
+                            <div class="form-div">
+                                <label id="lblDate" class="control-label">Date :</label>
+                                <input type="text" id="txtDate" class="form-control input-sm datepicker date_us" placeholder="MM/DD/YYYY" ng-model="EducationInformationDate" />
+                            </div>
+                        </div>
+                        <div style="width:262px; display:inline-block;">
+                            <div class="form-div ml10">
+                                <label id="lblCourse" class="control-label" for="inputSuccess2">Course :</label>
+                                <input type="text" id="txtCourse" class="form-control nat-alphabet input-sm" ng-model="EducationInformationCourse">
+                            </div>
+                        </div>
+                        <div style="width:262px; display:inline-block;">
+                            <div class="form-div ml10">
+                                <label id="lblCEHours" class="control-label" for="inputSuccess2">CE Hours :</label>
+                                <input type="text" id="txtCEHours" class="form-control nat-alphabet input-sm" ng-model="EducationInformationCEHours">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toolBar">
+                        <span class="pull-right">
+                            <a class="btn btn-success medium" ng-click="addCourse()">Save</a>
+                            <a class="btn head-btn" id="btnCancelContinuingEducationInfo">Cancel</a>
+                        </span>
+                    </div>
+                </div>
+                <table class="table user-table table-bordered">
+                    <thead>
+                        <tr class="light-blue">
+                            <th class="lg-width">Date</th>
+                            <th class="lg-width text-center">Course</th>
+                            <th class="lg-width text-center">CE Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-if="IndividualCECourse.length==0">
+                            <td class="lg-width" colspan="3" align="center"><h4>No Record Found</h4></td>
+
+                        </tr>
+
+                        <tr ng-repeat="ic in IndividualCECourse">
+                            <td class="lg-width">{{ic.CECourseDate | date }}</td>
+                            <td class="md-width">{{ic.CourseNameTitle}}</td>
+                            <td class="lg-width">{{ic.CECourseHours}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Fee Details(s)</h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm">
+            <span style="color:#ff0000;font-weight:bold;">Your credit/debit card will be charged by Test Company. The fees are NOT REFUNDABLE, PLEASE ENSURE THE ACCURACY OF YOUR INFORMATION.</span>
+            <div class="all-form row mt10">
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div ">
+                        <div id="Label10" for="inputSuccess2">
+                            <b>Description</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-div ">
+                        <div id="Label11" for="inputSuccess2">
+                            <b>Fee Type</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-div ">
+                        <div id="Label12" for="inputSuccess2">
+                            <b>Fee Status</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="all-form row" ng-repeat="f in FeesDetails">
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div ">
+                        <div id="Label13" for="inputSuccess2">{{f.Description}}</div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-div">
+                        <div id="Label14" for="inputSuccess2">{{f.FeeType}}</div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-div ">
+                        <div id="Label15" for="inputSuccess2">${{f.Amount}} {{f.Status}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="all-form row">
+                <div class="col-sm-11 col-md-11 ml10" style="border-top: 1px solid rgba(128, 128, 128, 0.29);">
+                </div>
+            </div>
+            <div class="all-form row border-top">
+                <div class="col-sm-5 col-md-5">
+                    <div id="Label19" class="sm-label" for="inputSuccess2"></div>
+                </div>
+
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-div ">
+                        <div id="Label20" for="inputSuccess2">
+                            <b>Total :</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-md-3">
+                    <div class="form-div ">
+                        <div id="Label21" for="inputSuccess2">
+                            <b>${{UnPaidFees}} Unpaid</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="header-gray mt30">
+            <div class="text-center">
+                <h4>Acknowledgement and Declaration of Applicant</h4>
+            </div>
+        </div>
+        <div class="flsApplReqForm">
+            <span>
+                I,
+                <input class="input-sm" type="text" id="txtLesaPensak" value=" LESA PENSAK" ng-model="AckAppliciant" />
+                , declare, under penalty of perjury, all the information supplied herein is to the best of my knowledge true, accurate and complete and I have not withheld, misrepresented, or falsely stated any information relevant to my training or experience or my fitness to practice as a License Specialist or Apprentice.
+            </span>
+            <div class="all-form row">
+                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                    <div class="form-div ml10">
+                        <label id="lblName" class="control-label sm-label" for="inputSuccess2">Name :</label>
+                        <input type="Text" id="txtName" class="form-control input-sm" ng-model="AckAppliciantName">
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="form-div pull-right">
+                        <label id="lblDateOfApplication" class="control-label sm-label" for="inputSuccess2">Date Of Application :</label>
+                        <input type="Text" id="txtDateOfApplication" class="form-control input-sm datepicker date_us" placeholder="MM/DD/YYYY" ng-model="AckAppliciantDate">
+                    </div>
+                </div>
+            </div>
+            <div class="toolBar mb10">
+                <span class="fltrt pull-right">
+                    <a class="btn btn-success medium" ng-click="insert()">Save</a>
+                    <a class="btn btn-success medium" ng-click="processToPayment()">Proceed to Payment</a>
+                    <a class="btn head-btn">Cancel</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="LicenseAppClose" class="toolBar mt10 mb10">
+    <span class="fltrt Pull-left all-form">
+        <span class="form-div">
+            <a class="btn btn-success btn-sm" id="A4">Assign To</a>
+            <select id="Select4" class="form-control input-sm">
+                <option value="Select">Select</option>
+            </select>
+        </span>
+    </span>
+    <span class="fltrt pull-right">
+        <a class="btn btn-success btn-sm" id="A1">Save as PDF</a>
+        <a class="btn btn-success btn-sm" id="A2">Confirm and Pre-Approve</a>
+        <a class="btn btn-success btn-sm" id="A3" disabled>Confirm and Approve</a>
+        <a class="btn head-btn" id="CloseApp">Close Application</a>
+    </span>
+</div>

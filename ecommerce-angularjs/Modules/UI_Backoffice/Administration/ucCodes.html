@@ -1,0 +1,215 @@
+<div class="search-info collapse" id="searchdata">
+    <a id="Close" class="close">
+        <i class="fa fa-close"></i>
+    </a>
+    <div class="all-form row">
+        <div class="col-md-offset-1 col-sm-5 col-md-5 p10">
+            <div class="form-div">
+                <label id="lblCodedesc" class="control-label sm-label" for="inputSuccess2">Code/Description :</label>
+                <input type="text" id="txtCodedesc" class="form-control input-sm mb0">
+            </div>
+        </div>
+        <div class="col-sm-5 col-md-5 p10">
+            <div class="form-div">
+                <label id="Codetype" class="control-label">Code Type :</label>
+                <select id="ddlCodetype" class="form-control input-sm mb0">
+                    <option value="">Select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="text-right mr10">
+        <span class="fltrt pull-right">
+            <a class="btn btn-success medium" ng-click="searchUser()">Search</a>
+            <a class="btn head-btn" ng-click="canclePage()">Cancel</a>
+        </span>
+    </div>
+</div>
+<div class="all-form row">
+    <div class="col-sm-4 col-md-4">
+        <div class="inner-round" style="margin-top:0;">
+            <div class="plr10">
+                <div class="user-form mt10 mb20" style="overflow:hidden;">
+                    <span class="pull-left">Code Type</span>
+                    <a class="pull-right btn btn-success">Add Code Type</a>
+                </div>
+                <table class="table user-table table-bordered">
+                    <thead>
+                        <tr class="light-blue">
+                            <th>Code Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="selected">
+                                <span class="sm-width pull-left" style="margin-top:8px;">State</span>
+                                <ul class="pull-left" style="margin-top:6px;">
+                                    <li>
+                                        <i class="fa fa-pencil"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-trash"></i>
+                                    </li>
+                                </ul>
+                                <span class="pull-right">
+                                    <a class="btn btn-primary btn-sm">Select</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 col-md-8">
+        <div class="inner-round" style="margin-top:0;">
+            <div class="p10">
+                <div class="all-form row mt10">
+                    <div class="col-md-offset-1 col-sm-7 col-md-7">
+                        <div class="form-div">
+                            <label id="lblCodeType" class="control-label required-label sm-label" for="inputSuccess2">Code Type :</label>
+                            <input type="text" id="txtCodeType" class="form-control input-sm mb0">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblDescription" class="control-label required-label sm-label" for="inputSuccess2">Description :</label>
+                            <textarea id="ddlDescription" class="input-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="toolBar">
+                <span class="pull-right">
+                    <a class="btn btn-success medium">Save</a>
+                    <a class="btn head-btn">Cancel</a>
+                </span>
+            </div>
+
+        </div>
+        <div class="inner-round">
+            <div class="gridUpperDiv">
+                <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                <span class="fltlt ml10">
+                    <a class="btn small gray btn-xs pill-left">Archive</a>
+                    <a class="btn small gray btn-xs pill-right">Delete</a>
+                </span>
+                <span id="searchdata" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <div class="inner-round">
+                <div class="all-form row">
+                    <div class="col-sm-6 col-md-6 p10">
+                        <div class="form-div">
+                            <label id="lblCodeName" class="control-label required-label" for="inputSuccess2">Code Name :</label>
+                            <input type="text" id="txtCodedesc" class="form-control input-sm mb0">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblDescription" class="control-label required-label" for="inputSuccess2">Description :</label>
+                            <textarea id="ddlDescription" class="input-sm"></textarea>
+                        </div>
+                        <div class="form-div">
+                            <label id="lblDescription" class="control-label required-label" for="inputSuccess2">Default Display :</label>
+                            <input type="checkbox" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 p10">
+                        <div class="form-div">
+                            <label id="Codetype" class="control-label">Code Type :</label>
+                            <select id="ddlCodetype" class="form-control input-sm mb0">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                        <div class="form-div">
+                            <label id="lblCodeName" class="control-label" for="inputSuccess2">Display Order :</label>
+                            <input type="text" id="txtDisplayOrder" class="form-control input-sm mb0">
+                        </div>
+                    </div>
+                </div>
+                <div class="toolBar">
+                    <span class="pull-right">
+                        <a class="btn btn-success medium">Save</a>
+                        <a class="btn head-btn">Cancel</a>
+                    </span>
+                </div>
+            </div>
+            <div class="text-right mt10 mb10 mr10">
+                <a class="btn btn-success btn-sm">Add New Code</a>
+            </div>
+            <div class="m10">
+                <table class="table user-table table-bordered">
+                    <thead>
+                        <tr class="light-blue">
+                            <th>
+                                <input type="checkbox" />
+                            </th>
+                            <th class="md-width">Code Name</th>
+                            <th class="lg-width">Code Type</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                            <td class="md-width">GA</td>
+                            <td class="lg-width">Code Type</td>
+                            <td class="text-center">Georgia</td>
+                            <td class="md-width">
+                                <ul class="text-center">
+                                    <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                    <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                            <td class="md-width">FL</td>
+                            <td class="lg-width">Code Type</td>
+                            <td class="text-center">Florida</td>
+                            <td class="md-width">
+                                <ul class="text-center">
+                                    <li class="text-left"><a><i class="fa fa-pencil"></i></a></li>
+                                    <li class="text-left"><a><i class="fa fa-trash"></i></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a aria-label="Previous" href="#" class="page-link">
+                                    <span aria-hidden="true">«</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item">
+                                <a aria-label="Next" href="#" class="page-link">
+                                    <span aria-hidden="true">»</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toolBar">
+    <span class="doc-savecode">You are saving codes</span>
+    <span class="pull-right">
+        <a class="btn btn-success medium">Save</a>
+        <a class="btn head-btn">Cancel</a>
+    </span>
+</div>

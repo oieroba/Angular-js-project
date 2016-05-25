@@ -1,0 +1,116 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<script>
+    $(document).ready(function () {
+        $("#AppText").Editor();
+    });
+</script>
+<div class="container" ng-controller="ApplicationTextController">
+    <div class="rounded-container peel-shadows">
+        <div class="plr10">
+            <div class="text-right mt10 mr10">
+                <a class="btn btn-success btn-sm">Add New Instruction</a>
+            </div>
+            <div class="inner-round">
+                <div class="gridUpperDiv apptext-header">
+                    <span><i class="fa fa-level-up down-arrow"></i></span>
+                    <span>
+                        <input type="checkbox" />
+                        <a class="show-all">Show All</a>
+                    </span>
+                </div>
+                <table class="table user-table table-bordered">
+                    <thead>
+                        <tr class="light-blue">
+                            <th class="lg-width">Application Name</th>
+                            <th class="lg-width">Tab</th>
+                            <th class="lg-width">Instruction Name</th>
+                            <th class="sm-width text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="lg-width">UserName</td>
+                            <td class="lg-width">Name</td>
+                            <td class="lg-width">Email</td>
+                            <td class="sm-width text-center"><a><i class="fa fa-pencil"></i></a></td>
+
+                        </tr>
+                        <tr>
+                            <td class="lg-width">UserName</td>
+                            <td class="lg-width">Name</td>
+                            <td class="lg-width">Email</td>
+                            <td class="sm-width text-center"><a><i class="fa fa-pencil"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="all-form mb10">
+                    <div class="form-div">
+                        <label class="control-label sm-label" for="inputSuccess2" id="lblInstructionName">Instruction Name :</label>
+                        <input type="text" class="form-control input-sm" id="txtInstructionName" ng-model="InstructionName" />
+                    </div>
+                    <div class="form-div">
+                        <label class="control-label required-label sm-label" id="lblApplicationType">Application Type :</label>
+                        <select class="form-control input-sm nat-required UI_BackofficeAdministrationApplicationTextvalidation" requiredErrorMessage="ApplicationType is required" id="ddlApplicationType" ng-model="ApplicationType">
+                          <option value="">-Select-</option>
+                        </select>
+                    </div>
+                    <div class="form-div">
+                        <label class="control-label required-label sm-label" id="lblInstructionType">Instruction Type :</label>
+                        <select class="form-control input-sm nat-required UI_BackofficeAdministrationApplicationTextvalidation" requiredErrorMessage="InstructionType is required" id="ddlOnstructionType" ng-model="InstructionType">
+                            <option value="">-Select-</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="p10">
+                    <h4>Content :</h4>
+                    <div id="AppText" ng-model="Content"></div>
+                </div>
+                <div class="holder">
+                    <span class="fltrt pull-right">
+                      <a class="btn btn-success medium">Save</a>
+                        <a class="btn head-btn">Close</a>
+                    </span>
+                </div>
+            </div>
+            <table class="table user-table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="lg-width">UserName</td>
+                        <td class="lg-width">Name</td>
+                        <td class="lg-width">Email</td>
+                        <td class="sm-width text-center"><a><i class="fa fa-pencil"></i></a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="lg-width">UserName</td>
+                        <td class="lg-width">Name</td>
+                        <td class="lg-width">Email</td>
+                        <td class="sm-width text-center"><a><i class="fa fa-pencil"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a aria-label="Previous" href="#" class="page-link">
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item">
+                        <a aria-label="Next" href="#" class="page-link">
+                            <span aria-hidden="true">»</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+

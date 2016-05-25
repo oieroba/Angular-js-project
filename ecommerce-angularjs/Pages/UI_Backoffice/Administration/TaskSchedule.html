@@ -1,0 +1,107 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<div class="container" ng-controller="TaskScheduleController">
+    <div class="rounded-container peel-shadows">
+        <div class="header-blue">
+            <div>
+                Scheduled Task
+            </div>
+        </div>
+        <div class="plr10">
+            <h4 class="mt10">Enter Filter Criteria</h4>
+            <div class="search-info" id="searchdata">
+                <a id="Close" class="close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="all-form">
+                    <div class="form-div">
+                        <label class="control-label sm-label" id="lblTaskname" for="inputSuccess2">Task Name :</label>
+                        <input type="text" id="txtTaskname" class="form-control input-sm" ng-model="TaskName" />
+                    </div>
+                    <div class="form-div">
+                        <label class="control-label sm-label" id="lblNotification" for="inputSuccess2">Notification Name :</label>
+                        <input type="text" id="txtNotification" class="form-control input-sm" ng-model="NotificationName" />
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <span class="fltrt pull-right mb10">
+                                <a class="btn btn-success btn-sm mr10">Search</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="plr10">
+            <h4 class="mt10">Results</h4>
+            <div class="inner-round">
+                <div class="plr10">
+                    <p class="mt10">
+                        The interval unit in the list of Scheduled Tasks represents the frequency of task execution.<b>M</b> is monthly, <b>w</b> is weekly <b>d</b> is daily, <b>h</b> is hourly, and <b>m</b> indicates minutes. The interval count is a multiplier of frequency. For example, a minute task with an Interval Counts of 5 would be executed every 5 minutes.
+                    </p>
+                    <table class="table user-table table-bordered">
+                        <thead>
+                            <tr class="light-blue">
+                                <th class="lg-width text-center">Task Name</th>
+                                <th class="lg-width text-center">Notification Name</th>
+                                <th class="sm-width text-center">Interval Unit</th>
+                                <th class="sm-width text-center">Interval Count</th>
+                                <th class="lg-width text-center">Last Run On</th>
+                                <th class="lg-width text-center">Next Run On</th>
+                                <th class="text-center sm-width">Enabled</th>
+                                <th class="text-center sm-width">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="lg-width">Automated Applead Management</td>
+                                <td class="lg-width">Criminal History appeal started</td>
+                                <td class="sm-width text-center">d</td>
+                                <td class="sm-width text-center">1</td>
+                                <td class="lg-wight text-center">4/2/2016 8:30:15PM</td>
+                                <td class="lg-width text-center">4/2/2016 8:30:15PM</td>
+                                <td class="sm-width text-center">Yes</td>
+                                <td class="sm-width">
+                                  <a class="btn btn-success btn-sm">Modify Schedule</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="lg-width">Automated Applead Management</td>
+                                <td class="lg-width">Criminal History appeal started</td>
+                                <td class="sm-width text-center">d</td>
+                                <td class="sm-width text-center">1</td>
+                                <td class="lg-wight text-center">4/2/2016 8:30:15PM</td>
+                                <td class="lg-width text-center">4/2/2016 8:30:15PM</td>
+                                <td class="sm-width text-center">Yes</td>
+                                <td class="sm-width">
+                                    <input type="button" value="Modify Schedule" class="btn btn-success btn-sm" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a aria-label="Previous" href="#" class="page-link">
+                                    <span aria-hidden="true">«</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item">
+                                <a aria-label="Next" href="#" class="page-link">
+                                    <span aria-hidden="true">»</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

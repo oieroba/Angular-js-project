@@ -1,0 +1,78 @@
+﻿<style>
+    body {
+        background-color: #E1E1E1;
+    }
+
+    .checkbox input {
+        left: -9999px;
+        position: absolute;
+    }
+</style>
+<div class="body ng-cyan" ng-controller="LoginwemailController" ng-init="init()">
+    <div class="container">
+        <div class="text-center mt30">
+            <div class="site-logo">
+                <img src="/Styles/Images/logo.png" style="height: 79px;" />
+            </div>
+        </div>
+        <div class="login-form-section body-s">
+            <div class="login-content">
+                <div class="section-title">
+                    <h3>Log In</h3>
+                </div>
+            </div>
+            <div class="box-wrap">
+                <div class="rounded-container status-message">
+                    <span><!--Record is saved successfully--></span>
+                    <a><i class="fa fa-times"></i></a>
+                </div>
+                <div class="rounded-container validation-summary">
+                    <a><i class="fa fa-times"></i></a>
+                </div>
+                <!--<div class="log-error">
+                    <ul>
+                        <li>Please enter valid Username (Email).</li>
+                        <li>Please enter Password.</li>
+                    </ul>
+                </div>-->
+                <div class="input-group col-sm-12 mb20 form-div log-input">
+                    <input type="text" class="form-control nat-required nat-email loginwemailvalidation forgotpasswordemailvalidation" placeholder="User Name (Email)" requiredErrorMessage="UserName (Email) is required" valueerrormessage="Invalid User Name (Email). Format eg: xyz@abc.com" ng-model="Email" aria-label="..." />
+                </div>
+                <div class="input-group col-sm-12 mb20 form-div log-input">
+                    <input type="password" class="form-control nat-required loginwemailvalidation " placeholder="Password" requiredErrorMessage="Password is required" ng-model="Password" aria-label="..." />
+                </div>
+                <div class="forget-pass">
+                    <a id="Forgot" class="note" ng-click="forgetPassword()"><u>Forgot password?</u></a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-md-8 filled-in">
+                        <label class="checkbox">
+                            <input type="checkbox" checked="" name="checkbox-inline" ng-model="KeepMeLoggedIn" style="position:absolute;">
+                            <i></i>
+                            Keep me logged in
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="log-btn">
+                <div>
+                    <button type="button" class="button btn btn-primary btn-block" ng-click="login()">Log In</button>
+                </div>
+                <div>
+                    <button type="button" class="button button-login btn btn-block btn-default" ng-click="register()">Click here to Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="text-center txtfooter">
+                <span style="font-size: 13px;font-family:Helvetica, sans-serif;letter-spacing: 1.2px;font-weight: normal;">
+                    Copyright © 2016 |
+                    <a target="_blank">Nevada Speech-Language Pathology, Audiology & Hearing Aid Dispensing Board</a>
+                    | All Rights Reserved
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

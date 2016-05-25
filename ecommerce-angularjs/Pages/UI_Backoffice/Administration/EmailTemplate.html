@@ -1,0 +1,121 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<script>
+    $(document).ready(function () {
+        $("#msgtxt").Editor();
+    });
+</script>
+<div class="container" ng-controller="EmailTemplateController">
+
+    <div class="rounded-container peel-shadows">
+        <h4 class="pull-left">Template</h4>
+        <div class="text-right mb10 mr10">
+            <a class="btn btn-success btn-sm">New Template</a>
+        </div>
+        <div class="">
+            <div class="gridUpperDiv">
+                <span><i class="fa fa-level-up down-arrow"></i></span>
+                <a class="show-all">Show All</a>
+                <span id="Search" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <table class="table user-table table-bordered">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="md-width">Application Type</th>
+                        <th class="lg-width">Template Name</th>
+                        <th class="lg-width">Subjact</th>
+                        <th class="sm-width">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="inner-round">
+                                            <div class="all-form mt30 row">
+                                                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                                                    <div class="form-div ml10">
+                                                        <label class="control-label required-label sm-label" id="ApplicationType">Application Type :</label>
+                                                        <select id="ddlApplicationType" class="form-control input-sm ml10 nat-required ModulesUI_BackofficeAdministrationucDeficiencyReasonvalidation" requirederrormessage="ApplicationType is required" ng-model="DRApplicationType">
+                                                            <option value="">Application Request</option>
+                                                            <option value="">...</option>
+                                                            <option value="">...</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row">
+                                                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                                                    <div class="form-div ml10">
+                                                        <label class="control-label sm-label" id="lblDescription">Template Name :</label>
+                                                        <textarea class="ml10" rows="2" cols="20"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row">
+                                                <div class="col-md-offset-1 col-sm-5 col-md-5">
+                                                    <div class="form-div ml10">
+                                                        <label class="control-label sm-label" id="lblLetterSubject">Subject :</label>
+                                                        <textarea class="ml10" cols="20" rows="2"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row">
+                                                <div class="col-md-offset-1 col-sm-2 col-md-2">
+                                                    <div class="form-div ml10">
+                                                        <label class="control-label sm-label" id="Label1"><b>Message Text :</b></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="all-form row">
+                                                <div class="col-md-offset-1 col-sm-9 col-md-9">
+                                                    <div class="form-div ml10 mb10">
+                                                        <textarea id="msgtxt" ng-model="LetterContent"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="toolBar p10">
+                                                <span class="fltrt pull-right">
+                                                    <a class="btn btn-success medium">Update</a>
+                                                    <a class="btn head-btn">Cancel</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="md-width">Application Request</td>
+                        <td class="lg-width">Application Request Copmlated</td>
+                        <td class="lg-width">Application Request from Pending</td>
+                        <td class="sm-width text-center"><i class="fa fa-pencil"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav>
+                <ul class="pagination ml10">
+                    <li class="page-item">
+                        <a aria-label="Previous" href="#" class="page-link">
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item">
+                        <a aria-label="Next" href="#" class="page-link">
+                            <span aria-hidden="true">»</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,442 @@
+﻿<div ng-include="'/Modules/UI_Common/HeaderApplicant.html'"></div>
+<style>
+    .container
+    {
+        width: 1065px;
+    }
+
+    .light-blue th
+    {
+        padding: 5px 8px !important;
+    }
+
+    .header-sky
+    {
+        background-color: #35ADDB;
+        color: #ffffff;
+        font-weight: bold;
+        /*line-height: 30px;*/
+        overflow: hidden;
+        padding: 5px 10px;
+        vertical-align: top;
+    }
+
+    .dashboard-block
+    {
+        min-height: 180px;
+    }
+
+    .dashboard-content ul li
+    {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .dashboard-content ul li a, h6 a, span a
+    {
+        color: #000;
+        text-decoration: none;
+    }
+
+    h6 a:hover, span a:hover
+    {
+        color: #000;
+        text-decoration: none;
+    }
+
+    .additional-links a
+    {
+        color: Blue !important;
+        text-decoration: underline;
+        display: inline-block;
+        margin: 2px 0;
+    }
+
+    .dashboard-content ul li:after
+    {
+        content: "|";
+        font-size: 16px;
+        line-height: 18px;
+        margin: 0 2px 0 5px;
+        vertical-align: top;
+    }
+
+    .dashboard-content ul li:last-child:after
+    {
+        content: "";
+    }
+
+    .fa-envelope
+    {
+        vertical-align: top;
+        line-height: 15px;
+        font-size: 26px;
+    }
+
+    .dash-csz
+    {
+        width: 176px;
+    }
+
+    .dashboard-fill, .dashboard-add
+    {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .dashboard-add h5
+    {
+        font-size: 12px;
+    }
+
+    .dashboard-add-detail h5
+    {
+        border-bottom: 1px solid #e5e5e5;
+        height: 30px;
+        padding-left: 10px;
+        font-size: 12px;
+    }
+
+    .dashboard-add label
+    {
+        width: 40px !important;
+    }
+
+    .dash-edit
+    {
+        margin-right: 7px;
+    }
+
+    .dash-edit input, .dash-edit select
+    {
+        width: 125px !important;
+    }
+
+    .dashboard-add
+    {
+        margin-left: 10px;
+    }
+
+    .dashboard-add input, .dashboard-add select
+    {
+        width: 495px;
+    }
+
+    .dashboard-fill h4
+    {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .dashboard-fill label
+    {
+        margin: 5px 10px 5px 0;
+        text-align: right;
+        width: 100px;
+        font-size: 12px;
+    }
+
+    .dashboard-fill span
+    {
+        font-size: 14px;
+    }
+
+    .btn-renew-small
+    {
+        width: 100px;
+        height: 100px;
+        border-radius: 75px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+        margin-right: 30px;
+        padding: 5px;
+    }
+
+    .btn-round-lg
+    {
+        width: 100px;
+        height: 100px;
+        border-radius: 75px;
+        border: 1px solid #ddd;
+        font-size: 15px;
+        margin-right: 30px;
+        padding: 5px;
+    }
+
+    .btn-edit-small
+    {
+        margin-top: -5px;
+        padding-top: 5px;
+    }
+
+    .btn-edit-small a
+    {
+        padding: 2px 7px;
+        line-height: 16px;
+    }
+
+    .overflowscrollAppDetail
+    {
+        height: 148px;
+        overflow: auto;
+    }
+</style>
+<div class="container" ng-controller="DashboardApplicantController" ng-init="init()">
+    <div class="rounded-container peel-shadows">
+        <div class="mt10 plr10">
+            <h6 class="f18" style="margin: 0px"><a>Dashboard</a></h6>
+            <div class="dashboard-content" style="margin-bottom: 5px">
+                <ul>
+                    <li>Welcome <b>Nancy Blachly</b></li>
+                    <li><a>Change Password</a></li>
+                    <li><a ng-click="logout('Licensee')">Sign Out</a></li>
+                </ul>
+            </div>
+            <span>Not <b>Nancy Blachly?</b> <a>Click here to log out</a></span>
+            <div style="border: 1px solid #35ADDB; margin: 10px 0;">
+            </div>
+            <div class="row">
+                <div class="col-sm-7 col-md-7">
+                    <div class="inner-round">
+                        <div class="header-sky">
+                            Address Detail
+                            <div class="pull-right btn-edit-small">
+                                <a class="btn btn-primary btn-sm" id="Edit">Edit</a>
+                            </div>
+                        </div>
+
+                        <div id="DashboardliAdd">
+                            <h5 style="text-align: center; background-color: rgb(245, 245, 245); padding: 5px; margin: 0px;">Edit</h5>
+                            <div class="all-form dashboard-add">
+                                <h5>
+                                    Home Address
+                                </h5>
+                                <div class="form-div">
+                                    <label id="lblStreet" class="control-label required-label">Street :</label>
+                                    <input type="text" id="txtStreet" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeHomeAddressvalidation" requirederrormessage="Home address Street is required" ng-model="HomeAddressStreet">
+                                </div>
+                                <div class="form-div">
+                                    <label class="control-label"></label>
+                                    <input type="text" class="form-control input-width">
+                                </div>
+                                <div class="form-div pull-left dash-edit">
+                                    <label id="lblCity" class="control-label required-label">City :</label>
+                                    <input type="text" id="txtCity" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeHomeAddressvalidation" requirederrormessage="Home address City is required" ng-model="HomeAddressCity">
+                                </div>
+                                <div class="form-div pull-left dash-edit">
+                                    <label id="lblState" class="control-label required-label sm-label">State :</label>
+                                    <select id="ddlState" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeHomeAddressvalidation" requirederrormessage="Home address State is required" ng-options="" ng-model="HomeAddressState">
+                                        <option value="">-Select State-</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-div pull-left dash-edit">
+                                    <label id="lblZip" class="control-label required-label">Zip :</label>
+                                    <input type="text" id="txtZip" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeHomeAddressvalidation" requirederrormessage="Home address Zip is required" ng-model="HomeAddressZip">
+                                </div>
+                            </div>
+                            <div class="all-form dashboard-add">
+                                <h5>
+                                    Mailing Address
+                                </h5>
+                                <div class="form-div">
+                                    <label id="lblStreet" class="control-label required-label">Street :</label>
+                                    <input type="text" id="txtStreet" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeMailingAddressvalidation" requirederrormessage="Mailing address Street is required" ng-model="MailingAddressStreet">
+                                </div>
+                                <div class="form-div">
+                                    <label class="control-label"></label>
+                                    <input type="text" class="form-control input-sm">
+                                </div>
+                                <div class="form-div pull-left dash-edit">
+                                    <label id="lblCity" class="control-label required-label">City :</label>
+                                    <input type="text" id="txtCity" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeMailingAddressvalidation" requirederrormessage="Mailing address City is required" ng-model="MailingAddressCity">
+                                </div>
+                                <div class="form-div pull-left dash-edit">
+                                    <label id="lblState" class="control-label required-label">State :</label>
+                                    <select id="ddlState" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeMailingAddressvalidation" requirederrormessage="Mailing address State is required" ng-options="" ng-model="MailingAddressState">
+                                        <option value="">-Select State-</option>
+                                    </select>
+                                </div>
+                                <div class="form-div pull-left dash-edit">
+                                    <label id="lblZip" class="control-label required-label">Zip :</label>
+                                    <input type="text" id="txtZip" class="form-control input-sm nat-required UI_IndividualDashboardDashboardLicenseeMailingAddressvalidation" requirederrormessage="Mailing address Zip is required" ng-model="MailingAddressZip">
+                                </div>
+                            </div>
+                            <div class="toolBar">
+                                <span class="pull-right">
+                                    <a class="btn btn-success medium" id="Save">Save</a>
+                                    <a class="btn head-btn" id="Cancel">Cancel</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="DashboardliFill" class="dashboard-add-detail">
+                            <div class="dashboard-fill">
+                                <h5>
+                                    Home Address
+                                    <i class="fa fa-envelope pull-right mr10" aria-hidden="true"></i>
+                                </h5>
+                                <div class="form-div">
+                                    <label class="control-label">Street :</label>
+                                    <span>PO Box 14166 </span>
+                                </div>
+                                <div class="form-div pull-left dash-csz">
+                                    <label class="control-label">City :</label>
+                                    <span>California</span>
+                                </div>
+                                <div class="form-div pull-left dash-csz">
+                                    <label class="control-label">State :</label>
+                                    <span>CA</span>
+                                </div>
+                                <div class="form-div pull-left">
+                                    <label class="control-label">Zip :</label>
+                                    <span>78787-9877</span>
+                                </div>
+                            </div>
+                            <div class="dashboard-fill">
+                                <h5>
+                                    Mailing Address
+                                    <i class="fa fa-envelope pull-right mr10" aria-hidden="true"></i>
+                                </h5>
+                                <div class="form-div">
+                                    <label class="control-label">Street :</label>
+                                    <span>PO Box 14166</span>
+                                </div>
+                                <div class="form-div dash-csz pull-left">
+                                    <label class="control-label">City :</label>
+                                    <span>California</span>
+                                </div>
+                                <div class="form-div dash-csz pull-left">
+                                    <label class="control-label">State :</label>
+                                    <span>CA</span>
+                                </div>
+                                <div class="form-div pull-left">
+                                    <label class="control-label ">Zip :</label>
+                                    <span>78787-9877</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inner-round">
+                        <div class="header-sky">
+                            Contact Detail
+                        </div>
+                        <table class="table user-table dashboard-block">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th style="color: #fff;">Contact Type</th>
+                                    <th class="text-center" style="color: #fff;">Contact Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Work Phone</td>
+                                    <td class="text-center">(415)321-3212</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="inner-round mb10">
+                        <div class="header-sky">
+                            Status
+                        </div>
+                        <div class="text-center dashboard-block">
+                            <div class="p10">
+                                <button class="btn btn-round-lg orange-bg">In Progress</button>
+                                <button class="btn btn-round-lg green-bg">Submitted</button>
+                                <button class="btn btn-round-lg orange-bg">In Review</button>
+                                <button class="btn btn-round-lg orange-bg">Decision</button></br>
+                            </div>
+                            <span class="p10" style="display:inline-block;">These of Status when clicked on any of the Status Box </span>
+                        </div>
+                    </div>
+                    <div style="min-height: 50px;">
+                        <div style="padding: 12px; font-size: 13px;">
+                            Still have questions? Email us at
+                            <a href="javascript:void(0)" style="color: Blue;text-decoration:none;">info@inlumon.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="inner-round">
+                        <div class="header-sky">
+                            Application Detail
+                        </div>
+                        <table class="table user-table overflowscrollAppDetail">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th style="color: #fff;">Application</th>
+                                    <th class="text-center" style="color: #fff;">Submitted On</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.<u><a style="color: Blue; text-decoration: none;">Certification Application</a></u></td>
+                                    <td class="text-center">01/01/2015</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="inner-round">
+                        <div class="header-sky">
+                            Deficiency Detail
+                        </div>
+                        <table class="table user-table overflowscrollAppDetail">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th style="color: #fff;">Deficiency Name</th>
+                                    <th class="text-center" style="color: #fff;">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Photo</td>
+                                    <td class="text-center">01/01/2015</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="inner-round">
+                        <div class="header-sky">
+                            Payment Detail
+                        </div>
+                        <table class="table user-table overflowscrollAppDetail">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th style="color: #fff;">Application Type</th>
+                                    <th class="text-center" style="color: #fff;">Amount</th>
+                                    <th class="text-center" style="color: #fff;">Date</th>
+                                    <th class="text-center" style="color: #fff;">Status</th>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Certification Application</td>
+                                    <td class="text-center"><i class="fa fa-inr" aria-hidden="true"></i>150.00</td>
+                                    <td class="text-center">01/01/2015  </td>
+                                    <td class="text-center">Paid</td>
+                                    <td class="text-center"><a href="#"><i class="fa fa-print" aria-hidden="true"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="inner-round">
+                        <div class="header-sky">
+                            Additional Online Services
+                        </div>
+                        <div class="p10">
+                            <div class="additional-links">
+                                <a href="#">Additional Certificate</a></br>
+                                <a href="#">ID Card</a></br>
+                                <a href="#">Name Change</a></br>
+                                <a href="#">Reprint Certificate</a></br>
+                                <a href="#">License Verification</a></br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-include="'/Modules/UI_Common/Footer.html'"></div>

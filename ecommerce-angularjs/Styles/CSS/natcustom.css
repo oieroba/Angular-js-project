@@ -1,0 +1,50 @@
+﻿.nat-loader
+{
+    top: 40% !important;
+    bottom: inherit !important;
+}
+
+.nat-loader .modal-dialog .modal-content
+{
+    box-shadow: none !important;
+    border: none !important;
+    color: #fff !important;
+    background-color: transparent !important;
+}
+
+.email-msg .nat-err-msg
+{
+    right: 360px;
+    top:45px;
+}
+
+.pass-msg .nat-err-msg
+{
+    right: 147px;
+    top:45px;
+}
+
+
+.orange-bg
+{
+    background-color: #fbc35e;
+}
+
+
+.green-bg
+{
+    background-color: #8bfe8b;
+}
+
+@media (min-width:1200px)
+{
+    .container
+    {
+        width: 1100px;
+    }
+}
+
+.h1, h2
+{
+    font-family: Tahoma,Geneva,Kalimati,sans-serif;
+}

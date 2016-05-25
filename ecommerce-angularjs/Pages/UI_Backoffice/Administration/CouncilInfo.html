@@ -1,0 +1,126 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<div class="container" ng-controller="CouncilInfoController" ng-init="init()">
+    <div class="inner-round peel-shadows">
+        <div class="p10">
+            <h4 class="mt5">Council Information</h4>
+            <div class="inner-round p10">
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-10 col-md-10">
+                        <div class="form-div council-input">
+                            <label id="lblNameOFCouncil" class="control-label sm-label"><span class="required-label"><b>Name of Council :</b></span> <span class="coun-heading">(to appear on Headings)</span></label>
+                            <input id="txtNameOFCouncil" type="text" class="form-control input-sm nat-required nat-alphabet councilinfovalidation" title="Only alphabet (A-z) value allowed" maxlength="250" valuelengtherrormessage="Maximum 250 Characters" requiredErrorMessage="Name of Council is required" ng-model="Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row up-div">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblCode" class="control-label required-label sm-label">Code :</label>
+                            <input id="txtCode" type="text" class="form-control input-sm nat-required nat-alphanumeric councilinfovalidation" title="Only aplhanumeric (A-z 0-9) value allowed" maxlength="10" valuelengtherrormessage="Maximum 10 Characters" requiredErrorMessage="Code is required" ng-model="Code">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblAcronym" class="control-label sm-label">Acronym :</label>
+                            <input id="txtAcronym" type="text" class="form-control input-sm" maxlength="10" valuelengtherrormessage="Maximum 10 Characters" ng-model="Acronym">
+                        </div>
+                    </div>
+                </div>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-10 col-md-10">
+                        <div class="form-div council-input">
+                            <label id="lblUrl" class="control-label sm-label" for="inputSuccess2">Url :</label>
+                            <input id="txtUrl" type="text" class="form-control nat-url input-sm nat-regex" maxlength="512" valueexpression="^https?://www.[a-zA-Z0-9]+\.[a-zA-Z0-9]+" requiredErrorMessage="Url is required" valueerrormessage="Invalid url. eg: http(s)://www.example.com" valuelengtherrormessage="Maximum 512 Characters" ng-model="Url">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-round p10 councilinfo">
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <h4 class="text-center">Physical Address</h4>
+                        <div class="form-div">
+                            <label id="lblAddressLineOne" class="control-label required-label sm-label">Address Line 1 :</label>
+                            <input id="txtAddressLineOne" type="text" class="form-control input-sm nat-required councilinfovalidation" requiredErrorMessage="Physical address AddressLine is required" maxlength="250" valuelengtherrormessage="Maximum 250 Characters" ng-model="PhysicalAddressLine1" ng-change="makeSameAsPhysicalAddressOnChange()">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblAddressLineTwo" class="control-label sm-label">Address Line 2 :</label>
+                            <input id="txtAddressLineTwo" type="text" class="form-control input-sm" maxlength="250" valuelengtherrormessage="Maximum 250 Characters" ng-model="PhysicalAddressLine2" ng-change="makeSameAsPhysicalAddressOnChange()">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblCity" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                            <input id="txtCity" type="text" class="form-control input-sm nat-required nat-alphabet councilinfovalidation" title="Only alphabet (A-z) value allowed" requiredErrorMessage="Physical address City is required" maxlength="50" valuelengtherrormessage="Maximum 50 Characters" ng-model="PhysicalAddressCity" ng-change="makeSameAsPhysicalAddressOnChange()">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblState" class="control-label required-label sm-label">State :</label>
+                            <select id="ddlState" class="form-control input-sm nat-required councilinfovalidation" requiredErrorMessage="Physical address State is required" ng-options="sl.StateId as sl.Name for sl in StatList" ng-model="PhysicalAddressState" ng-change="makeSameAsPhysicalAddressOnChange()">
+                                <option value="">-Select State-</option>
+                            </select>
+                        </div>
+                        <div class="form-div">
+                            <label id="lblZip" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                            <input id="txtZip" type="text" class="form-control input-sm nat-required nat-regex councilinfovalidation zip_us" title="Only number (0-9) allowed" valueexpression="^\d{5}(?:[-\s]\d{4})?$" requiredErrorMessage="Physical address zip is required" valueerrormessage="Invalid physical address zip., Eg: XXXXX-XXXX or XXXXX" ng-model="PhysicalAddressZip" ng-change="makeSameAsPhysicalAddressOnChange()">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <h4 class="text-center council-address">Mailing Address <span>(<input type="checkbox" ng-model="IsMailingSameasPhysical" ng-click="makeSameAsPhysicalAddress($event)" /> Same as Physical Address )</span></h4>
+                        <div class="form-div">
+                            <label id="lblAddressLineOne" class="control-label required-label sm-label">Address Line 1 :</label>
+                            <input id="txtAddressLineOne" type="text" class="form-control input-sm nat-required councilinfovalidation" requiredErrorMessage="Mailing address AddressLine is required" maxlength="250" valuelengtherrormessage="Maximum 250 Characters" ng-model="MailingAddressLine1" ng-disabled="IsMailingSameasPhysical">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblAddressLineTwo" class="control-label sm-label">Address Line 2 :</label>
+                            <input id="txtAddressLineTwo" type="text" class="form-control input-sm" ng-model="MailingAddressLine2" maxlength="250" valuelengtherrormessage="Maximum 250 Characters" ng-disabled="IsMailingSameasPhysical">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblCity" class="control-label required-label sm-label" for="inputSuccess2">City :</label>
+                            <input id="txtCity" type="text" class="form-control input-sm nat-required councilinfovalidation nat-alphabet" title="Only alphabet (A-z) value allowed" requiredErrorMessage="Mailing address City is required" maxlength="50" valuelengtherrormessage="Maximum 50 Characters" ng-model="MailingAddressCity" ng-disabled="IsMailingSameasPhysical">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblState" class="control-label required-label sm-label">State :</label>
+                            <select id="ddlState" class="form-control input-sm nat-required  councilinfovalidation" requiredErrorMessage="Mailing address State is required" ng-options="sl.StateId as sl.Name for sl in StatList" ng-model="MailingAddressState" ng-disabled="IsMailingSameasPhysical">
+                                <option value="">-Select State-</option>
+                            </select>
+                        </div>
+                        <div class="form-div">
+                            <label id="lblZip" class="control-label required-label sm-label" for="inputSuccess2">Zip :</label>
+                            <input id="txtZip" type="text" class="form-control input-sm nat-required nat-regex councilinfovalidation zip_us" title="Only number (0-9) allowed" valueexpression="^\d{5}(?:[-\s]\d{4})?$" requiredErrorMessage="Mailing address zip is required" valueerrormessage="Invalid mailing address zip., Eg: XXXXX-XXXX or XXXXX" ng-model="MailingAddressZip" ng-disabled="IsMailingSameasPhysical">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-round p10">
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblContactPhone" class="control-label sm-label">Contact Phone :</label>
+                            <input id="txtContactPhone" type="text" class="form-control input-sm nat-regex phone_us" title="Only number (0-9) allowed" valueexpression="^\([0-9]{3}\) ?[0-9]{3}-[0-9]{4}$" maxlength="15" valueerrormessage="Invalid contact phone. Format eg:(XXX) XXX-XXXX Or (XXX)XXX-XXXX" ng-model="ContactPhone">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblContactEmail" class="control-label sm-label">Contact Email :</label>
+                            <input id="txtContactEmail" type="text" class="form-control input-sm nat-email" valueerrormessage="Invalid Email. Format eg: xxx@xxx.xxx" maxlength="128" valuelengtherrormessage="Maximum 128 Characters" ng-model="ContactEmail" placeholder="joe@email.com">
+                        </div>
+
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblContactFax" class="control-label sm-label">Contact Fax :</label>
+                            <input id="txtContactFax" type="text" class="form-control input-sm nat-regex" valueexpression="^[0-9]{3}-?[0-9]{3}-?[0-9]{4}$" maxlength="15" valueerrormessage="Invalid contact fax. Format eg:XXX-XXX-XXXX Or XXXXXXXXXX" ng-model="ContactFax">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblAlternatePhone" class="control-label sm-label" for="inputSuccess2">Alternate Phone :</label>
+                            <input id="txtAlternatePhone" type="text" class="form-control input-sm nat-regex phone_us" title="Only number (0-9) allowed" valueexpression="^\([0-9]{3}\) ?[0-9]{3}-[0-9]{4}$" maxlength="15" valueerrormessage="Invalid alternate phone. Format eg:(XXX) XXX-XXXX Or (XXX)XXX-XXXX" ng-model="AlternatePhone">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="holder">
+            <span class="doc-savecode">You are saving Council Info</span>
+            <span class="pull-right">
+                <a class="btn btn-success medium" ng-click="updateCouncilInfo()">Save</a>
+                <a class="btn head-btn" ng-click="reset()">Cancel</a>
+            </span>
+        </div>
+    </div>
+</div>

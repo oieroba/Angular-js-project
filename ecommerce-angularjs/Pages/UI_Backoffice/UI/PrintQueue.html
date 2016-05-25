@@ -1,0 +1,149 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<div class="container" ng-controller="PrintQueueController">
+    <div class="rounded-container p10 peel-shadows">
+        <div class="tabination">
+            <div class="tab-bordered">
+                <ul class="nav nav-tabs" role="tablist" style="margin-left:0;">
+                    <li role="presentation" class="active"><a href="#License" aria-controls="home" role="tab" data-toggle="tab">License</a></li>
+                    <li role="presentation"><a href="#RestrictedLicense" aria-controls="profile" role="tab" data-toggle="tab">Restricted License</a></li>
+                </ul>
+            </div>
+            <h4 class="mt10">Print Queue</h4>
+            <div class="search-info collapse" id="searchdata">
+                <a id="Close" class="close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblLicense" class="control-label" style="width:110px !important;"><span class="mr10">License # : </span> NVMT.</label>
+                            <input id="txtLicense" type="text" class="form-control input-sm" ng-model="SearchLastName" style="width:190px !important;" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblLastName" class="control-label">Last Name :</label>
+                            <input id="txtLastName" type="text" class="form-control input-sm" ng-model="SearchLastName" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblPrintedDateStart" class="control-label" style="width:102px !important;margin-right:9px;">Printed Date Start :</label>
+                            <input id="txtPrintedDateStart" type="text" class="form-control input-sm" ng-model="SearchLastName" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblApplicationType" class="control-label">Application Type :</label>
+                            <select id="ddlApplicationType" ng-options="r.RoleId as r.Name for r in Role" class="form-control input-sm" ng-model="SearchRoleID">
+                                <option value="">-All-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblSsn" class="control-label">SSN # :</label>
+                            <input id="txtSsn" type="text" class="form-control input-sm" ng-model="SearchLastName" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblFirstName" class="control-label">First Name :</label>
+                            <input id="txtFirstName" type="text" class="form-control input-sm" ng-model="SearchLastName" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblPrintedDateEnd" class="control-label">Printed Date End :</label>
+                            <input id="txtPrintedDateEnd" type="text" class="form-control input-sm" ng-model="SearchLastName" />
+                        </div>
+                        <div class="form-div">
+                            <label id="lblPrintingStatus" class="control-label">Printing Status :</label>
+                            <select id="ddlPrintingStatus" ng-options="r.RoleId as r.Name for r in Role" class="form-control input-sm" ng-model="SearchRoleID">
+                                <option value="">-All-</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inner-round">
+                <div class="gridUpperDiv">
+                    <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                    <a href="#" class="show-all pull-left mr10">Show All License(s) to be printed</a> <p class="pull-left">Total Record in print Queue:6</p>
+                    <a id="searchdata" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></a>
+                    <a class="print-excel">
+                        <i class="fa fa-file-excel-o"></i>
+                    </a>
+                </div>
+                <div class="tab-content mt10">
+                    <div role="tabpanel" class="tab-pane active" id="License">
+                        <table class="table user-table table-bordered">
+                            <thead>
+                                <tr class="light-blue">
+                                    <th class="text-center">
+                                        <input type="checkbox" />
+                                    </th>
+                                    <th class="text-center md-width">Name</th>
+                                    <th class="text-center md-width">Certificate #</th>
+                                    <th class="text-center md-width">Certificate Status</th>
+                                    <th class="text-center sm-width">Application #</th>
+                                    <th class="text-center md-width">Application Type</th>
+                                    <th class="text-center lg-width">Date Certificate ID Printed</th>
+                                    <th class="text-center lg-width">Date Certificate Printed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">
+                                        <input type="checkbox" />
+                                    </td>
+                                    <td class="text-center md-width">Tuhin Varma</td>
+                                    <td class="text-center md-width">NVBMT.0038</td>
+                                    <td class="text-center md-width">Active</td>
+                                    <td class="text-center sm-width">OL1234568765</td>
+                                    <td class="text-center md-width">New School Application</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <input type="checkbox" />
+                                    </td>
+                                    <td class="text-center md-width">Tuhin Varma</td>
+                                    <td class="text-center md-width">NVBMT.0038</td>
+                                    <td class="text-center md-width">Active</td>
+                                    <td class="text-center sm-width">OL1234568765</td>
+                                    <td class="text-center md-width">New School Application</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <input type="checkbox" />
+                                    </td>
+                                    <td class="text-center md-width">Tuhin Varma</td>
+                                    <td class="text-center md-width">NVBMT.0038</td>
+                                    <td class="text-center md-width">Active</td>
+                                    <td class="text-center sm-width">OL1234568765</td>
+                                    <td class="text-center md-width">New School Application</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">
+                                        <input type="checkbox" />
+                                    </td>
+                                    <td class="text-center md-width">Tuhin Varma</td>
+                                    <td class="text-center md-width">NVBMT.0038</td>
+                                    <td class="text-center md-width">Active</td>
+                                    <td class="text-center sm-width">OL1234568765</td>
+                                    <td class="text-center md-width">New School Application</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                    <td class="text-center lg-width">09/23/2015</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-right p10">
+                            <button type="button" class="btn btn-success btn-sm disabled">Review for Processing</button>
+                            <button type="button" class="btn btn-success btn-sm disabled">Release for Processing</button>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane active" id="RestrictedLicense">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

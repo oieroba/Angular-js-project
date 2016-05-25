@@ -1,0 +1,58 @@
+﻿<link href="/Styles/UI_Login/CSS/login.css" rel="stylesheet" />
+<style>
+    body
+    {
+        background-color: #0D83DD;
+    }
+
+    .status-message.error
+    {
+        background: #8aa5c6 none repeat scroll 0 0;
+        border: 1px solid #89a3c2 !important;
+        border-radius: 5px;
+        color: #ffffff;
+        font-weight: bold;
+        height: 38px;
+        line-height: 33px;
+        margin-bottom: 3px;
+        text-align: center;
+    }
+
+    .status-message.error::before
+    {
+        content: "";
+        margin: 0 6px !important;
+    }
+    .status-message a
+    {
+        margin:-6px 5px;
+    }
+</style>
+<div class="body" ng-controller="BackofficeLoginstaffController" ng-init="init()">
+    <div class="staff-login">
+        <div id="login" class="container">
+            <div class="text-center">
+                <div class="site-logostaff">
+                    <img class="mb20" src="/Styles/UI_BackOffice/Images/^77604E1CFD9D0B23B35ACAD50EF00826CFC1B34226F4513851^pimgpsh_fullsize_distr.png" />
+                    <div id="ucLogin2_divMessage" class="status-message">
+                        <span></span>
+                        <a><i class="fa fa-times"></i></a>
+
+                    </div>
+                    <div class="info-staff">
+                        <div class="email-msg">
+                            <input class="form-control mr5 pull-left input-lg nat-required nat-email UI_BackofficeUILoginstaff" type="text" placeholder="Email" requiredErrorMessage="UserName (Email) is required" valueerrormessage="Invalid User Name (Email). Format eg: xyz@abc.com" type="text" placeholder="Email" ng-model="Email" />
+                        </div>
+                        <div class="pass-msg">
+                            <input class="form-control pull-left input-lg nat-required UI_BackofficeUILoginstaff" requiredErrorMessage="Password is required" type="password" placeholder="Password" ng-model="Password" />
+                        </div>
+                        <input type="button" class="lgstaff-btn btn btn-success medium ml10" ng-click="login()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="footer-staff">
+
+        </div>-->
+    </div>
+</div>

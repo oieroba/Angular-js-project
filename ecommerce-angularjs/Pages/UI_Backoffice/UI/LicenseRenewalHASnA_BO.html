@@ -1,0 +1,162 @@
+﻿<div ng-include="'/Modules/UI_Common/Header.html'"></div>
+<style>
+    .container
+    {
+        width: 1070px;
+    }
+
+    .lirenew-info
+    {
+        position: absolute;
+        right: 73px;
+        top: 64px;
+    }
+
+    .tr-border-none td
+    {
+        border: 0 none !important;
+    }
+</style>
+
+<div class="container" ng-controller="BackofficeLicenseRenewalHASnA_BOController" ng-init="init()">
+    <div class="rounded-container peel-shadows">
+        <div class="text-right mr10">
+            <h4 class="f18 pull-left" style="font-weight: normal;">Licensee Renewal</h4>
+            <a id="LicenseBoAdd" class="btn btn-success">Add</a>
+        </div>
+        <div id="HASnA_BO"><div ng-include="'/Modules/UI_Backoffice/UI/ucLicenseApplicationHASnA_BO.html'"></div></div>
+        <div class="mt10">
+            <div class="search-info collapse mb10" id="searchdata">
+                <a id="Close" class="close">
+                    <i class="fa fa-close"></i>
+                </a>
+                <div class="all-form row">
+                    <div class="col-md-offset-1 col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblSearchName" class="control-label sm-label" for="inputSuccess2">Search By Name :</label>
+                            <input id="txtSearchName" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblUserName" class="control-label sm-label" for="inputSuccess2">License # :</label>
+                            <input id="txtUserName" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblLastName" class="control-label sm-label" for="inputSuccess2">Last Name :</label>
+                            <input id="txtLastName" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblFirstName" class="control-label sm-label" for="inputSuccess2">First Name :</label>
+                            <input id="txtFirstName" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-md-5">
+                        <div class="form-div">
+                            <label id="lblSS" class="control-label" for="inputSuccess2">SS # :</label>
+                            <input id="txtSS" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblPhone" class="control-label" for="inputSuccess2">Phone # :</label>
+                            <input id="txtPhone" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="form-div">
+                            <label id="lblStatus" class="control-label">Status :</label>
+                            <select id="ddlStatus" class="form-control input-sm">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right mr10">
+                    <span class="fltrt pull-right">
+                        <input class="btn btn-success medium" type="submit" value="Search">
+                        <a class="btn head-btn" id="SearchCancel">Cancel</a>
+                    </span>
+                </div>
+            </div>
+            <div class="gridUpperDiv">
+                <span class="pull-left"><i class="fa fa-level-up down-arrow"></i></span>
+                <a class="show-all">Show All</a>
+                <span id="Search" class="pull-right mt10 mr10" data-toggle="collapse" data-target="#searchdata" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i></span>
+            </div>
+            <!--<tr id="LicenseRenewalHASnA_BO_BC" ng-show="truefalse" style="display: block; width: 0px;">
+                <td style="border: 0px none; display: block; width: 1016px;">-->
+            <!--<div ng-show="truefalse" ng-include="'/Modules/UI_Backoffice/UI/ucLicenseRenewalHASnA_BO_BC.html'"></div>-->
+            <!--</td>
+            </tr>-->
+            <table class="table user-table">
+                <thead>
+                    <tr class="light-blue">
+                        <th class="text-center">
+                            <input type="checkbox" />
+                        </th>
+                        <th></th>
+                        <th class="sm-width text-center"><a style="text-decoration: underline; color: #fff;">License #</a></th>
+                        <th class="text-center"><a style="text-decoration: underline; color: #fff;">First Name</a></th>
+                        <th class="text-center"><a style="text-decoration: underline; color: #fff;">Last Name</a></th>
+                        <th class="text-center"><a style="text-decoration: underline; color: #fff;">Submitted Date</a></th>
+                        <th class="sm-width text-center"><a style="text-decoration: underline; color: #fff;">Status</a></th>
+                        <th class="text-center lg-width">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="RL in RenewalList" id="{{RL.IndividualId}}">
+                        <td class="text-center">
+                            <input type="checkbox" />
+                        </td>
+
+                        <td class="sm-width text-center" ng-if="RL.IsPaid==true">
+                            <a>
+                                <img src="/Styles/UI_BackOffice/Images/paid.png" style="height: 24px;" />
+                            </a>
+                        </td>
+
+                        <td class="sm-width text-center" ng-if="RL.IsPaid==false">
+                            <a>
+                                <img src="/Styles/UI_BackOffice/Images/notpaid.png" style="height: 24px;" />
+                            </a>
+                        </td>
+                        <td class="text-center">{{RL.LicenseNumber}}</td>
+                        <td class="text-center">{{RL.FirstName}}</td>
+                        <td class="text-center">{{RL.LastName}}</td>
+                        <td class="text-center">{{RL.SubmittedDate}}</td>
+                        <td class="sm-width text-center">{{RL.ApplicationStatus}}</td>
+                        <td class="lg-width">
+                            <ul class="text-center">
+                                <li>
+                                    <button type="button" class="btn btn-success btn-sm" ng-click="preApproved(RL.IndividualId)">Pre-Approved</button>
+                                </li>
+                                <li class="text-left">
+                                    <a ng-click="OpenLicenseRenewalBCBlock(RL.IndividualId);">
+                                        <img src="/Styles/UI_BackOffice/Images/BC.png" style="height: 24px;" />
+                                    </a>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/icon_weight_lrg_orange.png" style="height: 24px;" />
+                                    </a>
+                                </li>
+                                <li class="text-left">
+                                    <a>
+                                        <img src="/Styles/UI_BackOffice/Images/1443263723_mail-icon.png" style="height: 26px;" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+
+                    </tr>
+                    <!--<tr style="display: block; width: 0px;">
+                        <td style="border: 0px none; display: block; width: 1016px;">
+                            <div ng-include="'/Modules/UI_Backoffice/UI/ucLicenseRenewalHASnA_BO_Deficiency.html'"></div>
+                        </td>
+                    </tr>-->
+                    <!--<tr style="display: block; width: 0px;">
+                        <td style="border: 0px none; display: block; width: 1016px;">
+                            <div ng-include="'/Modules/UI_Backoffice/UI/ucLicenseeRenewal_BO_Email.html'"></div>
+                        </td>
+                    </tr>-->
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

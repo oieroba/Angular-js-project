@@ -1,0 +1,87 @@
+﻿<script>
+    $(document).ready(function () {
+        $("#txtEditor").Editor();
+    });
+</script>
+<div class="toolBar mb10">
+    <table>
+        <tbody>
+            <tr style="display: inline-block; padding-top: 4px;">
+                <td style="width: 0px;"></td>
+                <td style="width: 85px;"></td>
+                <td style="text-align: center; display: inline-block; width: 106px; margin: 0px 0px 0px 120px;">
+                    <b>3124</b>
+                </td>
+                <td style="text-align: center; display: inline-block; width: 160px; margin: 0px -24px;">
+                    <b>Nancy</b>
+                </td>
+                <td style="text-align: center; display: inline-block; width: 160px; margin: 0px -8px;">
+                    <b>Blachly</b>
+                </td>
+                <td style="width: 120px; text-align: center; display: inline-block; margin: 0px 23px;">
+                    <b>03/17/2015</b>
+                </td>
+                <td style="text-align: center; display: inline-block; width: 110px; margin-left: 0px;">Submitted</td>
+                <td></td>
+                <td valign="middle" align="center" style="width: 285px;"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<fieldset class="flsApplReqForm" style="margin-top:25px;">
+    <div style="text-align:center;">
+        <span>
+            <input type="checkbox" value="checked" />
+            <label style="font-weight: normal; display: inline-block; vertical-align: top; line-height: 21px;">Add History Record?<b>1 Record selected</b></label>
+        </span>
+    </div>
+</fieldset>
+<div class=" all-form row plr10 individual-person mt30">
+    <div class="col-sm-5 col-md-5 col-sm-offset-1">
+        <div class="form-div">
+            <label id="Label5" class="control-label required-label" for="inputSuccess2">From :</label>
+            <input type="text" id="Text4" class="form-control ism-width input-sm">
+        </div>
+        <div class="form-div">
+            <label id="Label4" class="control-label required-label" for="inputSuccess2">To :</label>
+            <input type="text" id="Text3" class="form-control ism-width input-sm">
+        </div>
+    </div>
+    <div class="col-sm-5 col-md-5">
+        <div class="form-div ml10">
+            <input type="checkbox" value="checked" />
+            <label id="lblFBIFingerprintsDate" class="control-label" for="inputSuccess2" style="font-weight: normal; display: inline-block; vertical-align: top; line-height: 21px;text-align:left;">Email a Copy to sender?</label>
+        </div>
+        <div class="form-div ml10">
+            <select id="Select1" class="form-control input-sm ism-width">
+                <option>Select</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row individual-person all-form">
+    <div class="col-sm-9 col-md-9 col-sm-offset-1">
+        <div class="form-div ml10">
+            <label id="lblCharges" class="control-label required-label" for="inputSuccess2">Subject :</label>
+            <input type="text" id="txtCharges" class="form-control input-width input-sm renew-email" style="width:457px!important;">
+        </div>
+        <div class="form-div ml10">
+            <label id="Label1" class="control-label required-label" for="inputSuccess2">Internal Subject :</label>
+            <input type="text" id="Text1" class="form-control input-width input-sm renew-email" style="width:457px!important;">
+        </div>
+        <div class="form-div ml10">
+            <label id="Label2" class="control-label required-label" for="inputSuccess2">Attachment :</label>
+            <a class="btn head-btn btn-sm">Browse...</a> No File Choosen
+        </div>
+        <div class="form-div ml10" style="margin-left:90px">
+            <h3>Email:</h3>
+            <textarea id="txtEditor"></textarea>
+        </div>
+    </div>
+</div>
+<div class="toolBar">
+    <div class="pull-right">
+        <a id="A2" class="btn btn-success">Send</a>
+        <a class="btn head-btn">Cancel</a>
+    </div>
+</div>

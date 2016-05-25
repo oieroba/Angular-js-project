@@ -1,0 +1,150 @@
+﻿<style>
+    .ism-width
+    {
+        width: 131px !important;
+    }
+</style>
+<div class="toolBar mb10">
+    <table>
+        <tbody>
+            <tr style="display: inline-block; padding-top: 4px;">
+                <td style="width: 0px;"></td>
+                <td style="width: 85px;"></td>
+                <td style="text-align: center; display: inline-block; width: 106px; margin: 0px 0px 0px 120px;">
+                    <b>3124</b>
+                </td>
+                <td style="text-align: center; display: inline-block; width: 160px; margin: 0px -24px;">
+                    <b>Nancy</b>
+                </td>
+                <td style="text-align: center; display: inline-block; width: 160px; margin: 0px -8px;">
+                    <b>Blachly</b>
+                </td>
+                <td style="width: 120px; text-align: center; display: inline-block; margin: 0px 23px;">
+                    <b>03/17/2015</b>
+                </td>
+                <td style="text-align: center; display: inline-block; width: 110px; margin-left: 0px;">Submitted</td>
+                <td></td>
+                <td valign="middle" align="center" style="width: 285px;"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="table-bordered p10">
+    <div style="width: 700px; margin: 0 auto;">
+        <div class="table-bordered mb10 p10">
+            <div class=" all-form row plr10 individual-person">
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-div ml10">
+                        <label id="lblDOJFingerprintStatus " class="control-label required-label" for="inputSuccess2">DOJ Fingerprint Status :</label>
+                        <select id="ddlDOJFingerprintStatus " class="form-control input-sm ism-width">
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div class="form-div ml10">
+                        <label id="lblFBIFingerprintStatus " class="control-label required-label" for="inputSuccess2">FBI Fingerprint Status :</label>
+                        <select id="ddlFBIFingerprintStatus" class="form-control input-sm ism-width">
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div class="form-div ml10">
+                        <label id="lblCharges" class="control-label" for="inputSuccess2">Charges :</label>
+                        <input type="text" id="txtCharges" class="form-control ism-width input-sm">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-div ml10">
+                        <label id="lblDOJFingerprintsDate" class="control-label" for="inputSuccess2">DOJ Fingerprints Date :</label>
+                        <input type="text" id="txtDOJFingerprintsDate" class="form-control ism-width" placeholder="MM/DD/YYYY">
+                    </div>
+                    <div class="form-div ml10">
+                        <label id="lblFBIFingerprintsDate" class="control-label" for="inputSuccess2">FBI Fingerprints Date :</label>
+                        <input type="text" id="txtFBIFingerprintsDate" class="form-control ism-width" placeholder="MM/DD/YYYY">
+                    </div>
+                </div>
+            </div>
+            <div class="toolBar">
+                <div class="pull-right">
+                    <a id="A2" class="btn btn-success">Save</a>
+                    <a class="btn head-btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-right mr10 mb10">
+            <a id="LicenseBoAdd" class="btn btn-success">Add</a>
+        </div>
+        <table class="table user-table" style="border:1px solid #ddd;">
+            <thead>
+                <tr class="light-blue">
+                    <th class="lg-width text-center">FBI Fingerprint Status</th>
+                    <th class="lg-width text-center">FBI Fingerprints Date</th>
+                    <th class="lg-width text-center">DOJ Fingerprint Status</th>
+                    <th class="text-center lg-width">DOJ Fingerprints Date</th>
+                    <th class="text-center sm-width"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="lg-width text-center">Pass</td>
+                    <td class="sm-width text-center">09/15/2015</td>
+                    <td class="lg-width text-center">Pass</td>
+                    <td class="text-center sm-width">09/18/2015</td>
+                    <td class="sm-width">
+                        <img src="/Styles/UI_BackOffice/Images/History.png" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-bordered mb10 p10">
+            <div class=" all-form row plr10">
+                <div class="col-sm-8 col-md-8 col-sm-offset-2">
+                    <div class="form-div ml10">
+                        <label id="lblDateReceived" class="control-label" for="inputSuccess2">Date Received :</label>
+                        <input type="text" id="txtDateReceived" class="form-control input-width" placeholder="MM/DD/YYYY">
+                    </div>
+                    <div class="form-div ml10">
+                        <label id="lblCharges" class="control-label" for="inputSuccess2">Charges :</label>
+                        <input type="text" id="txtCharges" class="form-control input-width">
+                    </div>
+                </div>
+            </div>
+            <div class=" all-form row plr10">
+                <div class="col-sm-8 col-md-8 col-sm-offset-4">
+                    <div class="form-div ml10">
+                        <a id="A4" class="btn head-btn mr5">Browse..</a>No file Choosen
+                        <a class="btn btn-success ml5">Upload</a>
+                    </div>
+                </div>
+            </div>
+            <div class="toolBar">
+                <div class="pull-right">
+                    <a id="A3" class="btn btn-success">Save</a>
+                    <a class="btn head-btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-right mb10">
+            <a id="A1" class="btn btn-success">Add Subsequent Arrest</a>
+        </div>
+        <table class="table user-table table-bordered mt10">
+            <thead>
+                <tr class="light-blue">
+                    <th class="lg-width text-center">Date Received</th>
+                    <th class="lg-width text-center">Charges</th>
+                    <th class="lg-width text-center">Document Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="lg-width text-center">09/12/2015</td>
+                    <td class="sm-width text-center">Charge</td>
+                    <td class="lg-width text-center"><a>Document Detail</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="toolBar">
+        <span class="fltrt pull-right">
+            <a class="btn head-btn">Close</a>
+        </span>
+    </div>
+</div>
